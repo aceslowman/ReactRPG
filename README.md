@@ -52,3 +52,6 @@ const Item = {
     }
 }
 ```
+
+## Wireframe of GUI
+![alt text](screenshots/filename.png "Description goes here")
