@@ -54,4 +54,4 @@ const Item = {
 ```
 
 ## Wireframe of GUI
-![alt text](screenshots/filename.png "Description goes here")
+![please work](React_RPG_UI.png "Quick mock up of GUI")
