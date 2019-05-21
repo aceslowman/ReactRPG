@@ -26,7 +26,7 @@ export default class WorldMap extends React.Component{
 
     render(){
         return(
-            <div style= {mapStyle}>
+            <div id= 'map' style= {mapStyle}>
             
             </div>
         )
