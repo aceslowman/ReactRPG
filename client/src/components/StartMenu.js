@@ -25,7 +25,7 @@ export default class StartMenu extends React.Component{
                 <ul>
                     <li> <Button text='New Game' onClick= {this.startNewGame} ></Button> </li>
                     <li> <Button text ='Options' onClick={this.showOptions}></Button> </li>
-                    <li> <Button text = 'Continue or Load'></Button> </li>
+                    <li> <Button text = 'Continue or Load'></Button></li>
                 </ul>
             </div>
 

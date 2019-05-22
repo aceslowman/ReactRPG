@@ -2,6 +2,7 @@ import React from 'react';
 import PlayerStatBox from './components/PlayerStatBox.js';
 import PromptTextBox from './components/PromptTextbox.js';
 import WorldMap from './components/WorldMap.js';
+import StartMenu from './components/StartMenu';
 
 import backgroundImg from './images/cabinInside.jpg';
 
@@ -19,6 +20,7 @@ const appStyle = {
 function App() {
   return (
     <div className="App" style= {appStyle}>
+      <StartMenu/>
       
         <WorldMap/>
         <PromptTextBox />
