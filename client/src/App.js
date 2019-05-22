@@ -1,31 +1,25 @@
 import React from 'react';
-import PlayerStatBox from './components/PlayerStatBox.js';
-import PromptTextBox from './components/PromptTextbox.js';
-import WorldMap from './components/WorldMap.js';
+
 import StartMenu from './components/StartMenu';
+import GameContainer from './components/GameContainer';
 
-import backgroundImg from './images/cabinInside.jpg';
-
-
-const appStyle = {
-  backgroundImage: `url(${backgroundImg})`,
-  backgroundPosition: 'center',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  height: '800px',
-}
-
-
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App" style= {appStyle}>
-      <StartMenu/>
-      
-        <WorldMap/>
-        <PromptTextBox />
-        <PlayerStatBox />
+    <Router>
+    <div className="App">
+      <ul>
+        <li><Link to="/">Start Menu</Link></li>
+        <li><Link to="/game/">Game</Link></li>
+      </ul>
+        <div>
+          <Route path="/" exact component={StartMenu} />
+          <Route path="/game/" component={GameContainer} />
+          {/* <Route path="/game/settings" exact component={GameSettings} /> */}
+        </div>
     </div>
+    </Router>
   );
 }
 
