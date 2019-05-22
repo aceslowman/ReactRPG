@@ -1,0 +1,26 @@
+{
+  "name": "expressrpg",
+  "version": "1.0.0",
+  "description": "if game using express react and mongo",
+  "main": "server.js",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "express": "^4.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aceslowman/ReactRPG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aceslowman/ReactRPG/issues"
+  },
+  "homepage": "https://github.com/aceslowman/ReactRPG#readme"
+}

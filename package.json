@@ -1,20 +1,13 @@
 {
-  "name": "expressrpg",
+  "name": "reactrpg",
   "version": "1.0.0",
-  "description": "if game using express react and mongo",
-  "main": "server.js",
-  "dependencies": {
-    "concurrently": "^4.1.0",
-    "express": "^4.17.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.0"
-  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon ./api/server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server \" \"npm run client\"" 
+    "dev": "concurrently \"npm run server \" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -25,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/aceslowman/ReactRPG/issues"
   },
-  "homepage": "https://github.com/aceslowman/ReactRPG#readme"
+  "homepage": "https://github.com/aceslowman/ReactRPG#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
 }
