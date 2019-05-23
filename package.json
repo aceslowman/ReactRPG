@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/aceslowman/ReactRPG#readme",
   "dependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "mongoose": "^5.5.10",
+    "react-router-dom": "^5.0.0"
   }
 }
