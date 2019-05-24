@@ -43,9 +43,9 @@ export default class PlayerStatBox extends React.Component{
     }
 
     componentDidMount(){
-        fetch('/trialendpoint')
+        fetch('/api/trialendpoint')
             .then(res=>res.json())
-                .then(player => this.setState({player}, ()=> console.log(`player data fetched..`, player.items)))
+                .then(player => this.setState({player}, ()=> console.log(`player data fetched..`, player)))
         
     }
 

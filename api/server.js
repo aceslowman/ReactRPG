@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3001;
 
+// Schema imports
 const PlayerCharacter = require('./schemas/PlayerCharacter');
 const Item = require('./schemas/Item');
 const Location = require('./schemas/Location');
@@ -27,25 +28,29 @@ db.on('open', (ref) => {
     console.log('our connection has been opened!');
 });
 
-
 // API Endpoints
 app.use(bodyParser.urlencoded({extended: true}));
 
 const apiRouter = express.Router();
 
-
-
 apiRouter.get('/trialendpoint', (req,res) => {
-    let player;
-
     PlayerCharacter.find({}, (err, players)=>{
-        if(err){console.err(err)};
+        if(err){console.error(err)};
         // console.log(players);
         // player = players[0];
         console.log(players);
         res.json(players);
     });
 });
+
+// /api/playercharacter endpoints
+apiRouter.get('/playercharacters', (req,res)=>{
+    PlayerCharacter.find({}, (err, players)=>{
+        if(err){console.error(err);}
+        console.log(players);
+        res.json(players);
+    });
+}); 
 
 apiRouter.post('/playercharacters', (req,res)=>{
     const newPLayerCharacter = new PlayerCharacter({
@@ -56,14 +61,34 @@ apiRouter.post('/playercharacters', (req,res)=>{
         level:req.body.level
     });
 
-    newPLayerCharacter.save(function(err){
-        if(!err){
-            res.send("Sucessfully added new PLayer Character!");
-        } else{
-           res.send(err);
-        }   
+    newPLayerCharacter.save((err)=>{
+        if(!err) console.error(err);
+        res.send("Sucessfully added new PLayer Character!");     
     });  
 });
+
+apiRouter.put('/playercharacters/:playerId', (req,res)=>{
+    PlayerCharacter.findByIdAndUpdate(req.params.playerId, req.body, {new: true}, (err, character)=>{
+        if(err) console.error(err);
+        res.json(character);
+    });
+});
+
+apiRouter.delete("/playercharacters/:playerId", (req,res) =>{
+    PlayerCharacter.findByIdAndDelete(req.params.playerId, (err)=>{
+        if(err) console.error(err);
+        res.send("Sucessfully deleted PLayer");
+    });
+});
+ 
+// /api/items endpoints
+apiRouter.get('/items', (req,res)=>{   
+    Item.find({}, (err, items)=>{
+        if(err){console.error(err);}
+        console.log(items);
+        res.json(items);
+    });
+}); 
 
 apiRouter.post('/items', (req,res)=>{
     const newItem = new Item({
@@ -74,26 +99,66 @@ apiRouter.post('/items', (req,res)=>{
     });
     
     newItem.save((err)=>{
-        if(!err){
-            res.send("Sucesfully created new Item");
-        }else{
-            res.send(err);
-        }
+        if(!err) console.error(err);
+        res.send("Sucessfully added new Item!");
     });
 });
+
+apiRouter.put('/items/:itemId', (req,res)=>{
+    Item.findByIdAndUpdate(req.params.itemId, req.body, {new: true}, (err, item)=>{
+        if(err) console.error(err);
+        res.json(item);
+    });
+});
+
+apiRouter.delete("/items/:itemId", (req,res) =>{
+    Item.findByIdAndDelete(req.params.itemId, (err)=>{
+        if(err) console.error(err);
+        res.send("Sucessfully deleted Item");
+    });
+});
+
+// /api/locations endpoints
+apiRouter.get('/locations', (req,res)=>{  
+    Location.find({}, (err, locations)=>{
+        if(err){console.error(err);}
+        console.log(locations);
+        res.json(locations);
+    });
+}); 
 
 apiRouter.post('/locations', (req, res)=>{
     const newLocation = new Location({
         name: req.body.name,
         environment: req.body.environment
     });
-
     newLocation.save((err)=>{
-        if(!err){
-            res.send("Sucesfully created new Location");
-        }else{
-            res.send(err);
-        }
+        if(!err) console.error(err)
+        res.send("Sucessfully added new Location!");
+    });
+});
+
+apiRouter.put('/locations/:locationId', (req,res)=>{
+    Location.findByIdAndUpdate(req.params.locationId, req.body, {new: true}, (err, location)=>{
+        if(err) console.error(err);
+        res.json(location);
+    });
+});
+
+apiRouter.delete("/locations/:locationId", (req,res) =>{
+    Location.findByIdAndDelete(req.params.locationId, (err)=>{
+        if(err) console.error(err);
+        res.send("Sucessfully deleted Location");
+    });
+});
+
+// /api/nonplayercharacters endpoints
+apiRouter.get('/nonplayercharacters', (req,res)=>{
+    
+    NonPlayerCharacter.find({}, (err, nonplayercharacters)=>{
+        if(err){console.error(err);}
+        console.log(nonplayercharacters);
+        res.json(nonplayercharacters);
     });
 });
 
@@ -105,13 +170,23 @@ apiRouter.post('/nonplayercharacters', (req,res)=>{
         level: req.body.level,
         friendly: req.body.friendly,
     });
-
     newNonPLayerCharacter.save((err)=>{
-        if(!err){
-            res.send("Sucessfully created new Non-PLayer Character");
-        } else {
-            res.send(err);
-        }
+        if(!err) console.error(err);
+        res.send("Sucessfully added new Non PLayer Character!");
+        });
+});
+
+apiRouter.put('/nonplayercharacters/:nonplayercharacterId', (req,res)=>{
+    NonPlayerCharacter.findByIdAndUpdate(req.params.nonplayercharacterId, req.body, {new: true}, (err, nonplayercharacter)=>{
+        if(err) console.error(err);
+        res.json(nonplayercharacter);
+    });
+});
+
+apiRouter.delete("/nonplayercharacters/:nonplayercharacterId", (req,res) =>{
+    NonPlayerCharacter.findByIdAndDelete(req.params.nonplayercharacterId, (err)=>{
+        if(err) console.error(err);
+        res.send("Sucessfully deleted Non Player Character");
     });
 });
 
