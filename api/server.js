@@ -31,7 +31,11 @@ db.on('open', (ref) => {
 // API Endpoints
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/trialendpoint', (req,res) => {
+const apiRouter = express.Router();
+
+
+
+apiRouter.get('/trialendpoint', (req,res) => {
     let player;
 
     PlayerCharacter.find({}, (err, players)=>{
@@ -43,7 +47,7 @@ app.get('/trialendpoint', (req,res) => {
     });
 });
 
-app.post('/playercharacters', (req,res)=>{
+apiRouter.post('/playercharacters', (req,res)=>{
     const newPLayerCharacter = new PlayerCharacter({
         name: req.body.name,
         AP: req.body.AP,
@@ -61,7 +65,7 @@ app.post('/playercharacters', (req,res)=>{
     });  
 });
 
-app.post('/items', (req,res)=>{
+apiRouter.post('/items', (req,res)=>{
     const newItem = new Item({
         name: req.body.name,
         value: req.body.value,
@@ -78,7 +82,7 @@ app.post('/items', (req,res)=>{
     });
 });
 
-app.post('/locations', (req, res)=>{
+apiRouter.post('/locations', (req, res)=>{
     const newLocation = new Location({
         name: req.body.name,
         environment: req.body.environment
@@ -93,7 +97,7 @@ app.post('/locations', (req, res)=>{
     });
 });
 
-app.post('/nonplayercharacters', (req,res)=>{
+apiRouter.post('/nonplayercharacters', (req,res)=>{
     const newNonPLayerCharacter = new NonPlayerCharacter({
         name: req.body.name,
         AP: req.body.AP,
@@ -111,5 +115,5 @@ app.post('/nonplayercharacters', (req,res)=>{
     });
 });
 
-
+app.use('/api', apiRouter)
 app.listen(port, ()=> console.log(`Server started on port ${port}`))
