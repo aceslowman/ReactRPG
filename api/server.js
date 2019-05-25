@@ -33,22 +33,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const apiRouter = express.Router();
 
-apiRouter.get('/trialendpoint', (req,res) => {
-    PlayerCharacter.find({}, (err, players)=>{
-        if(err){console.error(err)};
-        // console.log(players);
-        // player = players[0];
-        console.log(players);
-        res.json(players);
-    });
-});
-
 // /api/playercharacter endpoints
 apiRouter.get('/playercharacters', (req,res)=>{
     PlayerCharacter.find({}, (err, players)=>{
         if(err){console.error(err);}
         console.log(players);
         res.json(players);
+    });
+}); 
+
+apiRouter.get('/playercharacters/:playerId', (req,res)=>{
+    PlayerCharacter.findById(req.params.playerId, (err, player)=>{
+        if(err){console.error(err);}
+        console.log(player);
+        res.json(player);
     });
 }); 
 
