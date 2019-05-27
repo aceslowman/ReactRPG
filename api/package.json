@@ -10,10 +10,16 @@
     "mongoose": "^5.5.10"
   },
   "devDependencies": {
-    "nodemon": "^1.19.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.0",
+    "superagent": "^5.0.5",
+    "supertest": "^4.0.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
