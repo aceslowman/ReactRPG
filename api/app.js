@@ -192,6 +192,4 @@ apiRouter.delete("/nonplayercharacters/:nonplayercharacterId", (req,res) =>{
 
 app.use('/api', apiRouter);
 
-
-
 module.exports = app;
