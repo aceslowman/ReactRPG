@@ -5,7 +5,6 @@ import WorldMap from './../WorldMap';
 import Enzyme, {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-
 Enzyme.configure({adapter: new Adapter()});
 
 describe('WorldMap component', () => {
@@ -19,8 +18,4 @@ describe('WorldMap component', () => {
         const wrapper = shallow(<WorldMap/>);
         expect(wrapper.find('#map').prop('style')).toHaveProperty('backgroundImage');
     })
-
-
-
-
 });
