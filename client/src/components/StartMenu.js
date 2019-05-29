@@ -3,15 +3,18 @@ import CharacterCreation from './CharacterCreation';
 
 const styles = {
     boxPostions: {
-        margin:'15px',
+        margin:'5%',
+        boxShadow: '5px 10px'
     },
     container: {
         display:'flex',
         alignItems:'center',
-        flexDirection:'column'
+        flexDirection:'column',
+        borderRadius:'15px'
     },
     startPage:{
-        backgroundColor:'red'
+        width:'100%',
+        height:'100%'
 
     }
 };
