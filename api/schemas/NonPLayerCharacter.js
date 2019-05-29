@@ -1,12 +1,19 @@
-const NPC = {
-    name: String,
-    AP: Int,
-    HP: Int,
-    LVL: Int,
-    itmes:[Item],
-    Money: Int,
-    friendly: boolean
-};
+const mongoose = require('mongoose');
+
+const NonPlayerCharacterSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'What is this fine characters name?']
+    },
+    AP: Number,
+    HP: Number,
+    level: Number,
+    friendly: Boolean
+});
+
+module.exports = mongoose.model('NonPLayerCharacter', NonPlayerCharacterSchema)
+
+/* Previous entries
 {
     name: "Drake",
     AP: 9,
@@ -46,4 +53,4 @@ const NPC = {
     LVL:10;
     itmes:[Item],
     friendly = true;
-}
+} */

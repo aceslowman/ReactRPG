@@ -27,39 +27,20 @@ const titleStyle = {
     fontSize: '2rem'
 }
 
-
-
-
-
-
-
-
 export default class PlayerStatBox extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            player: {}
-        }
+        this.state = {};
     }
-
-    componentDidMount(){
-        fetch('/trialendpoint')
-            .then(res=>res.json())
-                .then(player => this.setState({player}, ()=> console.log(`player data fetched..`, player.items)))
-        
-    }
-
 
     render(){
-        return(
-            
-            
+        return( 
             <div style= {statBoxStyle}>
-                <h2 style = {titleStyle}>Player {this.state.player.name}</h2>
-
+                <h2 style = {titleStyle}>Player {this.props.player.name}</h2>
                     <div style= {statStyle}>
-                        <h3 >HP: {this.state.player.hp}</h3>
-                        <h3 >AP: {this.state.player.ap}</h3>
+                        <h3 >HP: {this.props.player.HP}</h3>
+                        <h3 >AP: {this.props.player.AP}</h3>
+                        <h3 >XP: {this.props.player.XP}</h3>
                     </div>
                     <div style= {statStyle} >
                         <h3>Items:</h3>
@@ -68,9 +49,7 @@ export default class PlayerStatBox extends React.Component{
                             <li>Item 2  </li>
                             <li>Item 3  </li>
                         </ul>
-                    </div>
-                
-                
+                    </div>                
             </div>
         )
     }
