@@ -9,26 +9,17 @@ const mapStyle = {
     backgroundSize: 'auto',
     backgroundPosition: 'center',
     backgroundColor: 'grey',
-    border: '5px solid #9764c7',
-    marginLeft: '20px',
-    
-}
+    border: '5px solid #9764c7',   
+};
 
-console.log(image);
 export default class WorldMap extends React.Component{
     constructor(props){
         super(props);
         this.state = {};
-    };
-
-    
-
-
+    }
     render(){
         return(
-            <div id= 'map' style= {mapStyle}>
-            
-            </div>
+            <div id= 'map' style= {mapStyle}></div>
         )
     }
 }

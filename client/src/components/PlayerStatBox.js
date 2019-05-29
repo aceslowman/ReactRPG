@@ -5,34 +5,30 @@ const statBoxStyle = {
     backgroundColor: 'beige',
     borderStyle: 'solid',
     fontFamily: 'monospace',
-    height: '280px',
-    width: '300px',
+    height: '250px',
+    width: '250px',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-    marginLeft: '50px',
-    marginTop: '150px',
-    padding: '10px'
-}
+    justifyContent: 'flex-start',  
+};
 
 const statStyle = {
     textAlign: 'left',
     width: '50%',
     fontSize: '1rem',
     flex: 'none',
-}
+};
 
 const titleStyle = {
     width : '100%',
     fontSize: '2rem'
-}
+};
 
 export default class PlayerStatBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {};
     }
-
     render(){
         return( 
             <div style= {statBoxStyle}>
