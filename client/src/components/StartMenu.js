@@ -59,7 +59,7 @@ export default class StartMenu extends React.Component{
                         <button onClick={()=>this.continueGame()}>Continue or Load</button>
                     </div>
                 </div>
-                <CharacterCreation modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()}/>
+                <CharacterCreation {...this.props} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()}/>
             </div>
         )
     }

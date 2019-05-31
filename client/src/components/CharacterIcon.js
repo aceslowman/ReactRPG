@@ -5,7 +5,7 @@ const characterIconStyle = {
     borderRadius: "5%",
     height: '150px',
     width: '150px',
-    backgroundImage: `url(${image})`,
+    //backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundColor: '#05a19c',
@@ -19,7 +19,7 @@ export default class CharacterIcon extends React.Component{
     }
     render(){
         return(
-            <div style= {characterIconStyle}></div>
+            <div style= {{...characterIconStyle, backgroundImage: `url(${this.props.image})`}}></div>
         )
     }
 }

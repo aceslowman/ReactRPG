@@ -41,41 +41,63 @@ export default class CharacterCreation extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = {}
+        this.state = {
+            image: '',
+            name: ''
+        };
     }
     adventureStart(){
+        if(!this.state.image) alert("image selection required");       
+        if(!this.state.name) alert("Please enter name");
 
-
+        if(!this.state.image || !this.state.name){
+            alert("You need to select an image and provide a name!");
+        }else{
+            this.props.gameStarted(this.state);
+        }
     }
+
+    setImage(e){
+        let img = e.target.src;
+        this.setState({image:img});
+        console.log(this.state)
+    }
+
+    setName(e){
+        let name = e.target.value;
+        this.setState({name: name});
+    }
+
+
 
     render(){
         return (
             <div style={{...styles.wrapper, display: this.props.modalOpen ? 'block' : 'none' }}>
                 <div style={{...styles.boxPosition}} >
-                    <input type="text" placeholder="Enter Your Name"/>
+                    <input onChange= {(e)=> this.setName(e)} type="text" placeholder="Enter Your Name"/>
                 </div>
                 <div style={{...styles.container}} >
                     <div>
-                        <img src={knight} style={{...styles.playerImage}} alt="Knight"/>
+                        <img src={knight} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}}  alt="Knight"/>
                     </div>
                     <div>
-                        <img src={dwarfFace} style={{...styles.playerImage}} alt="dwarf" />
+                        <img src={dwarfFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} alt="dwarf" />
                     </div>
                     <div>
-                        <img src={wizardFace} style={{...styles.playerImage}} alt="wizard" />
+                        <img src={wizardFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} alt="wizard" />
                     </div>
                     <div>
-                        <img src={witchFace} style={{...styles.playerImage}} alt="witch"/>
+                        <img src={witchFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} alt="witch"/>
                     </div>
                     <div>
-                        <img src={vikingHead} style={{...styles.playerImage}} alt="viking"/>
+                        <img src={vikingHead} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} alt="viking"/>
                     </div>
                     <div>
-                        <img src={womanElfFace} style={{...styles.playerImage}} alt="femaleElf"/>
+                        <img src={womanElfFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} alt="femaleElf"/>
                     </div>
                 </div>
                 <div style={{...styles.boxPosition}}>
-                <Link to="/game/"><button>adventureStart</button></Link>
+                    <button onClick={()=>this.adventureStart()}>adventureStart</button>
                     <button onClick={()=>this.props.onClose()}>Cancel</button>
                 </div>
             </div>

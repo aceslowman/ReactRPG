@@ -3,24 +3,44 @@ import React from 'react';
 import StartMenu from './components/StartMenu';
 import GameContainer from './components/GameContainer';
 
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+export default class App extends React.Component{
+  constructor(){
+    super();
 
-function App() {
-  return (
-    
-    <Router>
-      <div className="App" >
-        <ul>
-          <li><Link to="/">Start Menu</Link></li>
-          <li><Link to="/game/">Game</Link></li>
-        </ul>
-        <div>
-          <Route path= "/" exact component={StartMenu}/>
-          <Route path= "/game/" component={GameContainer}/>
+    this.state = {
+      renderStartMenu: true
+    }
+  }
+
+  startGame(initialState){
+    console.log(initialState);
+    let characterId = '5ce75c3a228b950a81d4ad30';
+        
+    fetch(`/api/playercharacters/${characterId}`)
+    .then(res=>res.json())
+    .then((player)=>{
+      console.log(initialState);
+      this.setState({ 
+        playerCharacter: {
+          ...player,
+          image: initialState.image,
+          name: initialState.name,
+        },
+        renderStartMenu: false 
+      });
+    });
+  }
+
+  render(){
+    return (   
+        <div className="App" >          
+            {this.state.renderStartMenu ? (
+              <StartMenu gameStarted={(initialState) => this.startGame(initialState)} />
+            ) : (
+              <GameContainer player={this.state.playerCharacter}/>
+            )}          
         </div>
-      </div>
-    </Router>
-  );
+      
+    );
+  }
 }
-
-export default App;
