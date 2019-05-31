@@ -29,7 +29,7 @@ export default class ActionButtonBar extends React.Component{
     render(){
         return(
             <div style= {actionButtonBarStyle}>               
-                <ActionButton text= {this.state.action1}/>
+                <ActionButton {...this.props} text= {this.state.action1}/>
                 <ActionButton text= {this.state.action2}/>
                 <ActionButton text= {this.state.action3}/>
             </div>

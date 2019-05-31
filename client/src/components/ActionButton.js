@@ -16,7 +16,7 @@ export default class ActionButton extends React.Component{
     }
     render(){
         return(
-            <input style={actionButtonStyle} type= 'button' value = {this.props.text}></input>
+            <input style={{...actionButtonStyle, ...this.props.style}} type= 'button' value = {this.props.text}></input>
         )
     }
 }

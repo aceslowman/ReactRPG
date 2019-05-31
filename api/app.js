@@ -9,6 +9,7 @@ const PlayerCharacter = require('./schemas/PlayerCharacter');
 const Item = require('./schemas/Item');
 const Location = require('./schemas/Location');
 const NonPlayerCharacter = require('./schemas/NonPlayerCharacter');
+const Passage = require('./schemas/Passage');
 
 //Database Connection
 const uri = 'mongodb+srv://reactrpg_admin:rpgfun1@reactrpg-jd0ob.mongodb.net/test?retryWrites=true';
