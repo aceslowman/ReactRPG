@@ -6,15 +6,13 @@ import GameContainer from './components/GameContainer';
 export default class App extends React.Component{
   constructor(){
     super();
-
     this.state = {
       renderStartMenu: true
-    }
+    };
   }
-
   startGame(initialState){
     console.log(initialState);
-    let characterId = '5ce75c3a228b950a81d4ad30';
+    let characterId = initialState._id;
         
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
@@ -39,8 +37,7 @@ export default class App extends React.Component{
             ) : (
               <GameContainer player={this.state.playerCharacter}/>
             )}          
-        </div>
-      
+        </div>      
     );
   }
 }

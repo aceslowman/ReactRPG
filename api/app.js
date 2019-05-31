@@ -56,6 +56,7 @@ apiRouter.get('/playercharacters/:playerId', (req,res)=>{
 apiRouter.post('/playercharacters', (req,res)=>{
     const newPLayerCharacter = new PlayerCharacter({
         name: req.body.name,
+        type: req.body.type,
         AP: req.body.AP,
         HP: req.body.HP,
         XP: req.body.XP,

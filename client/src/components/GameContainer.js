@@ -12,7 +12,7 @@ const gameContainerStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    height: '800px',
+    height: '100%',
     display: 'flex'
 };
 

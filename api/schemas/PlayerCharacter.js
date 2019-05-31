@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const PlayerCharacterSchema = new mongoose.Schema({
     name: String,
+    type: String,
     AP: Number,
     HP: Number,
     XP: Number,

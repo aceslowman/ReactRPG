@@ -6,6 +6,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100% !important; 
+  height: 100% !important;
+}
+
+/* This finally solved the game container not taking up the full height of the screen */
+body > #root > div {
+  height: 100vh;
 }
 
 code {
