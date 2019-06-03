@@ -13,12 +13,12 @@ export default class App extends React.Component{
   startGame(initialState){
     console.log(initialState);
     let characterId = initialState._id;
-        
+    let passageId = '5cf4807399fdbf03d03233b7'
+    
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
     .then((player)=>{
-      console.log(initialState);
-      this.setState({ 
+        this.setState({ 
         playerCharacter: {
           ...player,
           image: initialState.image,
@@ -27,6 +27,18 @@ export default class App extends React.Component{
         renderStartMenu: false 
       });
     });
+
+    fetch(`/api/passages/${passageId}`)
+    .then(res=>res.json())
+    .then((passage)=>{
+      this.setState({
+        passage: {...passage} 
+      });
+    });
+  }
+
+  nextPassage(nextPassage){
+    this.setState({passage: nextPassage})
   }
 
   render(){
@@ -35,7 +47,7 @@ export default class App extends React.Component{
             {this.state.renderStartMenu ? (
               <StartMenu gameStarted={(initialState) => this.startGame(initialState)} />
             ) : (
-              <GameContainer player={this.state.playerCharacter}/>
+              <GameContainer player={this.state.playerCharacter} passage={this.state.passage} nextPassage= {(nextPassage)=> this.nextPassage(nextPassage)} />
             )}          
         </div>      
     );

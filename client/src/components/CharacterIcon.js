@@ -1,5 +1,4 @@
 import React from 'react';
-import image from '../images/wizard-face.png'
 
 const characterIconStyle = {
     borderRadius: "5%",

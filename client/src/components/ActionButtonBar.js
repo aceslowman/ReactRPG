@@ -20,19 +20,26 @@ const actionButtonBarStyle = {
 export default class ActionButtonBar extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            action1: "Run",
-            action2: "Flee",
-            action3: "Pour a cup"
+        this.state = {       
         };
     }
+
     render(){
-        return(
-            <div style= {actionButtonBarStyle}>               
-                <ActionButton {...this.props} text= {this.state.action1}/>
-                <ActionButton text= {this.state.action2}/>
-                <ActionButton text= {this.state.action3}/>
-            </div>
-        )
+        if(this.props.passage){
+            return(
+                <div style= {actionButtonBarStyle}>               
+                    <ActionButton {...this.props} text= {this.props.passage.actions[0].text} index= {0} nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/>
+                    <ActionButton {...this.props} text= {this.props.passage.actions[1].text} index= {1} nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/>
+                    <ActionButton {...this.props} text= {this.props.passage.actions[2].text} index= {2} nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/>
+                </div>
+            )}else{
+                return(
+                    <div style= {actionButtonBarStyle}>               
+                        <ActionButton {...this.props} text= 'wait'/>
+                        <ActionButton {...this.props} text= 'a'/>
+                        <ActionButton {...this.props} text= 'sec'/>
+                    </div>
+                )
+            }        
     }
 }
