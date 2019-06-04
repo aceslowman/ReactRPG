@@ -36,19 +36,10 @@ const actionDivStyle= {
 export default class GameContainer extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            player: {}
-        };
+        this.state = {};
     }
     componentDidMount(){
-        let characterId = '5ce75c3a228b950a81d4ad30'
-        
-        fetch(`/api/playercharacters/${characterId}`)
-        .then(res=>res.json())
-        .then(player => this.setState({player}, ()=>{
-            console.log(`player data fetched..`, this.state)
-            })
-        );
+        console.log(this.props);
         
     }
     render(){
@@ -56,8 +47,8 @@ export default class GameContainer extends React.Component{
         <div style= {gameContainerStyle}>
         <div style= {infoDivStyle}>
         <WorldMap/>
-        <CharacterIcon/>
-        <PlayerStatBox player= {this.state.player}/>
+        <CharacterIcon image= {this.props.player.image}/>
+        <PlayerStatBox player={this.props.player}/>
         </div>
         <div style= {actionDivStyle}>
         <AnimationBox/>

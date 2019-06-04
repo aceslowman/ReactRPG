@@ -3,20 +3,32 @@ import CharacterCreation from './CharacterCreation';
 
 const styles = {
     startPage: {
+        /* 
+            for elements to properly center on the screen,
+            you have to make sure that all containing divs
+            have a width defined, and if that width is 100%,
+            then THAT element's parent width/height should
+            be defined.
+        */
         width: '100%',
         height: '100%',
-        backgroundColor: 'blue'
+        backgroundColor: 'blue',
+        display:'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     container: {
+        // width and height can be defined as well
+        padding: '15px',
         display:'flex',
         alignItems:'center',
+        justifyContent: 'center',
         flexDirection:'column',
         borderRadius:'15px',
         backgroundColor: 'green'
     },
     buttonPositions: {
-        // margin:'5%',
-        // margin: '15px',
+        margin: '15px', // this gives us space between the buttons
         boxShadow: '5px 10px',
         backgroundColor: 'red'
     },
@@ -62,7 +74,7 @@ export default class StartMenu extends React.Component{
                         <button onClick={()=>this.continueGame()}>Continue or Load</button>
                     </div>
                 </div>
-                <CharacterCreation modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()}/>
+                <CharacterCreation {...this.props} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()}/>
             </div>
         )
     }

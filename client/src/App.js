@@ -3,8 +3,6 @@ import React from 'react';
 import StartMenu from './components/StartMenu';
 import GameContainer from './components/GameContainer';
 
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
 const styles = {
   app: {
     width: '100%',
@@ -12,21 +10,43 @@ const styles = {
   }
 };
 
-function App() {
-  return (
-    <Router>
-      <div style={styles.app} className="App">
-        <ul>
-          <li><Link to="/">Start Menu</Link></li>
-          <li><Link to="/game/">Game</Link></li>
-        </ul>
-        <div>
-          <Route path= "/" exact component={StartMenu}/>
-          <Route path= "/game/" component={GameContainer}/>
-        </div>
-      </div>
-    </Router>
-  );
-}
+export default class App extends React.Component{
+  constructor(){
+    super();
 
-export default App;
+    this.state = {
+      renderStartMenu: true
+    }
+  }
+
+  startGame(initialState){
+    console.log(initialState);
+    let characterId = '5ce75c3a228b950a81d4ad30';
+        
+    fetch(`/api/playercharacters/${characterId}`)
+    .then(res=>res.json())
+    .then((player)=>{
+      console.log(initialState);
+      this.setState({ 
+        playerCharacter: {
+          ...player,
+          image: initialState.image,
+          name: initialState.name,
+        },
+        renderStartMenu: false 
+      });
+    });
+  }
+
+  render(){
+    return (   
+        <div className="App" style={styles.app}>          
+            {this.state.renderStartMenu ? (
+              <StartMenu gameStarted={(initialState) => this.startGame(initialState)} />
+            ) : (
+              <GameContainer player={this.state.playerCharacter}/>
+            )}          
+        </div>
+    );
+  }
+}
