@@ -5,11 +5,17 @@ import GameContainer from './components/GameContainer';
 
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
+const styles = {
+  app: {
+    width: '100%',
+    height: '100%'
+  }
+};
+
 function App() {
   return (
-    
     <Router>
-      <div className="App" >
+      <div style={styles.app} className="App">
         <ul>
           <li><Link to="/">Start Menu</Link></li>
           <li><Link to="/game/">Game</Link></li>
