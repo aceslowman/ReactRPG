@@ -12,17 +12,9 @@ const styles = {
     wrapper: {
         backgroundColor: 'yellow',
         position: 'absolute',
-        // position: 'absolute',
-        // top: '0',
-        // left: '0',
-        //padding:'100px',
-        //bottom: '0',
-        //right: '0',
-        // margin: '100px',
-        // boxSizing: 'border-box'
+        padding: '15px'
     },
     playerImage:{
-        //justifyContent:'',
         width:'100px',
         height:'100px',
         padding:'50px'
@@ -35,7 +27,7 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'row',
-        padding:'12px'
+        padding:'15px'
     }
 }
 
