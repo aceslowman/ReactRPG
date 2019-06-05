@@ -12,12 +12,13 @@ const gameContainerStyle = {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    height: '800px',
-    display: 'flex'
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'row'
 };
 
 const infoDivStyle = {
-    float: 'left',
+    padding: '15px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -26,11 +27,11 @@ const infoDivStyle = {
 };
 
 const actionDivStyle= {
-    float: 'right',
+    padding: '15px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '100%'   
+    width: '64%'   
 };
 
 export default class GameContainer extends React.Component{
