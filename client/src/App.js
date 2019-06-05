@@ -13,21 +13,19 @@ const styles = {
 export default class App extends React.Component{
   constructor(){
     super();
-
     this.state = {
       renderStartMenu: true
-    }
+    };
   }
-
   startGame(initialState){
     console.log(initialState);
-    let characterId = '5ce75c3a228b950a81d4ad30';
-        
+    let characterId = initialState._id;
+    let passageId = '5cf4a056439d6b0b0d1b7306'
+    
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
     .then((player)=>{
-      console.log(initialState);
-      this.setState({ 
+        this.setState({ 
         playerCharacter: {
           ...player,
           image: initialState.image,
@@ -36,6 +34,18 @@ export default class App extends React.Component{
         renderStartMenu: false 
       });
     });
+
+    fetch(`/api/passages/${passageId}`)
+    .then(res=>res.json())
+    .then((passage)=>{
+      this.setState({
+        passage: {...passage} 
+      });
+    });
+  }
+
+  nextPassage(nextPassage){
+    this.setState({passage: nextPassage})
   }
 
   render(){
@@ -44,9 +54,9 @@ export default class App extends React.Component{
             {this.state.renderStartMenu ? (
               <StartMenu gameStarted={(initialState) => this.startGame(initialState)} />
             ) : (
-              <GameContainer player={this.state.playerCharacter}/>
+              <GameContainer player={this.state.playerCharacter} passage={this.state.passage} nextPassage= {(nextPassage)=> this.nextPassage(nextPassage)} />
             )}          
-        </div>
+        </div>      
     );
   }
 }

@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+mongoose.plugin(require('mongoose-autopopulate'))
 
 // Schema imports
 const PlayerCharacter = require('./schemas/PlayerCharacter');
@@ -10,6 +11,7 @@ const Item = require('./schemas/Item');
 const Location = require('./schemas/Location');
 const NonPlayerCharacter = require('./schemas/NonPlayerCharacter');
 const Passage = require('./schemas/Passage');
+const Action = require('./schemas/Action');
 
 //Database Connection
 const uri = 'mongodb+srv://reactrpg_admin:rpgfun1@reactrpg-jd0ob.mongodb.net/test?retryWrites=true';
@@ -56,6 +58,7 @@ apiRouter.get('/playercharacters/:playerId', (req,res)=>{
 apiRouter.post('/playercharacters', (req,res)=>{
     const newPLayerCharacter = new PlayerCharacter({
         name: req.body.name,
+        type: req.body.type,
         AP: req.body.AP,
         HP: req.body.HP,
         XP: req.body.XP,
@@ -190,6 +193,109 @@ apiRouter.delete("/nonplayercharacters/:nonplayercharacterId", (req,res) =>{
         res.send("Sucessfully deleted Non Player Character");
     });
 });
+
+
+// /api/passages endpoints
+apiRouter.get("/passages", (req, res)=> {
+    Passage.find({}, (err, passages)=>{
+        if(err){console.error(err);}
+        console.log(passages);
+        res.json(passages);
+        console.log (res.statusCode);
+    });    
+
+});
+
+apiRouter.get('/passages/:passageId', (req,res)=>{
+    Passage.findById(req.params.passageId, (err, passage)=>{
+        if(err){console.error(err);}
+        Passage.populate(passage, {path: 'action_1'}, (err, passage)=>{
+            if(err){console.error(err);}
+            res.send(passage);
+        });
+        console.log(passage);
+        console.log(res.statusCode)
+    });
+}); 
+
+apiRouter.post('/passages', (req,res)=>{
+    const newPassage = new Passage({
+        text: req.body.text,
+        actions: req.body.actions,
+        nextPassages: req.body.nextPassages,
+    });
+
+    newPassage.save((err)=>{
+        if(!err) console.error(err);
+        res.send("Sucessfully added new Passage!");     
+    });  
+});
+
+apiRouter.put('/passages/:passageId', (req,res)=>{
+    Passage.findByIdAndUpdate(req.params.passageId, req.body, {new: true}, (err, passage)=>{
+        if(err) console.error(err);
+        res.json(passage);
+    });
+});
+
+apiRouter.delete("/passages/:passageId", (req,res) =>{
+    Passage.findByIdAndDelete(req.params.passageId, (err)=>{
+        if(err) console.error(err);
+        res.send("Sucessfully deleted Passage");
+    });
+});
+
+// /api/actions endpoints
+apiRouter.get('/actions', (req,res)=>{
+    Action.find({}, (err, actions)=>{
+        if(err){console.error(err);}
+        console.log(actions);
+        res.json(actions);
+        console.log (res.statusCode);
+    });
+}); 
+
+apiRouter.get('/actions/:actionId', (req,res)=>{
+    Action.findById(req.params.actionId, (err, action)=>{
+        if(err){console.error(err);}
+        console.log(action);
+        res.json(action);
+        console.log(res.statusCode)
+    });
+}); 
+
+apiRouter.post('/actions', (req,res)=>{
+    const newAction = new Action({
+        text: req.body.text,
+        action: req.body.action,
+        success: req.body.success,
+        failure: req.body.failure
+    });
+
+    newAction.save((err)=>{
+        if(!err) console.error(err);
+        res.send("Sucessfully added new Action!");     
+    });  
+});
+
+apiRouter.put('/actions/:actionId', (req,res)=>{
+    Action.findByIdAndUpdate(req.params.actionId, req.body, {new: true}, (err, action)=>{
+        if(err) console.error(err);
+        res.json(action);
+    });
+});
+
+apiRouter.delete("/actions/:actionId", (req,res) =>{
+    Action.findByIdAndDelete(req.params.actionId, (err)=>{
+        if(err) console.error(err);
+        res.send("Sucessfully deleted Action");
+    });
+});
+
+
+
+
+
 
 app.use('/api', apiRouter);
 

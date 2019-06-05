@@ -19,14 +19,33 @@ export default class PromptTextBox extends React.Component{
         super(props);
         this.state = {};
     }
+
+    componentDidMount(){
+        //console.log(this.props);
+    }
+
+    componentDidUpdate(){
+        //console.log(this.props);
+    }
+
     render(){
-        return(
-            <div style= {promptBoxStyle} >
-                <p >
-                    You awaken, it's cold. The fire has gone out again!<br /> You shiver and pull your blanket tight.<br />
-                    Would you like to make coffee or go back to sleep?
-                </p>    
-            </div>
-        )
+        if(this.props.passage){
+            let currentPassage = this.props.passage.text;       
+            return(
+                <div style= {promptBoxStyle} >
+                    <p >
+                        {currentPassage}
+                    </p>    
+                </div>
+            )
+        } else {
+            return(
+                <div style= {promptBoxStyle} >
+                    <p >
+                        One Moment Please, internet is dancing.
+                    </p>    
+                </div>
+            )
+        }
     }
 }
