@@ -9,7 +9,7 @@ const animationBoxStyle = {
     backgroundColor: 'white'
 };
 
-export default class AnimtionBox extends React.Component{
+export default class AnimationBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {};
