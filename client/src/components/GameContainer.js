@@ -46,16 +46,16 @@ export default class GameContainer extends React.Component{
     render(){
         return(
         <div style= {gameContainerStyle}>
-        <div style= {infoDivStyle}>
-        <WorldMap/>
-        <CharacterIcon image= {this.props.player.image}/>
-        <PlayerStatBox player={this.props.player}/>
-        </div>
-        <div style= {actionDivStyle}>
-        <AnimationBox/>
-        <PromptTextBox />
-        <ActionButtonBar />
-        </div>
+            <div style= {infoDivStyle}>
+                <WorldMap/>
+                <CharacterIcon image= {this.props.player.image}/>
+                <PlayerStatBox player={this.props.player}/>
+            </div>
+            <div style= {actionDivStyle}>
+                <AnimationBox/>
+                <PromptTextBox />
+                <ActionButtonBar />
+            </div>
         </div>
         )
     }
