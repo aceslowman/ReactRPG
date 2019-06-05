@@ -56,7 +56,7 @@ export default class App extends React.Component{
             ) : (
               <GameContainer player={this.state.playerCharacter} passage={this.state.passage} nextPassage= {(nextPassage)=> this.nextPassage(nextPassage)} />
             )}          
-        </div>
+        </div>      
     );
   }
 }
