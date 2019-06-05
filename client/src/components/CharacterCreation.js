@@ -6,21 +6,15 @@ import vikingHead from '../images/viking-head.png';
 import witchFace from '../images/witch-face.png';
 import wizardFace from '../images/wizard-face.png';
 import womanElfFace from '../images/woman-elf-face.png';
+import { relative } from 'path';
 
 const styles = {
     wrapper: {
         backgroundColor: 'yellow',
         position: 'absolute',
-        top: '0',
-        left: '0',
-        //padding:'100px',
-        //bottom: '0',
-        //right: '0',
-        margin: '100px',
-        boxSizing: 'border-box'
+        padding: '15px'
     },
     playerImage:{
-        //justifyContent:'',
         width:'100px',
         height:'100px',
         padding:'50px'
@@ -33,7 +27,7 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'row',
-        padding:'12px'
+        padding:'15px'
     }
 }
 
@@ -46,6 +40,21 @@ export default class CharacterCreation extends React.Component{
             name: ''
         };
     }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', (e)=>this.handleClickOut(e));
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', (e)=>this.handleClickOut(e));
+    }
+
+    handleClickOut(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target) && this.props.modalOpen) {
+            this.props.onClose();
+        }
+    }
+
     adventureStart(){
         if(!this.state.image) alert("image selection required");       
         if(!this.state.name) alert("Please enter name");
@@ -68,11 +77,9 @@ export default class CharacterCreation extends React.Component{
         this.setState({name: name});
     }
 
-
-
     render(){
         return (
-            <div style={{...styles.wrapper, display: this.props.modalOpen ? 'block' : 'none' }}>
+            <div ref={(n) => {this.wrapperRef = n}} style={{...styles.wrapper, display: this.props.modalOpen ? 'block' : 'none' }}>
                 <div style={{...styles.boxPosition}} >
                     <input onChange= {(e)=> this.setName(e)} type="text" placeholder="Enter Your Name"/>
                 </div>
