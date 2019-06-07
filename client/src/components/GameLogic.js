@@ -91,7 +91,7 @@ export default function GameLogic(action, state){
     }
     
 }
-//supporting for players attack phase
+//supporting function for players attack phase within switch.
 function playerAttack(player, enemy){
     let ap = Math.random() * player.ap;
 
