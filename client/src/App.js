@@ -22,7 +22,7 @@ export default class App extends React.Component{
   startGame(initialState){
     console.log(initialState);
     let characterId = initialState._id;
-    let passageId = '5cf9b7c9fca47b17e631f7f7'
+    let passageId = '5cf9ef026bde6d0ec11acad0';
     
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
