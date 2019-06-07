@@ -1,5 +1,5 @@
 import React from 'react';
-
+//blank box in game container atm
 const animationBoxStyle = {
     border: '1px',
     borderRadius: '20px',

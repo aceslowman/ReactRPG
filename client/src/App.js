@@ -3,6 +3,8 @@ import React from 'react';
 import StartMenu from './components/StartMenu';
 import GameContainer from './components/GameContainer';
 
+import GameLogic from './GameLogic';
+
 const styles = {
   app: {
     width: '100%',
@@ -17,6 +19,7 @@ export default class App extends React.Component{
       renderStartMenu: true
     };
   }
+  
   startGame(initialState){
     console.log(initialState);
     let characterId = initialState._id;
@@ -45,6 +48,7 @@ export default class App extends React.Component{
   }
 
   nextPassage(nextPassage){
+
     this.setState({passage: nextPassage})
   }
 
