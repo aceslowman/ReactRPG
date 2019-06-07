@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Action = require('./Action')
+
 
 const PassageSchema = new mongoose.Schema({
     text: String,

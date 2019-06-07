@@ -3,6 +3,7 @@ import React from 'react';
 import StartMenu from './components/StartMenu';
 import GameContainer from './components/GameContainer';
 
+
 const styles = {
   app: {
     width: '100%',
@@ -14,13 +15,14 @@ export default class App extends React.Component{
   constructor(){
     super();
     this.state = {
-      renderStartMenu: true
+      renderStartMenu: true,
+      isFighting: false
     };
   }
   startGame(initialState){
     console.log(initialState);
     let characterId = initialState._id;
-    let passageId = '5cf4a056439d6b0b0d1b7306'
+    let passageId = '5cf9b7c9fca47b17e631f7f7'
     
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
@@ -54,7 +56,7 @@ export default class App extends React.Component{
             {this.state.renderStartMenu ? (
               <StartMenu gameStarted={(initialState) => this.startGame(initialState)} />
             ) : (
-              <GameContainer player={this.state.playerCharacter} passage={this.state.passage} nextPassage= {(nextPassage)=> this.nextPassage(nextPassage)} />
+              <GameContainer player={this.state.playerCharacter} passage={this.state.passage} nextPassage= {(nextPassage)=> this.nextPassage(nextPassage)} isFighting= {this.state.isFighting}/>
             )}          
         </div>      
     );
