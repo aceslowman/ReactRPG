@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const NextPassageSchema = new mongoose.Schema({
+    class: String,
+    path: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Passage',
+        autopopulate: true,
+    }
+});
 
 const PassageSchema = new mongoose.Schema({
     text: String,
@@ -8,11 +16,7 @@ const PassageSchema = new mongoose.Schema({
         ref: 'Action',
         autopopulate: true
     }],
-    nextPassages: [{
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Passage',
-        autopopulate: true,
-    }]
+    nextPassages: [NextPassageSchema]
 });
 
 module.exports = mongoose.model('Passage', PassageSchema);
