@@ -1,8 +1,6 @@
 import React from 'react';
-
 import StartMenu from './components/StartMenu';
 import GameContainer from './components/GameContainer';
-
 
 const styles = {
   app: {
@@ -45,6 +43,7 @@ export default class App extends React.Component{
       });
     });
   }
+
 
   nextPassage(nextPassage){
     this.setState({passage: nextPassage})

@@ -33,7 +33,6 @@ db.on('open', (ref) => {
 
 // API Endpoints
 app.use(bodyParser.urlencoded({extended: true}));
-
 const apiRouter = express.Router();
 
 // /api/playercharacter endpoints
@@ -62,7 +61,8 @@ apiRouter.post('/playercharacters', (req,res)=>{
         AP: req.body.AP,
         HP: req.body.HP,
         XP: req.body.XP,
-        level:req.body.level
+        items: req.body.items,
+        gold: req.body.gold
     });
 
     newPlayerCharacter.save((err)=>{
