@@ -27,26 +27,28 @@ const styles = {
         justifyContent: 'center',
         flexDirection:'column',
         borderRadius:'15px',
-        backgroundImage: 'radial-gradient(farthest-side at 85% 60%, #fffde1 20%, #fb3569 35%, #831212 )'
+        backgroundImage: 'radial-gradient(circle farthest-side at 85% 40%, #421b9b 1%, #a06ee1, #389168 20%, #fb3569 35%, #831212)'
     },
     buttonPositions: {
         margin: '15px', // this gives us space between the buttons
-        boxShadow: '5px 10px',
+        boxShadow: '5px 7px',
         backgroundColor: 'red',
         borderRadius: '3px'      
     },
     buttonStyle: {
         fontFamily: 'monospace',
         fontSize: '3rem',
-        backgroundColor: '#65c6c4',
-        borderRadius: '3px'
+        backgroundColor: '#22eaca',
+        borderRadius: '3px',
+        color: 'black'
     },
     titleStyle: {
-        fontFamily: 'papyrus',
+        fontFamily: 'courier',
         fontSize: '4rem',
         fontWeight: '900',
-        color: '#ffc15e',
-        textShadow: '2px 4px #113f67'
+        fontStyle: 'italic',
+        color: '#dbff3d',
+        textShadow: '2px 2px #113f67'
     }
 };
 
@@ -61,7 +63,7 @@ export default class StartMenu extends React.Component{
     }
 
     componentDidMount(){
-        let newTitle= Titles[Math.floor(Math.random()*100)+1];
+        let newTitle= Titles[Math.floor(Math.random()*99)+1];
         this.setState({title: newTitle});
     }
 

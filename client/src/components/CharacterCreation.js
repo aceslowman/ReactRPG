@@ -142,8 +142,10 @@ export default class CharacterCreation extends React.Component{
                 <div style={{...styles.boxPosition, ...styles.text}}>Choose your class:</div>
                 <div style={{...styles.container}} >
                     <div style= {{...styles.imageContainer}} >
+                       
                         <img src={knight} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} id= "5cf0ac3b66ecb01288967abc" alt="Knight"/>
                         <p>Knight</p>
+                        
                     </div>
                     <div style= {{...styles.imageContainer}}>
                         <img src={dwarfFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} id= "5cf0ace566ecb01288967abd" alt="Dwarf" />
