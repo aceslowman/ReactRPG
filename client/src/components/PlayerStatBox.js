@@ -5,23 +5,43 @@ const statBoxStyle = {
     backgroundColor: 'beige',
     borderStyle: 'solid',
     fontFamily: 'monospace',
-    height: '250px',
-    width: '250px',
+    height: '30%',
+    width: '60%',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',  
+    justifyContent: 'center',
+    flexDirection: 'row',
+};
+
+const innerStatBox= {
+    display: 'flex',
+    flex: 'none',
+    justifyContent: 'flex-start'
+};
+
+const statColumnStyle = {
+    flex: 'flex-grow flex-shrink flex-basis',
+    flexDirection: 'column',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    
+    
 };
 
 const statStyle = {
-    textAlign: 'left',
-    width: '50%',
-    fontSize: '1rem',
-    flex: 'none',
+    fontSize: '1.2rem',
+    display: 'flex',
+    flex: 'flex-grow flex-shrink flex-basis',
+    fontWeight: '600',
+    justifyContent: 'center',
 };
 
 const titleStyle = {
-    width : '100%',
-    fontSize: '2rem'
+    flex: 'flex-grow flex-shrink flex-basis',
+    fontSize: '1.5rem',
+    display: 'flex',
+    
 };
 
 export default class PlayerStatBox extends React.Component{
@@ -32,20 +52,25 @@ export default class PlayerStatBox extends React.Component{
     render(){
         return( 
             <div style= {statBoxStyle}>
-                <h2 style = {titleStyle}>Player {this.props.player.name}</h2>
-                    <div style= {statStyle}>
-                        <h3 >HP: {this.props.player.HP}</h3>
-                        <h3 >AP: {this.props.player.AP}</h3>
-                        <h3 >XP: {this.props.player.XP}</h3>
+                <h2 style = {titleStyle}>Player: {this.props.player.name}</h2>
+                <div style= {innerStatBox}>
+                    <div style= {statColumnStyle}>    
+                    
+                           <div style= {statStyle} > HP: {this.props.player.HP} </div>
+                          <div style= {statStyle} > AP: {this.props.player.AP} </div>
+                            <div style= {statStyle} > XP: {this.props.player.XP} </div>
+                            <div style= {statStyle} > Gold: {this.props.player.gold}</div>
+
                     </div>
-                    <div style= {statStyle} >
-                        <h3>Items:</h3>
-                        <ul >
-                            <li>Item 1  </li>
-                            <li>Item 2  </li>
-                            <li>Item 3  </li>
-                        </ul>
-                    </div>                
+                    <div style= {statColumnStyle}>
+
+                            <div style = {statStyle}>Items:</div>
+                            <div style= {statStyle}>{this.props.player.items[0].name} </div>
+                            <div style= {statStyle}>{this.props.player.items[1].name} </div>
+                            <div style= {statStyle}>{this.props.player.items[2].name} </div>
+
+                    </div>
+                </div>
             </div>
         )
     }

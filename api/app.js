@@ -173,7 +173,6 @@ apiRouter.post('/nonplayercharacters', (req,res)=>{
         name: req.body.name,
         AP: req.body.AP,
         HP: req.body.HP,
-        level: req.body.level,
         friendly: req.body.friendly,
     });
     newNonPlayerCharacter.save((err)=>{
