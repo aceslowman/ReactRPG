@@ -31,7 +31,7 @@ const styles = {
         textAlign: 'center',
         fontFamily: 'monospace',
         fontSize: '1.5rem',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },    
     boxPosition:{
         display:'flex',
@@ -72,7 +72,8 @@ export default class CharacterCreation extends React.Component{
         this.state = {
             image: '',
             name: '',
-            _id: ''
+            _id: '',
+            selected: ''
         };
     }
 
@@ -102,6 +103,7 @@ export default class CharacterCreation extends React.Component{
         this.setState({image: img});
         this.setState({type: type});
         this.setState({_id: id});
+        this.setState({selected: type});
          
         console.log(this.state);
     }
@@ -135,22 +137,59 @@ export default class CharacterCreation extends React.Component{
                 <div style={{...styles.boxPosition, ...styles.text}}>Choose your class:</div>
                 <div style={{...styles.container}} >
                     <div style= {{...styles.imageContainer}} >                       
-                        <ClassSelectionButton src={knight} id= "5cf0ac3b66ecb01288967abc" alt="Knight" style={{...styles.playerImage}} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
+                        <ClassSelectionButton 
+                            src= {knight} 
+                            id= "5cf0ac3b66ecb01288967abc" 
+                            alt= "Knight" 
+                            style= {{...styles.playerImage}} 
+                            selected= {this.state.selected == 'Knight' ? true : false}
+                            selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                     <div style= {{...styles.imageContainer}}>                        
-                        <ClassSelectionButton src={dwarfFace} id= "5cf0ace566ecb01288967abd" alt="Dwarf" style={{...styles.playerImage}} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
+                        <ClassSelectionButton 
+                            src={dwarfFace} 
+                            id= "5cf0ace566ecb01288967abd" 
+                            alt="Dwarf" 
+                            style={{...styles.playerImage}} 
+                            selected= {this.state.selected == 'Dwarf' ? true : false}
+                            selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                     <div style= {{...styles.imageContainer}}>
-                        <ClassSelectionButton src={wizardFace} id= "5cf0ae7866ecb01288967abe" alt="Wizard" style={{...styles.playerImage}} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
+                        <ClassSelectionButton 
+                            src={wizardFace} 
+                            id= "5cf0ae7866ecb01288967abe" 
+                            alt="Wizard" 
+                            style={{...styles.playerImage}}
+                            selected= {this.state.selected == 'Wizard' ? true : false}
+                            selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                     <div style= {{...styles.imageContainer}}>
-                        <ClassSelectionButton src={witchFace} id= "5cf0aefe66ecb01288967abf" alt="Witch" style={{...styles.playerImage}} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
+                        <ClassSelectionButton 
+                            src={witchFace} 
+
+                            id= "5cf0aefe66ecb01288967abf" 
+                            alt="Witch" 
+                            style={{...styles.playerImage}}
+                            selected= {this.state.selected == 'Witch' ? true : false}
+                            selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                     <div style= {{...styles.imageContainer}}>
-                        <ClassSelectionButton src={vikingHead} id= "5cf0af7d66ecb01288967ac1" alt="Viking" style={{...styles.playerImage}} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
+                        <ClassSelectionButton 
+                            src={vikingHead} 
+                            id= "5cf0af7d66ecb01288967ac1" 
+                            alt="Viking" 
+                            style={{...styles.playerImage}}
+                            selected= {this.state.selected == 'Viking' ? true : false}
+                            selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                     <div style= {{...styles.imageContainer}}>
-                        <ClassSelectionButton src={womanElfFace} id= "5cf0b0bd66ecb01288967ac4" alt="FemaleElf" style={{...styles.playerImage}} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
+                        <ClassSelectionButton 
+                        src={womanElfFace} 
+                        id= "5cf0b0bd66ecb01288967ac4" 
+                        alt="FemaleElf" 
+                        style={{...styles.playerImage}} 
+                        selected= {this.state.selected == 'FemaleElf' ? true : false}
+                        selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                 </div>
                 <div style={{...styles.boxPosition}}>

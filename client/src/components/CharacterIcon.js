@@ -2,8 +2,8 @@ import React from 'react';
 
 const characterIconStyle = {
     borderRadius: "5%",
-    height: '150px',
-    width: '150px',
+    height: '125px',
+    width: '125px',
     //backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',

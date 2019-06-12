@@ -2,13 +2,13 @@ import React from "react";
 import image from '../images/worldMap1.png';
 
 const mapStyle = {
-    borderRadius: "50%",
-    height: '250px',
-    width: '250px',
+    borderRadius: "5px",
+    height: '200px',
+    width: '80%',
     backgroundImage: `url(${image})`,
-    backgroundSize: 'auto',
+    backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: 'purple',
     border: '5px solid #9764c7',   
 };
 

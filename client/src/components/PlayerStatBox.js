@@ -6,7 +6,6 @@ const style = {
         backgroundColor: 'beige',
         borderStyle: 'solid',
         fontFamily: 'monospace',
-        height: '30%',
         width: '60%',
         display: 'flex',
         flexDirection: 'column',
@@ -16,16 +15,20 @@ const style = {
         flexDirection: 'row',
         flexWrap: 'wrap',
         backgroundColor: 'green',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        height: '100%'
     },
     statStyle: {
         padding: 10,
         boxSizing: 'border-box',
-        width: '50%'
+        width: '50%',
+        fontWeight: '550',
+        fontSize: '1.2rem'
     },
     titleStyle: {
         marginTop: 0,
-        backgroundColor: 'blue'
+        backgroundColor: 'blue',
+        fontSize: '1.5rem'
     }
 };
     

@@ -21,7 +21,7 @@ const infoDivStyle = {
     padding: '15px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center', 
     width: '35%'
 };
