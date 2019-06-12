@@ -152,7 +152,7 @@ export default class CharacterCreation extends React.Component{
                         <ClassSelectionButton  src={vikingHead}  id= "5cf0af7d66ecb01288967ac1"  alt="Viking"  style={{...styles.playerImage}} selected= {this.state.selected == 'Viking' ? true : false} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                     <div style= {{...styles.imageContainer}}>
-                        <ClassSelectionButton src={womanElfFace} id= "5cf0b0bd66ecb01288967ac4" alt="FemaleElf" style={{...styles.playerImage}} selected= {this.state.selected == 'FemaleElf' ? true : false}selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
+                        <ClassSelectionButton src={womanElfFace} id= "5cf0b0bd66ecb01288967ac4" alt="Elf" style={{...styles.playerImage}} selected= {this.state.selected == 'Elf' ? true : false}selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                 </div>
                 <div style={{...styles.boxPosition}}>

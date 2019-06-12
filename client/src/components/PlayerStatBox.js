@@ -2,13 +2,13 @@ import React from "react";
 
 const style = {
     statBoxStyle: {
-        borderRadius : '4px',
-        backgroundColor: 'teal',
-        borderStyle: 'solid',
+        borderRadius : '5px',
+        backgroundColor: '#05a19c',
+        border: '3px solid black',
         fontFamily: 'monospace',
         width: '60%',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column',    
     },
     innerStatBox: {
         display: 'flex',
@@ -36,11 +36,11 @@ const style = {
         backgroundImage: 'radial-gradient( #94fc13, #009975)',
         margin: '1%'
     },
-    titleStyle: {
+    nameStyle: {
         margin: "1% 1% 0",
-        backgroundColor: 'teal',
         backgroundImage: 'radial-gradient( #ffa1c5, #f30cd4)',
-        fontSize: '2rem'
+        fontSize: '2rem',
+        textAlign: 'center'
     }
 };
     
@@ -52,7 +52,7 @@ export default class PlayerStatBox extends React.Component{
     render(){
         return( 
             <div style={style.statBoxStyle}>
-                <h2 style={style.titleStyle}>Player: {this.props.player.name}</h2>
+                <h2 style={style.nameStyle}> {this.props.player.name}<br/>the {this.props.player.type}</h2>
                 <div style={style.innerStatBox}>                   
                         <div style={style.statStyle}> 
                             HP: {this.props.player.HP} 

@@ -8,8 +8,9 @@ const mapStyle = {
     backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundColor: 'purple',
-    border: '5px solid #9764c7',   
+    backgroundColor: '#05a19c',
+    border: '3px solid black',
+    padding: '3px 1px 3px' 
 };
 
 export default class WorldMap extends React.Component{

@@ -2,9 +2,11 @@ import React from 'react';
 import ActionButton from './ActionButton'
 
 const actionButtonBarStyle = {
-    borderRadius : '4px',
-    backgroundColor: '#B00B55',
-    borderStyle: 'solid',
+    //borderRadius : '4px',
+    border: '2px solid #05a19c',
+    outline: '2px solid black',
+    backgroundImage: 'linear-gradient( to bottom right, #5d13e7, #b206b0)',
+    borderStyle: '1% solid #05a19c',
     fontFamily: 'monospace',
     height: '30px',
     width: '90%',
