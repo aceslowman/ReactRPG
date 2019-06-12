@@ -24,9 +24,7 @@ const statColumnStyle = {
     flexDirection: 'column',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center',
-    
-    
+    justifyContent: 'center',   
 };
 
 const statStyle = {
