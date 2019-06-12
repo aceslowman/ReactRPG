@@ -3,7 +3,7 @@ import React from "react";
 const style = {
     statBoxStyle: {
         borderRadius : '4px',
-        backgroundColor: 'beige',
+        backgroundColor: 'teal',
         borderStyle: 'solid',
         fontFamily: 'monospace',
         width: '60%',
@@ -14,21 +14,33 @@ const style = {
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        backgroundColor: 'green',
+        backgroundColor: 'teal',
         justifyContent: 'flex-start',
-        height: '100%'
+        height: '100%',
+        margin: "1% 1% 0",
     },
     statStyle: {
         padding: 10,
         boxSizing: 'border-box',
         width: '50%',
         fontWeight: '550',
-        fontSize: '1.2rem'
+        fontSize: '1.4rem',
+        backgroundImage: 'radial-gradient( #f7ff56, #f8b739)'
+    },
+    itemStyle: {
+        padding: 10,
+        boxSizing: 'border-box',
+        width: '50%',
+        fontWeight: '550',
+        fontSize: '1.2rem',
+        backgroundImage: 'radial-gradient( #94fc13, #009975)',
+        margin: '1%'
     },
     titleStyle: {
-        marginTop: 0,
-        backgroundColor: 'blue',
-        fontSize: '1.5rem'
+        margin: "1% 1% 0",
+        backgroundColor: 'teal',
+        backgroundImage: 'radial-gradient( #ffa1c5, #f30cd4)',
+        fontSize: '2rem'
     }
 };
     
@@ -41,8 +53,7 @@ export default class PlayerStatBox extends React.Component{
         return( 
             <div style={style.statBoxStyle}>
                 <h2 style={style.titleStyle}>Player: {this.props.player.name}</h2>
-                <div style={style.innerStatBox}>
-                    {/* <div style={style.statColumnStyle}>     */}
+                <div style={style.innerStatBox}>                   
                         <div style={style.statStyle}> 
                             HP: {this.props.player.HP} 
                         </div>
@@ -55,7 +66,7 @@ export default class PlayerStatBox extends React.Component{
                         <div style={style.statStyle}> 
                             Gold: {this.props.player.gold}
                         </div>
-                        <div style={{...style.statStyle, width: '100%'}}>  
+                        <div style={{...style.itemStyle, width: '100%'}}>  
                             Items: 
                             <ul>
                                 <li>{this.props.player.items[0].name}</li>
@@ -63,7 +74,6 @@ export default class PlayerStatBox extends React.Component{
                                 <li>{this.props.player.items[2].name}</li>
                             </ul>
                         </div>
-                    {/* </div> */}
                 </div>
             </div>
         )
