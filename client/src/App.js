@@ -3,7 +3,7 @@ import React from 'react';
 import StartMenu from './components/StartMenu';
 import GameContainer from './components/GameContainer';
 
-import GameLogic from './GameLogic';
+//import GameLogic from './GameLogic';
 
 const styles = {
   app: {

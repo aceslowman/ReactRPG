@@ -64,7 +64,7 @@ export default class StartMenu extends React.Component{
         });
     }
 
-    cancelOptionsWindows(){
+    closeOptionsWindow(){
         this.setState({
             openOptionsWindow: false
         });
@@ -86,7 +86,7 @@ export default class StartMenu extends React.Component{
                     </div>
                 </div>
                 <CharacterCreation {...this.props} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()} />
-                <OptionsWindow modalOpen={this.state.openOptionsWindow} />
+                <OptionsWindow modalOpen={this.state.openOptionsWindow} onClose={()=>this.closeOptionsWindow()} />
             </div>
         )
     }
