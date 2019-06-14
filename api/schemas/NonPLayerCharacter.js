@@ -11,7 +11,7 @@ const NonPlayerCharacterSchema = new mongoose.Schema({
     friendly: Boolean
 });
 
-module.exports = mongoose.model('NonPLayerCharacter', NonPlayerCharacterSchema)
+module.exports = mongoose.model('NonPlayerCharacter', NonPlayerCharacterSchema);
 
 /* Previous entries
 {

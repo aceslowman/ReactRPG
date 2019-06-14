@@ -56,7 +56,7 @@ apiRouter.get('/playercharacters/:playerId', (req,res)=>{
 }); 
 
 apiRouter.post('/playercharacters', (req,res)=>{
-    const newPLayerCharacter = new PlayerCharacter({
+    const newPlayerCharacter = new PlayerCharacter({
         name: req.body.name,
         type: req.body.type,
         AP: req.body.AP,
@@ -65,7 +65,7 @@ apiRouter.post('/playercharacters', (req,res)=>{
         level:req.body.level
     });
 
-    newPLayerCharacter.save((err)=>{
+    newPlayerCharacter.save((err)=>{
         if(!err) console.error(err);
         res.send("Sucessfully added new PLayer Character!");     
     });  
@@ -134,7 +134,9 @@ apiRouter.get('/locations', (req,res)=>{
 apiRouter.post('/locations', (req, res)=>{
     const newLocation = new Location({
         name: req.body.name,
-        environment: req.body.environment
+        environment: req.body.environment,
+        backgroundImageUrl: req.body.backgroundImageUrl,
+        nonPlayerCharacters: req.body.nonPlayerCharacters
     });
     newLocation.save((err)=>{
         if(!err) console.error(err)
@@ -167,16 +169,16 @@ apiRouter.get('/nonplayercharacters', (req,res)=>{
 });
 
 apiRouter.post('/nonplayercharacters', (req,res)=>{
-    const newNonPLayerCharacter = new NonPlayerCharacter({
+    const newNonPlayerCharacter = new NonPlayerCharacter({
         name: req.body.name,
         AP: req.body.AP,
         HP: req.body.HP,
         level: req.body.level,
         friendly: req.body.friendly,
     });
-    newNonPLayerCharacter.save((err)=>{
+    newNonPlayerCharacter.save((err)=>{
         if(!err) console.error(err);
-        res.send("Sucessfully added new Non PLayer Character!");
+        res.send("Sucessfully added new Non Player Character!");
         });
 });
 
