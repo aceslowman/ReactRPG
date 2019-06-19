@@ -19,6 +19,10 @@ export default class ActionButton extends React.Component{
         console.log('Click!')
         let num = this.props.index
         let nextPassage = this.props.passage.nextPassages[num].path;
+        if(this.props.passage.availableItems.length > 0){
+            let newItem = this.props.passage.availableItems[0];
+            this.props.takeItem(newItem);
+        }    
         this.props.nextPassage(nextPassage);
     }
     

@@ -46,16 +46,29 @@ export default class App extends React.Component{
 
 
   nextPassage(nextPassage){
-    this.setState({passage: nextPassage})
+    this.setState({passage: nextPassage});
+  }
+
+  takeItem(newItem){
+    let newItems = this.state.playerCharacter.items;
+    newItems.push(newItem);
+    this.setState({items: newItems});
+    console.log(this.state.playerCharacter.items);
   }
 
   render(){
     return (   
         <div className="App" style={styles.app}>          
             {this.state.renderStartMenu ? (
-              <StartMenu gameStarted={(initialState) => this.startGame(initialState)} />
+              <StartMenu 
+              gameStarted={(initialState) => this.startGame(initialState)} />
             ) : (
-              <GameContainer player={this.state.playerCharacter} passage={this.state.passage} nextPassage= {(nextPassage)=> this.nextPassage(nextPassage)} isFighting= {this.state.isFighting}/>
+              <GameContainer 
+                player={this.state.playerCharacter} 
+                passage={this.state.passage} 
+                nextPassage= {(nextPassage)=> this.nextPassage(nextPassage)} 
+                takeItem= {(newItem)=> this.takeItem(newItem)}
+                isFighting= {this.state.isFighting}/>
             )}          
         </div>      
     );

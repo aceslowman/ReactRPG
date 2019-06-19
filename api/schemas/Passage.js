@@ -16,7 +16,15 @@ const NextLocationsSchema = new mongoose.Schema({
         ref: 'Location',
         autopopulate: true
     }
-})
+});
+
+const AvailableItemsSchema = new mongoose.Schema({
+    path: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref : ' Item',
+        autopopulate: true
+    }
+});
 
 const PassageSchema = new mongoose.Schema({
     text: String,
@@ -26,7 +34,8 @@ const PassageSchema = new mongoose.Schema({
         autopopulate: true
     }],
     nextPassages: [NextPassageSchema],
-    nextLocations: [NextLocationsSchema] 
+    nextLocations: [NextLocationsSchema],
+    availableItems: [AvailableItemsSchema] 
 
 });
 

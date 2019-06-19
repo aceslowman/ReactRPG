@@ -14,8 +14,8 @@ const Passage = require('./schemas/Passage');
 const Action = require('./schemas/Action');
 
 //Database Connection
-const uri = 'mongodb+srv://reactrpg_admin:rpgfun1@reactrpg-jd0ob.mongodb.net/test?retryWrites=true';
-
+const uri = 'mongodb+srv://reactrpg_admin:rpgfun1@reactrpg-jd0ob.mongodb.net/test?retryWrites=true&w=majority';
+const localuri = 'mongodb://localhost:27017/';
     /*
         dbName - Specifies which database to connect to and overrides any database specified in the connection string. If you're using the mongodb+srv syntax to connect to MongoDB Atlas, you should use dbName to specify the database because you currently cannot in the connection string.
     */
@@ -23,6 +23,12 @@ const uri = 'mongodb+srv://reactrpg_admin:rpgfun1@reactrpg-jd0ob.mongodb.net/tes
 mongoose.connect(uri, {
     dbName: 'reactrpg',
     useNewUrlParser: true
+}).catch((err) =>{
+    console.error(err);
+    mongoose.connect(localuri, {
+        dbName: 'reactrpg',
+        useNewUrlParser: true
+    });
 })
 
 const db = mongoose.connection;
