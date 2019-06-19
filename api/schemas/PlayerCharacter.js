@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// const Item = require('./Item');
 
 const PlayerCharacterSchema = new mongoose.Schema({
     name: String,

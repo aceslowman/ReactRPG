@@ -18,14 +18,6 @@ const NextLocationsSchema = new mongoose.Schema({
     }
 });
 
-const AvailableItemsSchema = new mongoose.Schema({
-    path: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref : ' Item',
-        autopopulate: true
-    }
-});
-
 const PassageSchema = new mongoose.Schema({
     text: String,
     actions: [{
@@ -33,10 +25,13 @@ const PassageSchema = new mongoose.Schema({
         ref: 'Action',
         autopopulate: true
     }],
+    availableItems: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref : 'Item',
+        autopopulate: true
+    }],
     nextPassages: [NextPassageSchema],
     nextLocations: [NextLocationsSchema],
-    availableItems: [AvailableItemsSchema] 
-
 });
 
 module.exports = mongoose.model('Passage', PassageSchema);

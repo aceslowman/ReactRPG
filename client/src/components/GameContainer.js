@@ -55,6 +55,7 @@ export default class GameContainer extends React.Component{
                 <AnimationBox/>
                 <PromptTextBox passage= {this.props.passage} />
                 <ActionButtonBar 
+                    player = {this.props.player}
                     passage= {this.props.passage}
                     takeItem= {(newItem)=> this.props.takeItem(newItem)} 
                     nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/>
