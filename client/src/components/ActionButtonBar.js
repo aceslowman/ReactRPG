@@ -27,7 +27,7 @@ export default class ActionButtonBar extends React.Component{
     }
 
     render(){
-        if(this.props.passage){
+        // if(this.props.passage){ // this shouldn't be necessary, the actionButtonBar should never render if the props.passage doesn't exist
             return(
                 <div style= {actionButtonBarStyle}>               
                     {this.props.passage.actions.map((action,index)=> (
@@ -40,14 +40,14 @@ export default class ActionButtonBar extends React.Component{
                     ))}
                 </div>
             )
-        }else{
-            return(
-                <div style= {actionButtonBarStyle}>               
-                    <ActionButton {...this.props} text= 'wait'/>
-                    <ActionButton {...this.props} text= 'a'/>
-                    <ActionButton {...this.props} text= 'sec'/>
-                </div>
-            )
-        }        
+        // }else{
+        //     return(
+        //         <div style= {actionButtonBarStyle}>               
+        //             <ActionButton {...this.props} text= 'wait'/>
+        //             <ActionButton {...this.props} text= 'a'/>
+        //             <ActionButton {...this.props} text= 'sec'/>
+        //         </div>
+        //     )
+        // }        
     }
 }
