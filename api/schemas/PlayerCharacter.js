@@ -7,9 +7,12 @@ const PlayerCharacterSchema = new mongoose.Schema({
     AP: Number,
     HP: Number,
     XP: Number,
-    level: Number,
-    // Items: [Item],
-    Money: Number
+    items: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Item',
+        autopopulate: true
+    }],
+    gold: Number
 });
 
 module.exports = mongoose.model('PlayerCharacter', PlayerCharacterSchema);

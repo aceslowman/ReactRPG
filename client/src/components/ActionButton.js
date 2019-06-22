@@ -18,7 +18,7 @@ export default class ActionButton extends React.Component{
     onClick(){
         console.log('Click!')
         let num = this.props.index
-        let nextPassage = this.props.passage.nextPassages[num];
+        let nextPassage = this.props.passage.nextPassages[num].path;
         this.props.nextPassage(nextPassage);
     }
     

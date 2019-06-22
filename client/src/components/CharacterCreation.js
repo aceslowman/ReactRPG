@@ -5,30 +5,66 @@ import vikingHead from '../images/viking-head.png';
 import witchFace from '../images/witch-face.png';
 import wizardFace from '../images/wizard-face.png';
 import womanElfFace from '../images/woman-elf-face.png';
-//import { relative } from 'path';
+import ClassSelectionButton from './ClassSelectionButton';
 
 const styles = {
+    button: {
+        fontSize: '1.5rem',
+        backgroundColor: '#22eaca',
+        fontFamily: 'monospace',
+        margin: '0 10px 0',
+        borderRadius: '3px',
+        fontWeight: '550'
+    },
     wrapper: {
-        backgroundColor: 'yellow',
         position: 'absolute',
-        padding: '15px'
+        padding: '15px',
+        borderRadius: '5px',
+        backgroundImage: 'linear-gradient( to bottom right, #f79c1d, #ffe837)'
     },
     playerImage:{
         width:'100px',
         height:'100px',
-        padding:'50px'
+        padding:'0 50px 0'
     },
+    imageContainer: {
+        textAlign: 'center',
+        fontFamily: 'monospace',
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+    },    
     boxPosition:{
         display:'flex',
-        justifyContent:'center'
+        justifyContent:'center',
     },
     container:{
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'row',
-        padding:'15px'
+        padding:'15px',
+    },
+    text: {
+        fontSize: '3rem',
+        fontFamily: 'monospace',
+        fontWeight: '550',
+        margin: '20px, 0, 0'
+    },
+    input: {
+        border: '5px solid #22eaca',
+        padding: '15px',
+        background: 'rgba(255,255,255,0.5)',
+        margin: '15 0 10px 0',
+        fontSize: '1rem',
+        margin: '10px auto 2px'
+    },
+    welcome: {
+        fontSize: '3rem',
+        fontFamily: 'monospace',
+        fontWeight: 'bold',
+        margin: '10px',
+        textAlign: 'center'
     }
-}
+};
 
 export default class CharacterCreation extends React.Component{
     constructor(props){
@@ -36,7 +72,8 @@ export default class CharacterCreation extends React.Component{
         this.state = {
             image: '',
             name: '',
-            _id: ''
+            _id: '',
+            selected: ''
         };
     }
 
@@ -62,6 +99,15 @@ export default class CharacterCreation extends React.Component{
         }
     }
 
+    selectClass(img, id, type){
+        this.setState({image: img});
+        this.setState({type: type});
+        this.setState({_id: id});
+        this.setState({selected: type});
+         
+        console.log(this.state);
+    }
+
     setImage(e){
         let img = e.target.src;
         let type = e.target.alt;
@@ -69,6 +115,7 @@ export default class CharacterCreation extends React.Component{
         this.setState({image: img});
         this.setState({type: type});
         this.setState({_id: id});
+         
         console.log(this.state);
     }
 
@@ -80,32 +127,37 @@ export default class CharacterCreation extends React.Component{
     render(){
         return (
             <div ref={(n) => {this.wrapperRef = n}} style={{...styles.wrapper, display: this.props.modalOpen ? 'block' : 'none' }}>
-                <div style={{...styles.boxPosition}} >
-                    <input onChange= {(e)=> this.setName(e)} type="text" placeholder="Enter Your Name"/>
+                <div style={{...styles.boxPosition, ...styles.welcome}}>  
+                    Welcome To <br/> 
+                    {this.props.title}
                 </div>
+                <div style={{...styles.boxPosition}} >                  
+                   <input style= {{...styles.input}} onChange= {(e)=> this.setName(e)} type="text" placeholder="Enter Your Name"/>
+                </div>
+                <div style={{...styles.boxPosition, ...styles.text}}>Choose your class:</div>
                 <div style={{...styles.container}} >
-                    <div>
-                        <img src={knight} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} id= "5cf0ac3b66ecb01288967abc" alt="Knight"/>
+                    <div style= {{...styles.imageContainer}} >                       
+                        <ClassSelectionButton src= {knight} id= "5cf0ac3b66ecb01288967abc" alt= "Knight" style= {{...styles.playerImage}} selected= {this.state.selected == 'Knight' ? true : false} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
-                    <div>
-                        <img src={dwarfFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} id= "5cf0ace566ecb01288967abd" alt="Dwarf" />
+                    <div style= {{...styles.imageContainer}}>                        
+                        <ClassSelectionButton src={dwarfFace} id= "5cf0ace566ecb01288967abd" alt="Dwarf" style={{...styles.playerImage}} selected= {this.state.selected == 'Dwarf' ? true : false}selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
-                    <div>
-                        <img src={wizardFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} id= "5cf0ae7866ecb01288967abe" alt="Wizard" />
+                    <div style= {{...styles.imageContainer}}>
+                        <ClassSelectionButton src={wizardFace} id= "5cf0ae7866ecb01288967abe" alt="Wizard" style={{...styles.playerImage}}selected= {this.state.selected == 'Wizard' ? true : false}selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
-                    <div>
-                        <img src={witchFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} id= "5cf0aefe66ecb01288967abf" alt="Witch"/>
+                    <div style= {{...styles.imageContainer}}>
+                        <ClassSelectionButton  src={witchFace}  id= "5cf0aefe66ecb01288967abf"  alt="Witch"  style={{...styles.playerImage}} selected= {this.state.selected == 'Witch' ? true : false} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
-                    <div>
-                        <img src={vikingHead} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} id= "5cf0af7d66ecb01288967ac1" alt="Viking"/>
+                    <div style= {{...styles.imageContainer}}>
+                        <ClassSelectionButton  src={vikingHead}  id= "5cf0af7d66ecb01288967ac1"  alt="Viking"  style={{...styles.playerImage}} selected= {this.state.selected == 'Viking' ? true : false} selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
-                    <div>
-                        <img src={womanElfFace} onClick={(e)=>this.setImage(e)} style={{...styles.playerImage}} id= "5cf0b0bd66ecb01288967ac4" alt="FemaleElf"/>
+                    <div style= {{...styles.imageContainer}}>
+                        <ClassSelectionButton src={womanElfFace} id= "5cf0b0bd66ecb01288967ac4" alt="Elf" style={{...styles.playerImage}} selected= {this.state.selected == 'Elf' ? true : false}selectClass= {(img, id, type)=>this.selectClass(img,id,type)} />
                     </div>
                 </div>
                 <div style={{...styles.boxPosition}}>
-                    <button onClick={()=>this.adventureStart()}>adventureStart</button>
-                    <button onClick={()=>this.props.onClose()}>Cancel</button>
+                    <button style= {{...styles.button}} onClick={()=>this.adventureStart()}>Begin Adventure</button>
+                    <button style= {{...styles.button}} onClick={()=>this.props.onClose()}>Cancel</button>
                 </div>
             </div>
         )

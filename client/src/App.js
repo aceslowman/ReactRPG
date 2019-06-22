@@ -1,9 +1,6 @@
 import React from 'react';
-
 import StartMenu from './components/StartMenu';
 import GameContainer from './components/GameContainer';
-
-//import GameLogic from './GameLogic';
 
 const styles = {
   app: {
@@ -24,7 +21,7 @@ export default class App extends React.Component{
   startGame(initialState){
     console.log(initialState);
     let characterId = initialState._id;
-    let passageId = '5cf9b7c9fca47b17e631f7f7'
+    let passageId = '5d01c49f8f136e04960d1ac7';
     
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
@@ -47,6 +44,7 @@ export default class App extends React.Component{
       });
     });
   }
+
 
   nextPassage(nextPassage){
 

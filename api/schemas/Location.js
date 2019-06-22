@@ -17,27 +17,4 @@ const LocationSchema = new mongoose.Schema({
     }]
 });
 
-module.exports = mongoose.model('Location', LocationSchema)
-
-
-/* Previous entries
-{
-    name:'Grizzly Forest',
-    environment:'forest'
-}
-{
-    name:'Squalling Cove',
-    environment:'Dungeon'
-}
-{
-    name:'Misszoo'
-    environment:'Town'
-}
-{
-    name:'home',
-    environment:'playerStart'
-}
-{
-    name:"WoodPile",
-    environment:'home' 
-} */
+module.exports = mongoose.model('Location', LocationSchema);

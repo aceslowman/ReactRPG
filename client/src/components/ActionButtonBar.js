@@ -2,9 +2,11 @@ import React from 'react';
 import ActionButton from './ActionButton'
 
 const actionButtonBarStyle = {
-    borderRadius : '4px',
-    backgroundColor: '#B00B55',
-    borderStyle: 'solid',
+    //borderRadius : '4px',
+    border: '2px solid #05a19c',
+    outline: '2px solid black',
+    backgroundImage: 'linear-gradient( to bottom right, #5d13e7, #b206b0)',
+    borderStyle: '1% solid #05a19c',
     fontFamily: 'monospace',
     height: '30px',
     width: '90%',
@@ -28,9 +30,9 @@ export default class ActionButtonBar extends React.Component{
         if(this.props.passage){
             return(
                 <div style= {actionButtonBarStyle}>               
-                    <ActionButton {...this.props} text= {this.props.passage.actions[0].text} index= {0} nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/>
-                    <ActionButton {...this.props} text= {this.props.passage.actions[1].text} index= {1} nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/>
-                    <ActionButton {...this.props} text= {this.props.passage.actions[2].text} index= {2} nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/>
+                    {this.props.passage.actions.map((action,index)=> (
+                       <ActionButton {...this.props} text= {action.text} index= {index} nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/> 
+                    ))}
                 </div>
             )}else{
                 return(
