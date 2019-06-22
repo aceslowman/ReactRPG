@@ -18,7 +18,7 @@ export default class App extends React.Component{
     };
   }
   startGame(initialState){
-    console.log(initialState);
+    //console.log(initialState);
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
     
@@ -45,14 +45,26 @@ export default class App extends React.Component{
   }
 
   nextPassage(nextPassage){
-    this.setState({passage: nextPassage});
+    console.log(nextPassage);
+    let passageId = nextPassage._id; 
+    
+    if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
+      fetch(`/api/passages/${passageId}`)
+      .then(res=>res.json())
+      .then((passage)=>{
+          this.setState({
+          passage: {...passage} 
+        });
+      });  
+    } else{
+      this.setState({passage: nextPassage});
+    }      
   }
 
   takeItem(newItem){
     let newItems = this.state.playerCharacter.items;
     newItems.push(newItem);
     this.setState({items: newItems});
-    console.log(this.state.playerCharacter.items);
   }
 
   render(){

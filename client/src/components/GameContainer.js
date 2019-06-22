@@ -54,7 +54,7 @@ export default class GameContainer extends React.Component{
             <div style= {actionDivStyle}>
                 <AnimationBox/>
                 <PromptTextBox passage= {this.props.passage} />
-                {this.props.passage && <ActionButtonBar // check the prop HERE, and only render ActionButtonBar when it's ready.
+                {this.props.passage && <ActionButtonBar // check prop HERE, only render ActionButtonBar when it's ready.
                     player = {this.props.player}
                     passage= {this.props.passage}
                     takeItem= {(newItem)=> this.props.takeItem(newItem)} 

@@ -29,7 +29,7 @@ mongoose.connect(uri, {
         dbName: 'reactrpg',
         useNewUrlParser: true
     });
-})
+});
 
 const db = mongoose.connection;
 
@@ -54,7 +54,6 @@ apiRouter.get('/playercharacters', (req,res)=>{
 apiRouter.get('/playercharacters/:playerId', (req,res)=>{
     PlayerCharacter.findById(req.params.playerId, (err, player)=>{
         if(err){console.error(err);}
-        console.log(player);
         res.json(player);
         console.log(res.statusCode)
     });
@@ -95,7 +94,6 @@ apiRouter.delete("/playercharacters/:playerId", (req,res) =>{
 apiRouter.get('/items', (req,res)=>{   
     Item.find({}, (err, items)=>{
         if(err){console.error(err);}
-        console.log(items);
         res.json(items);
     });
 }); 
@@ -132,7 +130,6 @@ apiRouter.delete("/items/:itemId", (req,res) =>{
 apiRouter.get('/locations', (req,res)=>{  
     Location.find({}, (err, locations)=>{
         if(err){console.error(err);}
-        console.log(locations);
         res.json(locations);
     });
 }); 
@@ -169,7 +166,6 @@ apiRouter.get('/nonplayercharacters', (req,res)=>{
     
     NonPlayerCharacter.find({}, (err, nonplayercharacters)=>{
         if(err){console.error(err);}
-        console.log(nonplayercharacters);
         res.json(nonplayercharacters);
     });
 });
@@ -216,7 +212,7 @@ apiRouter.get("/passages", (req, res)=> {
 apiRouter.get('/passages/:passageId', (req,res)=>{
     Passage.findById(req.params.passageId, (err, passage)=>{
         if(err){console.error(err);}
-        Passage.populate(passage, {path: 'action_1'}, (err, passage)=>{
+        Passage.populate(passage, {path: 'action_1'} , (err, passage)=>{
             if(err){console.error(err);}
             res.send(passage);
         });
