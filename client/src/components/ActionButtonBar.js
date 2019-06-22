@@ -27,21 +27,19 @@ export default class ActionButtonBar extends React.Component{
     }
 
     render(){
-        if(this.props.passage){
-            return(
-                <div style= {actionButtonBarStyle}>               
-                    {this.props.passage.actions.map((action,index)=> (
-                       <ActionButton {...this.props} text= {action.text} index= {index} nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/> 
-                    ))}
-                </div>
-            )}else{
-                return(
-                    <div style= {actionButtonBarStyle}>               
-                        <ActionButton {...this.props} text= 'wait'/>
-                        <ActionButton {...this.props} text= 'a'/>
-                        <ActionButton {...this.props} text= 'sec'/>
-                    </div>
-                )
-            }        
+        return(
+            <div style= {actionButtonBarStyle}>               
+                {this.props.passage.actions.map((action,index)=> (
+                     <ActionButton {...this.props} 
+                            player = {this.props.player}
+                            text= {action.text} 
+                            index= {index}
+                            takeItem= {(newItem)=> this.props.takeItem(newItem)} 
+                            nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
+                            key = {action.text}/> 
+                    ))
+                }
+            </div>
+        )
     }
 }

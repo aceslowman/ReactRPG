@@ -1,29 +1,30 @@
 export default function battleLogic(state){
+    console.log(state);
     // retrieve player character from state
     let player = state.playerCharacter;
     // retrieve enemy character from state
-    let enemy = state.currentEnemy;
+    let enemy = state.passage.nonPlayerCharacters[0];
 
     let playerFirst = Math.random() > 0.5 ? true : false;
-    
+    console.log(playerFirst);
     if (playerFirst){
         if (playerAttack(player, enemy)) {
-            return "you defeated"+ enemy.name +"!!";
+            console.log( "you defeated"+ enemy.name +"!!")
         } else {
             if (enemyAttack(enemy, player)) {
-                return " you have been slap down by"+ enemy.name +".";
+                console.log( " you have been slap down by)"+ enemy.name +".")
             } else {
-                return "damage has been inflicted";
+                console.log( "damage has been inflicted")
             }
         }
     } else {
         if (enemyAttack(enemy, player)) {
-            return " you have been slap down by"+ enemy.name +".";//make passage for this #1 return index with array of battle passage
+            console.log( " you have been slap down by)"+ enemy.name +".")//make passage for this #1 return index with array of battle passage
         } else {
             if (playerAttack(player, enemy)) {
-                return "you defeated"+ enemy.name +"!!";//make a passage for this
+                console.log( "you defeated"+ enemy.name +"!!")//make a passage for this
             } else {
-                return "damage has been inflicted";//make passage for this 
+                console.log( "damage has been inflicted")//make passage for this 
             }     
         }       
     }   

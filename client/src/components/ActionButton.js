@@ -16,15 +16,29 @@ export default class ActionButton extends React.Component{
     }
 
     onClick(){
-        console.log('Click!')
-        let num = this.props.index
+        console.log('Click!');
+        let num = this.props.index;
+        console.log(this.props.passage)
         let nextPassage = this.props.passage.nextPassages[num].path;
-        this.props.nextPassage(nextPassage);
+        if(this.props.passage.availableItems.length > 0){
+            let hasItem = false;
+            let newItem = this.props.passage.availableItems[0];        
+            this.props.player.items.forEach((item)=>{
+                if (item._id === newItem._id){ hasItem = true;}
+            });
+            if (!hasItem && this.props.text === "Take"){
+                this.props.takeItem(newItem);
+            }
+        }
+        console.log(num);
+        //console.log(nextPassage);
+        this.props.nextPassage(nextPassage,this.props.passage.actions[num] );
     }
     
     render(){
         return(
-            <input style={{...actionButtonStyle}} type= 'button' value = {this.props.text} onClick= {()=>this.onClick()}></input>
+            <input style={{...actionButtonStyle}} type= 'button' value = {this.props.text} 
+            onClick= {()=>this.onClick()}></input>
         )
     }
 }

@@ -43,13 +43,20 @@ const style = {
         textAlign: 'center'
     }
 };
+
+
     
 export default class PlayerStatBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {};
     }
+
     render(){
+        let listedItems = this.props.player.items.map((item, key)=>
+            <li key= {item._id} > {item.name}</li>
+        );
+        
         return( 
             <div style={style.statBoxStyle}>
                 <h2 style={style.nameStyle}> {this.props.player.name}<br/>the {this.props.player.type}</h2>
@@ -69,9 +76,7 @@ export default class PlayerStatBox extends React.Component{
                         <div style={{...style.itemStyle, width: '100%'}}>  
                             Items: 
                             <ul>
-                                <li>{this.props.player.items[0].name}</li>
-                                <li>{this.props.player.items[1].name}</li>
-                                <li>{this.props.player.items[2].name}</li>
+                                {listedItems}
                             </ul>
                         </div>
                 </div>

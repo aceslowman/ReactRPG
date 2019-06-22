@@ -36,13 +36,21 @@
 import battleLogic from './BattleLogic';
 // import FleeLogic from './FleeLogic';
 
-export default gameLogic(action, state){
-    switch(action.type){
-        case 'BATTLE':
+export default function gameLogic(action, state){
+    console.log(action);
+    switch(action.class){
+        case 'FIGHT':
+            console.log("HIT");
             battleLogic(state);
             break;
         case 'FLEE':
-            fleeLogic(state);
+            //fleeLogic(state);
+            break;
+        case 'TAKE':
+            //if statement for random chance
+            break;
+        default:
+            break;
     }
 }
 
