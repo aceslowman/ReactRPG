@@ -32,6 +32,11 @@ const PassageSchema = new mongoose.Schema({
     }],
     nextPassages: [NextPassageSchema],
     nextLocations: [NextLocationsSchema],
+    nonPlayerCharacters: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'NonPlayerCharacter',
+        autopopulate: true
+    }]
 });
 
 module.exports = mongoose.model('Passage', PassageSchema);
