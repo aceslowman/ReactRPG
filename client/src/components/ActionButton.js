@@ -18,6 +18,7 @@ export default class ActionButton extends React.Component{
     onClick(){
         console.log('Click!');
         let num = this.props.index;
+        console.log(this.props.passage)
         let nextPassage = this.props.passage.nextPassages[num].path;
         if(this.props.passage.availableItems.length > 0){
             let hasItem = false;
@@ -28,13 +29,16 @@ export default class ActionButton extends React.Component{
             if (!hasItem && this.props.text === "Take"){
                 this.props.takeItem(newItem);
             }
-        }    
-        this.props.nextPassage(nextPassage);
+        }
+        console.log(num);
+        //console.log(nextPassage);
+        this.props.nextPassage(nextPassage,this.props.passage.actions[num] );
     }
     
     render(){
         return(
-            <input style={{...actionButtonStyle}} type= 'button' value = {this.props.text} onClick= {()=>this.onClick()}></input>
+            <input style={{...actionButtonStyle}} type= 'button' value = {this.props.text} 
+            onClick= {()=>this.onClick()}></input>
         )
     }
 }

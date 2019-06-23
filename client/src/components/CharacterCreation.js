@@ -5,7 +5,7 @@ import vikingHead from '../images/viking-head.png';
 import witchFace from '../images/witch-face.png';
 import wizardFace from '../images/wizard-face.png';
 import womanElfFace from '../images/woman-elf-face.png';
-import ClassSelectionButton from './ClassSelectionButton'
+import ClassSelectionButton from './ClassSelectionButton';
 
 const styles = {
     button: {

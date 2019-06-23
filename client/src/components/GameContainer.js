@@ -58,7 +58,7 @@ export default class GameContainer extends React.Component{
                     player = {this.props.player}
                     passage= {this.props.passage}
                     takeItem= {(newItem)=> this.props.takeItem(newItem)} 
-                    nextPassage= {(nextPassage)=>this.props.nextPassage(nextPassage)}/>}
+                    nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}/>}
             </div>
         </div>
         )

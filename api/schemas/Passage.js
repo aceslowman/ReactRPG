@@ -32,7 +32,7 @@ const PassageSchema = new mongoose.Schema({
     }],
     nextPassages: [NextPassageSchema],
     nextLocations: [NextLocationsSchema],
-    nonPlayerCharacters: [{
+    nonPlayerCharacters:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'NonPlayerCharacter',
         autopopulate: true

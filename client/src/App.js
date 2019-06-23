@@ -1,6 +1,7 @@
 import React from 'react';
 import StartMenu from './components/StartMenu';
 import GameContainer from './components/GameContainer';
+import gameLogic from './components/GameLogic/GameLogic';
 
 const styles = {
   app: {
@@ -25,6 +26,7 @@ export default class App extends React.Component{
       // }
     };
   }
+  
   startGame(initialState){
     //console.log(initialState);
     let characterId = initialState._id;
@@ -52,10 +54,25 @@ export default class App extends React.Component{
     });
   }
 
-  nextPassage(nextPassage){
-    console.log(nextPassage);
+  nextPassage(nextPassage,action){
     let passageId = nextPassage._id; 
-    
+    console.log(action)
+    //if()
+    gameLogic(action,this.state)
+  //   switch(action.class){
+  //     case 'FIGHT':
+  //         console.log("HIT");
+  //         battleLogic(state);
+  //         break;
+  //     case 'FLEE':
+  //         //fleeLogic(state);
+  //         break;
+  //     case 'TAKE':
+  //         //if statement for random chance
+  //         break;
+  //     default:
+  //         break;
+  // }
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
       fetch(`/api/passages/${passageId}`)
       .then(res=>res.json())
@@ -85,7 +102,7 @@ export default class App extends React.Component{
           <GameContainer 
             player={this.state.playerCharacter} 
             passage={this.state.passage} 
-            nextPassage= {(nextPassage)=> this.nextPassage(nextPassage)} 
+            nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
             takeItem= {(newItem)=> this.takeItem(newItem)}
             isFighting= {this.state.isFighting}/>
           )

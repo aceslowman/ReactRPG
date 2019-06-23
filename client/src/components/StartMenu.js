@@ -1,5 +1,6 @@
 import React from 'react';
 import CharacterCreation from './CharacterCreation';
+import OptionsWindow from './OptionsWindow';
 import Titles from './../titles.js';
 
 const styles = {
@@ -58,8 +59,8 @@ export default class StartMenu extends React.Component{
 
         this.state = {
             openCharacterCreate: false,
-            title: ''
-        }
+            openOptionsWindow: false
+        };
     }
 
     componentDidMount(){
@@ -80,7 +81,16 @@ export default class StartMenu extends React.Component{
     }
 
     showOptions() {
+        console.log("show options", this.state)
+        this.setState({
+            openOptionsWindow: true 
+        });
+    }
 
+    closeOptionsWindow(){
+        this.setState({
+            openOptionsWindow: false
+        });
     }
 
     render(){
@@ -98,7 +108,8 @@ export default class StartMenu extends React.Component{
                         <button style= {{...styles.buttonStyle}} onClick={()=>this.continueGame()}>Continue or Load</button>
                     </div>
                 </div>
-                <CharacterCreation {...this.props} title= {this.state.title} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()}/>
+                <CharacterCreation {...this.props} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()} />
+                <OptionsWindow modalOpen={this.state.openOptionsWindow} onClose={()=>this.closeOptionsWindow()} />
             </div>
         )
     }

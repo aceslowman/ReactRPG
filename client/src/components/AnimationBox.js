@@ -1,5 +1,5 @@
 import React from 'react';
-
+//blank box in game container atm
 const animationBoxStyle = {
     border: '1px',
     borderRadius: '20px',
@@ -9,7 +9,7 @@ const animationBoxStyle = {
     backgroundColor: 'white'
 };
 
-export default class AnimtionBox extends React.Component{
+export default class AnimationBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {};
