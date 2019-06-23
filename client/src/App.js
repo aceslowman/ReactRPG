@@ -23,6 +23,7 @@ export default class App extends React.Component{
     //console.log(initialState);
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
+    passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to battle 
     
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
@@ -48,34 +49,23 @@ export default class App extends React.Component{
 
   nextPassage(nextPassage,action){
     let passageId = nextPassage._id; 
-    console.log(action)
-    //if()
-    gameLogic(action,this.state)
-  //   switch(action.class){
-  //     case 'FIGHT':
-  //         console.log("HIT");
-  //         battleLogic(state);
-  //         break;
-  //     case 'FLEE':
-  //         //fleeLogic(state);
-  //         break;
-  //     case 'TAKE':
-  //         //if statement for random chance
-  //         break;
-  //     default:
-  //         break;
-  // }
-    if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
-      fetch(`/api/passages/${passageId}`)
-      .then(res=>res.json())
-      .then((passage)=>{
-          this.setState({
-          passage: {...passage} 
-        });
-      });  
+   
+    if(this.state.passage.isFight){
+      //console.log(action);
+      let victory = false;
+      gameLogic(action,this.state,victory);
+    }else{
+      if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
+        fetch(`/api/passages/${passageId}`)
+        .then(res=>res.json())
+        .then((passage)=>{
+            this.setState({
+            passage: {...passage} 
+          });
+        });  
     } else{
       this.setState({passage: nextPassage});
-    }      
+    }    }  
   }
 
   takeItem(newItem){

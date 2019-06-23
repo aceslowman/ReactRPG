@@ -36,12 +36,14 @@
 import battleLogic from './BattleLogic';
 // import FleeLogic from './FleeLogic';
 
-export default function gameLogic(action, state){
+export default function gameLogic(action, state, victory){
+    
     console.log(action);
+    console.log(state);
     switch(action.class){
         case 'FIGHT':
             console.log("HIT");
-            battleLogic(state);
+            battleLogic(state, victory);
             break;
         case 'FLEE':
             //fleeLogic(state);

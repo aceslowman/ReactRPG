@@ -1,15 +1,19 @@
-export default function battleLogic(state){
+export default function battleLogic(state, victory){
     console.log(state);
     // retrieve player character from state
     let player = state.playerCharacter;
     // retrieve enemy character from state
     let enemy = state.passage.nonPlayerCharacters[0];
+    victory = false;
+    
 
     let playerFirst = Math.random() > 0.5 ? true : false;
     console.log(playerFirst);
-    if (playerFirst){
+    if (playerFirst,victory){
         if (playerAttack(player, enemy)) {
-            console.log( "you defeated"+ enemy.name +"!!")
+            console.log( "you defeated"+ enemy.name +"!!");
+            victory = true; 
+            return victory;      
         } else {
             if (enemyAttack(enemy, player)) {
                 console.log( " you have been slap down by)"+ enemy.name +".")
@@ -20,6 +24,7 @@ export default function battleLogic(state){
     } else {
         if (enemyAttack(enemy, player)) {
             console.log( " you have been slap down by)"+ enemy.name +".")//make passage for this #1 return index with array of battle passage
+            return ;
         } else {
             if (playerAttack(player, enemy)) {
                 console.log( "you defeated"+ enemy.name +"!!")//make a passage for this
@@ -27,29 +32,39 @@ export default function battleLogic(state){
                 console.log( "damage has been inflicted")//make passage for this 
             }     
         }       
-    }   
+    } 
+    return;  
 }
 //supporting function for players attack phase within switch.
 function playerAttack(player, enemy){
-    let ap = Math.random() * player.ap;
+    let AP = Math.round(Math.random() * player.AP);
 
-    if(ap > enemy.hp){
-        enemy.hp = 0;
+    if(AP > enemy.HP){
+        enemy.HP = 0;
+        console.log('Enemy HP: ', enemy.HP);
+        console.log('Player HP : ', player.HP);
         return true;
     }else{
-        enemy.hp -= ap;
+        enemy.HP -= AP;
+        console.log('Enemy HP: ', enemy.HP);
+        console.log('Player HP : ', player.HP);
         return false;
     }
+    
 }
 //supporting function for enemies attack phase with in switch.
 function enemyAttack(enemy, player){
-    let ap = Math.random() * enemy.ap;
+    let AP = Math.round(Math.random() * enemy.AP);
 
-    if(ap > player.hp){
-        player.hp = 0;
+    if(AP > player.HP){
+        player.HP = 0;
+        console.log('Enemy HP: ', enemy.HP);
+        console.log('Player HP : ', player.HP);
         return true;
     }else{
-        player.hp -= ap;
+        player.HP -= AP;
+        console.log('Enemy HP: ', enemy.HP);
+        console.log('Player HP : ', player.HP);
         return false;
     }
 
