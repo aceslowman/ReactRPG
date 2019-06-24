@@ -8,8 +8,7 @@ const styles = {
         borderRadius: '20px',
         height: '60%',
         width: '90%',
-        opacity: '.5',
-        backgroundColor: 'white',
+        background: 'rgba(0, 0, 0, 0.3)',
         display: 'flex',
         justifyContent: "center",
         overflow: 'hidden',
@@ -18,7 +17,7 @@ const styles = {
     },
     Wrapper:{
         textAlign: 'center',
-        backgroundColor:'aqua',
+        backgroundColor: 'rgba(0, 255, 255, 0.3)',
         width:'100%',
         height:'100%',
         display: 'flex',
@@ -28,7 +27,7 @@ const styles = {
     actionImage:{
         height: '125%',
         width: '100%',
-        backgroundColor: 'red'
+        backgroundColor: 'rgba(255, 0, 255, 0.3)'
     }
     
 }

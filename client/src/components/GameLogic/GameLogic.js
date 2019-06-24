@@ -18,5 +18,8 @@ export default function gameLogic(action, state){
             break;
         default:
             break;
-    }   
+    } 
+    
+    console.log("After action: ", state);
+    return state;  
 }

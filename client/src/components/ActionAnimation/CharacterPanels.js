@@ -6,7 +6,7 @@ import AttackPower from './AttackPower';
 const styles ={
     wrapper:{
         display:'block',
-        backgroundColor:'aqua',
+        backgroundColor:'rgba(76, 175, 150, 0.3)',
         height:'100%',
         width:'100%',
         marginTop: "5%" 
@@ -18,7 +18,8 @@ const styles ={
       backgroundColor:'green',
       boxShadow:'2px 2px',
       padding:'25px',
-      width:'150px'
+      width:'150px',
+      opacity: '1.5'
       
     }
 }

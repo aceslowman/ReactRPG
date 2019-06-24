@@ -14,32 +14,37 @@ export default function battleLogic(state){
     if (playerFirst){
         if (playerAttack(player, enemy)) {
             console.log( "you defeated"+ enemy.name +"!!");
+            state.passage.isFight = false;
             return;       
         } else {
             if (enemyAttack(enemy, player)) {
-                console.log( " you have been slap down by)"+ enemy.name +".")
+                console.log( " you have been slap down by)"+ enemy.name +".");
+                return;
             } else {
-                console.log( "damage has been inflicted")
+                console.log( "damage has been inflicted");
+                return;
             }
         }
     } else {
         if (enemyAttack(enemy, player)) {
             console.log( " you have been slap down by)"+ enemy.name +".")//make passage for this #1 return index with array of battle passage
+            state.passage.isFight = false;
             return ;
         } else {
             if (playerAttack(player, enemy)) {
                 console.log( "you defeated"+ enemy.name +"!!")//make a passage for this
+                return;
             } else {
                 console.log( "damage has been inflicted")//make passage for this 
+                return;
             }     
         }       
-    } 
-    return;  
+    }  
 }
 //supporting function for players attack phase within switch.
 function playerAttack(player, enemy){
     let AP = Math.round(Math.random() * player.AP);
-
+    console.log("player hit");
     if(AP > enemy.HP){
         enemy.HP = 0;
         console.log('Enemy HP: ', enemy.HP);
@@ -56,7 +61,7 @@ function playerAttack(player, enemy){
 //supporting function for enemies attack phase with in switch.
 function enemyAttack(enemy, player){
     let AP = Math.round(Math.random() * enemy.AP);
-
+    console.log("enemy hit");
     if(AP > player.HP){
         player.HP = 0;
         console.log('Enemy HP: ', enemy.HP);
