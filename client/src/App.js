@@ -50,11 +50,9 @@ export default class App extends React.Component{
   nextPassage(nextPassage,action){
     let passageId = nextPassage._id; 
    
-    if(this.state.passage.isFight){
-      //console.log(action);
-      let victory = false;
-      gameLogic(action,this.state,victory);
-    }else{
+    // if(this.state.passage.isFight){
+    //   gameLogic(action,this.state);
+    // }else{
       if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
         fetch(`/api/passages/${passageId}`)
         .then(res=>res.json())
@@ -63,9 +61,14 @@ export default class App extends React.Component{
             passage: {...passage} 
           });
         });  
-    } else{
-      this.setState({passage: nextPassage});
-    }    }  
+      } else{
+        this.setState({passage: nextPassage});
+      // }    
+    }  
+  }
+
+  fight(action, state){
+    gameLogic(action, state);
   }
 
   takeItem(newItem){
@@ -86,7 +89,8 @@ export default class App extends React.Component{
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
             takeItem= {(newItem)=> this.takeItem(newItem)}
-            isFighting= {this.state.isFighting}/>
+            isFighting= {this.state.isFighting}
+            fight= {(action, state)=> this.fight(action, state)}/>
           )
         }          
       </div>      

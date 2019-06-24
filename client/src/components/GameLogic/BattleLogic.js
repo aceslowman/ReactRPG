@@ -1,19 +1,20 @@
-export default function battleLogic(state, victory){
+export default function battleLogic(state){
+    console.log('battle logic');
     console.log(state);
     // retrieve player character from state
-    let player = state.playerCharacter;
+    let player = state.player;
+    console.log(player);
     // retrieve enemy character from state
     let enemy = state.passage.nonPlayerCharacters[0];
-    victory = false;
+    
     
 
     let playerFirst = Math.random() > 0.5 ? true : false;
     console.log(playerFirst);
-    if (playerFirst,victory){
+    if (playerFirst){
         if (playerAttack(player, enemy)) {
             console.log( "you defeated"+ enemy.name +"!!");
-            victory = true; 
-            return victory;      
+            return;       
         } else {
             if (enemyAttack(enemy, player)) {
                 console.log( " you have been slap down by)"+ enemy.name +".")

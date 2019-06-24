@@ -42,7 +42,7 @@ export default class Animation extends React.Component{
   
 
   render(){
-    console.log(this.props);
+    //console.log(this.props);
     let pos = this.props.left ? {left: this.props.position} : {right : this.props.position};
 
     return(
