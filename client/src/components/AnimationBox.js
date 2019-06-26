@@ -43,11 +43,6 @@ export default class AnimationBox extends React.Component{
     }
 
     move = () => {
-        // let {PositionLeft} = this.state;
-        // PositionLeft+= window.innerWidth / 2;
-        // this.setState({
-        //   PositionLeft
-        // })
         if(this.state.active){
             this.setState({position: '101%', active: false})
         }else{
@@ -65,12 +60,16 @@ export default class AnimationBox extends React.Component{
                             left={true}
                             position={this.state.position}
                             move={() => this.move()}
-                            character={{ name: "JIL", MAXHP: 100, HP: 100, AP: 30 }} />
+                            // character={{ name: "JIL", MAXHP: 100, HP: 100, AP: 30 }} 
+                            character={this.props.player}
+                        />
                         <CharacterPanel
                             left={false}
                             position={this.state.position}
                             move={() => this.move()}
-                            character={{ name: "Drake", MAXHP: 100, HP: 50, AP: 25 }} />
+                            // character={{ name: "Drake", MAXHP: 100, HP: 50, AP: 25 }} 
+                            character={this.props.enemy}
+                        />
                     </div>
                 </div>
             </React.Fragment>

@@ -39,21 +39,6 @@ export default class Animation extends React.Component{
       });
   }
 
-  componentDidMount(){
-    // this.setState({
-    //   position: this.props.left ? this.props.position : this.props.position + 150
-    // })
-  }
-
-  componentDidUpdate(prevProps){
-    if(prevProps.position !== this.props.position){
-      // this.setState({
-      //   position: this.props.left ? this.props.position : this.props.position + 150
-      // })
-    }
-  }
-  
-
   render(){
     let pos = this.props.left ? {float: 'right', right: this.props.position } : {float: 'left', left : this.props.position};
 
@@ -61,8 +46,7 @@ export default class Animation extends React.Component{
       <div style={{...styles.wrapper}} >
         <div style={{...styles.slider, ...pos}}>
           <div>{this.props.character.name}</div>
-          
-        
+                
           <HealthBar progress={(this.props.character.HP/this.props.character.MAXHP)*100} character={this.props.character}/>
           {/* <AttackPower character={this.props.character}/> */}
           <div>{this.props.character.AP}</div>

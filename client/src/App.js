@@ -15,6 +15,8 @@ export default class App extends React.Component{
     super();
     this.state = {
       renderStartMenu: true,
+      player: '',
+      enemy: ''
     };
   }
   
@@ -28,7 +30,7 @@ export default class App extends React.Component{
     .then(res=>res.json())
     .then((player)=>{
         this.setState({ 
-        playerCharacter: {
+        player: {
           ...player,
           image: initialState.image,
           name: initialState.name,
@@ -49,6 +51,26 @@ export default class App extends React.Component{
   nextPassage(nextPassage, action){
     let passageId = nextPassage._id; 
 
+    /*
+      if the passage contains an enemy, load it into the App state!
+      You need it on hand so that the enemy info can be passed into 
+      specific child components.
+    */
+    console.log(nextPassage);
+    if(nextPassage.nonPlayerCharacters.length > 0){
+      // now grab enemy and pass to state.
+      let index;
+      if (nextPassage.nonPlayerCharacters.length > 1){
+        // grab random if there are more than one enemies
+        index = Math.floor(nextPassage.nonPlayerCharacters.length * Math.random());
+      }else{ 
+        // or grab only element
+        index = 0;
+      }
+
+      this.setState({ enemy: nextPassage.nonPlayerCharacters[index] });
+    }
+
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
       fetch(`/api/passages/${passageId}`)
       .then(res=>res.json())
@@ -62,10 +84,19 @@ export default class App extends React.Component{
     }  
   }
 
+  /* 
+    STATE here is not properly named, you are not using the App state, you are passing
+    a collection of props. I think you could utilize the App state instead.
+  */
+
   fight(action, state){
+    // TEMPORARY OVERRIDE
+    state = this.state;
+
     gameLogic(action, state);
     let newPlayerHP = state.player.HP;
-    this.setState({palyer: {HP: newPlayerHP}}); 
+    // this.setState({palyer: {HP: newPlayerHP}}); 
+    this.setState({})
     if (!state.passage.isFight){
       console.log("Fight Over");
       console.log("App State: ", this.state)
@@ -78,7 +109,7 @@ export default class App extends React.Component{
   }
 
   takeItem(newItem){
-    let newItems = this.state.playerCharacter.items;
+    let newItems = this.state.player.items;
     newItems.push(newItem);
     this.setState({items: newItems});
   }
@@ -91,11 +122,13 @@ export default class App extends React.Component{
             gameStarted={(initialState) => this.startGame(initialState)} />
           ) : (
           <GameContainer 
-            player={this.state.playerCharacter} 
+            player={this.state.player} 
+            enemy={this.state.enemy}
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
             takeItem= {(newItem)=> this.takeItem(newItem)}
-            fight= {(action, state)=> this.fight(action, state)}/>
+            fight= {(action, state)=> this.fight(action, state)}
+            />
           )
         }          
       </div>      

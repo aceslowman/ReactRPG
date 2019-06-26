@@ -1,16 +1,21 @@
 export default function battleLogic(state){
-    console.log('battle logic');
-    console.log(state);
+    
     // retrieve player character from state
     let player = state.player;
-    console.log(player);
+    
     // retrieve enemy character from state
-    let enemy = state.passage.nonPlayerCharacters[0];
-    
-    
+    //let enemy = state.passage.nonPlayerCharacters[0];
+    let enemy = state.enemy;
 
     let playerFirst = Math.random() > 0.5 ? true : false;
-    console.log(playerFirst);
+    
+    console.group('battle logic');
+    console.log('state', state);
+    console.log('enemy', enemy);
+    console.log('player', player);
+    console.log('playerFirst', playerFirst);
+    console.groupEnd();
+
     if (playerFirst){
         if (playerAttack(player, enemy)) {
             console.log( "you defeated"+ enemy.name +"!!");
