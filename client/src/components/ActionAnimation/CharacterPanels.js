@@ -10,7 +10,6 @@ const styles ={
         height:'100%',
         width:'100%',
         marginTop: "5%" 
-
     },
     slider:{
       position:'relative',
@@ -20,7 +19,6 @@ const styles ={
       padding:'25px',
       width:'150px',
       opacity: '1.5'
-      
     }
 }
 
@@ -34,17 +32,30 @@ export default class Animation extends React.Component{
         };
     }
 
-    StartSliderAnimation(){
-      console.log("start function");
-        this.setState({
-            animationStarted: true
-        });
+  StartSliderAnimation(){
+    console.log("start function");
+      this.setState({
+          animationStarted: true
+      });
+  }
+
+  componentDidMount(){
+    // this.setState({
+    //   position: this.props.left ? this.props.position : this.props.position + 150
+    // })
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.position !== this.props.position){
+      // this.setState({
+      //   position: this.props.left ? this.props.position : this.props.position + 150
+      // })
     }
+  }
   
 
   render(){
-    //console.log(this.props);
-    let pos = this.props.left ? {left: this.props.position} : {right : this.props.position};
+    let pos = this.props.left ? {float: 'right', right: this.props.position } : {float: 'left', left : this.props.position};
 
     return(
       <div style={{...styles.wrapper}} >

@@ -12,8 +12,7 @@ const styles = {
         display: 'flex',
         justifyContent: "center",
         overflow: 'hidden',
-        flexDirection: 'column'
-          
+        flexDirection: 'column'   
     },
     Wrapper:{
         textAlign: 'center',
@@ -22,7 +21,8 @@ const styles = {
         height:'100%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        position:'relative',
     },
     actionImage:{
         height: '125%',
@@ -37,7 +37,8 @@ export default class AnimationBox extends React.Component{
         super(props);
         this.state = {
             Animation:'',
-            position: -360
+            position: '101%',
+            active: false
         };
     }
 
@@ -47,36 +48,32 @@ export default class AnimationBox extends React.Component{
         // this.setState({
         //   PositionLeft
         // })
-        if(this.state.position < 0){
-          this.setState({position: "3rem"})
-        }else {
-          this.setState({position: -360})
+        if(this.state.active){
+            this.setState({position: '101%', active: false})
+        }else{
+            this.setState({position: '0px', active: true})
         }
-      }
-
+    }
 
     render(){
         return(
-            <div style= {{...styles.animationBoxStyle}}>
-                <div style= {{...styles.actionImage}}>
-                    <button onClick ={()=>this.move()}>CLICK ME</button>
+            <React.Fragment>
+                <button onClick={() => this.move()}>CLICK ME</button>
+                <div style={{ ...styles.animationBoxStyle }}>
+                    <div style={{ ...styles.Wrapper }}>
+                        <CharacterPanel
+                            left={true}
+                            position={this.state.position}
+                            move={() => this.move()}
+                            character={{ name: "JIL", MAXHP: 100, HP: 100, AP: 30 }} />
+                        <CharacterPanel
+                            left={false}
+                            position={this.state.position}
+                            move={() => this.move()}
+                            character={{ name: "Drake", MAXHP: 100, HP: 50, AP: 25 }} />
+                    </div>
                 </div>
-                <div style={{...styles.Wrapper}}>
-                    
-                    <CharacterPanel  
-                    left={true}
-                    position = {this.state.position}
-                    move = {()=>this.move()} 
-                    character = {{ name : "JIL", MAXHP:100 , HP:100, AP:30}}/>
-                    <CharacterPanel
-                    left={false}
-                    position = {this.state.position}
-                    move = {()=>this.move()}
-                    character= {{name :"Drake", MAXHP:100, HP:50 , AP:25}} />
-                </div>
-                
-
-            </div>
+            </React.Fragment>
         )
     }
 }
