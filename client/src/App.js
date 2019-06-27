@@ -15,7 +15,8 @@ export default class App extends React.Component{
     super();
     this.state = {
       renderStartMenu: true,
-      enemy: ''
+      enemy: '',
+      loadingText: false
     };
   }
   
@@ -69,11 +70,14 @@ export default class App extends React.Component{
     }
 
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
+      console.log('Hit Leaf', 'fetch begins');
+      this.setState({loadingText: true});
       fetch(`/api/passages/${passageId}`)
       .then(res=>res.json())
       .then((passage)=>{
         this.setState({
-          passage: {...passage} 
+          passage: {...passage},
+          loadingText: false 
         });
       }); 
       console.log(this.state); 
@@ -83,8 +87,7 @@ export default class App extends React.Component{
     } 
   }
 
-  fight(action, props){
-    
+  fight(action, props){    
     gameLogic(action, props);
     this.setState({});
 
@@ -120,7 +123,8 @@ export default class App extends React.Component{
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
             takeItem= {(newItem)=> this.takeItem(newItem)}
-            fight= {(action, props)=> this.fight(action, props)}/>
+            fight= {(action, props)=> this.fight(action, props)}
+            loadingText= {this.state.loadingText}/>
           )
         }          
       </div>      
