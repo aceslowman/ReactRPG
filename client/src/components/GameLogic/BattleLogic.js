@@ -7,8 +7,6 @@ export default function battleLogic(props){
     // retrieve enemy character from props
     let enemy = props.enemy;
     
-    
-
     let playerFirst = Math.random() > 0.5 ? true : false;
     console.log(playerFirst);
     if (playerFirst){
@@ -19,6 +17,7 @@ export default function battleLogic(props){
         } else {
             if (enemyAttack(enemy, player)) {
                 console.log( " you have been slap down by)"+ enemy.name +".");
+                props.passage.isFight = false;
                 return;
             } else {
                 console.log( "damage has been inflicted");
@@ -33,6 +32,7 @@ export default function battleLogic(props){
         } else {
             if (playerAttack(player, enemy)) {
                 console.log( "you defeated"+ enemy.name +"!!")//make a passage for this
+                props.passage.isFight = false;
                 return;
             } else {
                 console.log( "damage has been inflicted")//make passage for this 
@@ -55,8 +55,7 @@ function playerAttack(player, enemy){
         console.log('Enemy HP: ', enemy.HP);
         console.log('Player HP : ', player.HP);
         return false;
-    }
-    
+    }  
 }
 //supporting function for enemies attack phase with in switch.
 function enemyAttack(enemy, player){
@@ -73,5 +72,4 @@ function enemyAttack(enemy, player){
         console.log('Player HP : ', player.HP);
         return false;
     }
-
 }

@@ -41,19 +41,13 @@ export default class AnimationBox extends React.Component{
         };
     }
 
-    move = () => {
-        // let {PositionLeft} = this.state;
-        // PositionLeft+= window.innerWidth / 2;
-        // this.setState({
-        //   PositionLeft
-        // })
+    move(){
         if(this.state.position < 0){
           this.setState({position: "3rem"})
         }else {
           this.setState({position: -360})
         }
-      }
-
+    }
 
     render(){
         return(
@@ -80,3 +74,5 @@ export default class AnimationBox extends React.Component{
         )
     }
 }
+
+

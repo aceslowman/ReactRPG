@@ -37,7 +37,7 @@ export default class ActionButtonBar extends React.Component{
                             index= {index}
                             takeItem= {(newItem)=> this.props.takeItem(newItem)} 
                             nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
-                            fight= {(action, state)=> this.props.fight(action, state)}
+                            fight= {(action, props)=> this.props.fight(action, props)}
                             key = {action.text}/> 
                     ))
                 }

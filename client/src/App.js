@@ -23,7 +23,7 @@ export default class App extends React.Component{
     //console.log(initialState);
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
-    passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to battle 
+    passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to drake battle 
     
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
@@ -86,14 +86,9 @@ export default class App extends React.Component{
   fight(action, props){
     
     gameLogic(action, props);
-    // let newPlayerHP = props.player.HP;
-    // this.setState({palyer: {HP: newPlayerHP}}); 
-    // let newEnemyHP = props.player.HP;
-    // this.setState({enemy: {HP: newEnemyHP}});
+    this.setState({});
 
-    console.log("After action: ", this.state);
-
-    if (!props.passage.isFight){
+    if (!this.state.passage.isFight){
       console.log("Fight Over");
       console.log("App State: ", this.state);
       if(props.player.HP !== 0){
@@ -102,6 +97,8 @@ export default class App extends React.Component{
         this.nextPassage(props.passage.nextPassages[1].path);
       }
     }
+    console.log("After action: ", this.state);
+    this.setState({});
   }
 
   takeItem(newItem){
@@ -123,7 +120,7 @@ export default class App extends React.Component{
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
             takeItem= {(newItem)=> this.takeItem(newItem)}
-            fight= {(action, state)=> this.fight(action, state)}/>
+            fight= {(action, props)=> this.fight(action, props)}/>
           )
         }          
       </div>      

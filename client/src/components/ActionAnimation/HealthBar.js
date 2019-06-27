@@ -14,10 +14,8 @@ const styles ={
         height: '100%',
         backgroundColor: 'blue',
         borderRadius:'15px'
-
     }
 }
-
 
 export default class HeathBar extends React.Component{
 
@@ -25,11 +23,9 @@ export default class HeathBar extends React.Component{
         return(
             <div style={styles.container}>
                  <div style={{...styles.progressInner, width:`${this.props.progress}%`}}>
-                 {this.props.character.HP}/{this.props.character.MAXHP}
+                  {this.props.character.HP}/{this.props.character.MAXHP}
                  </div>
             </div>
-
         )
     }
-
 }

@@ -22,7 +22,7 @@ const styles ={
       opacity: '1.5'
       
     }
-}
+};
 
 export default class Animation extends React.Component{
     constructor(props){
@@ -41,7 +41,6 @@ export default class Animation extends React.Component{
         });
     }
   
-
   render(){
     //console.log(this.props);
     let pos = this.props.left ? {left: this.props.position} : {right : this.props.position};
@@ -50,11 +49,9 @@ export default class Animation extends React.Component{
       <div style={{...styles.wrapper}} >
         <div style={{...styles.slider, ...pos}}>
           <div>{this.props.character.name}</div>
-          
-        
           <HealthBar progress={(this.props.character.HP/this.props.character.MAXHP)*100} character={this.props.character}/>
           {/* <AttackPower character={this.props.character}/> */}
-          <div>{this.props.character.AP}</div>
+          <div>AP: {this.props.character.AP}</div>
 
         </div>
       </div>
