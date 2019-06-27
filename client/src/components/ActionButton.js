@@ -23,8 +23,8 @@ export default class ActionButton extends React.Component{
         
         if(this.props.passage.isFight){
             let action = this.props.passage.actions[num];
-            let state = this.props;
-            this.props.fight(action, state);
+            let props = this.props;
+            this.props.fight(action, props);
             return;
         }
         

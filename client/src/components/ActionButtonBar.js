@@ -32,6 +32,7 @@ export default class ActionButtonBar extends React.Component{
                 {this.props.passage.actions.map((action,index)=> (
                      <ActionButton {...this.props} 
                             player = {this.props.player}
+                            enemy= {this.props.enemy}
                             text= {action.text} 
                             index= {index}
                             takeItem= {(newItem)=> this.props.takeItem(newItem)} 

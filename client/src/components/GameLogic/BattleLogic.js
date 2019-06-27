@@ -1,11 +1,11 @@
-export default function battleLogic(state){
+export default function battleLogic(props){
     console.log('battle logic');
-    console.log(state);
-    // retrieve player character from state
-    let player = state.player;
+    console.log(props);
+    // retrieve player character from props
+    let player = props.player;
     console.log(player);
-    // retrieve enemy character from state
-    let enemy = state.passage.nonPlayerCharacters[0];
+    // retrieve enemy character from props
+    let enemy = props.enemy;
     
     
 
@@ -14,7 +14,7 @@ export default function battleLogic(state){
     if (playerFirst){
         if (playerAttack(player, enemy)) {
             console.log( "you defeated"+ enemy.name +"!!");
-            state.passage.isFight = false;
+            props.passage.isFight = false;
             return;       
         } else {
             if (enemyAttack(enemy, player)) {
@@ -28,7 +28,7 @@ export default function battleLogic(state){
     } else {
         if (enemyAttack(enemy, player)) {
             console.log( " you have been slap down by)"+ enemy.name +".")//make passage for this #1 return index with array of battle passage
-            state.passage.isFight = false;
+            props.passage.isFight = false;
             return ;
         } else {
             if (playerAttack(player, enemy)) {

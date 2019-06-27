@@ -1,6 +1,6 @@
 import React from 'react';
 import HealthBar from './HealthBar';
-import AttackPower from './AttackPower';
+//import AttackPower from './AttackPower';
 
 
 const styles ={

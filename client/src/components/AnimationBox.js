@@ -67,12 +67,12 @@ export default class AnimationBox extends React.Component{
                     left={true}
                     position = {this.state.position}
                     move = {()=>this.move()} 
-                    character = {{ name : "JIL", MAXHP:100 , HP:100, AP:30}}/>
+                    character = {this.props.player}/>
                     <CharacterPanel
                     left={false}
                     position = {this.state.position}
                     move = {()=>this.move()}
-                    character= {{name :"Drake", MAXHP:100, HP:50 , AP:25}} />
+                    character= {this.props.enemy} />
                 </div>
                 
 

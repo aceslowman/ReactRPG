@@ -15,6 +15,7 @@ export default class App extends React.Component{
     super();
     this.state = {
       renderStartMenu: true,
+      enemy: ''
     };
   }
   
@@ -46,8 +47,26 @@ export default class App extends React.Component{
     });
   }
 
+  // componentDidUpdate(){
+  //   console.log('Current Enemy:',this.state.enemy);
+  // }
+
   nextPassage(nextPassage, action){
     let passageId = nextPassage._id; 
+    console.log(nextPassage);
+    
+    if(nextPassage.isFight){
+      let index;
+      if (nextPassage.nonPlayerCharacters.length > 1){
+        // grab random if there are more than one enemies
+        index = Math.floor(nextPassage.nonPlayerCharacters.length * Math.random());
+      }else{ 
+        // or grab only element
+        index = 0;
+      }   
+      let currentEnemy = nextPassage.nonPlayerCharacters[index];   
+      this.setState({ enemy: currentEnemy });
+    }
 
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
       fetch(`/api/passages/${passageId}`)
@@ -56,23 +75,31 @@ export default class App extends React.Component{
         this.setState({
           passage: {...passage} 
         });
-      });  
+      }); 
+      console.log(this.state); 
     } else{
       this.setState({passage: nextPassage});
-    }  
+      console.log(this.state);
+    } 
   }
 
-  fight(action, state){
-    gameLogic(action, state);
-    let newPlayerHP = state.player.HP;
-    this.setState({palyer: {HP: newPlayerHP}}); 
-    if (!state.passage.isFight){
+  fight(action, props){
+    
+    gameLogic(action, props);
+    // let newPlayerHP = props.player.HP;
+    // this.setState({palyer: {HP: newPlayerHP}}); 
+    // let newEnemyHP = props.player.HP;
+    // this.setState({enemy: {HP: newEnemyHP}});
+
+    console.log("After action: ", this.state);
+
+    if (!props.passage.isFight){
       console.log("Fight Over");
-      console.log("App State: ", this.state)
-      if(state.player.HP !== 0){
-        this.nextPassage(state.passage.nextPassages[0].path);
+      console.log("App State: ", this.state);
+      if(props.player.HP !== 0){
+        this.nextPassage(props.passage.nextPassages[0].path);
       }else{
-        this.nextPassage(state.passage.nextPassages[1].path);
+        this.nextPassage(props.passage.nextPassages[1].path);
       }
     }
   }
@@ -91,7 +118,8 @@ export default class App extends React.Component{
             gameStarted={(initialState) => this.startGame(initialState)} />
           ) : (
           <GameContainer 
-            player={this.state.playerCharacter} 
+            player={this.state.playerCharacter}
+            enemy= {this.state.enemy} 
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
             takeItem= {(newItem)=> this.takeItem(newItem)}
