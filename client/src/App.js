@@ -15,6 +15,7 @@ export default class App extends React.Component{
     super();
     this.state = {
       renderStartMenu: true,
+<<<<<<< HEAD
       isFighting: false,
       // enemies: {
       //   drake: {
@@ -24,6 +25,10 @@ export default class App extends React.Component{
       //     friendly: false,
       //   }
       // }
+=======
+      enemy: '',
+      loadingText: false
+>>>>>>> 8f46517ea36eb71396e47445ca5e83431b9050f0
     };
   }
   
@@ -31,6 +36,7 @@ export default class App extends React.Component{
     //console.log(initialState);
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
+    //passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to drake battle 
     
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
@@ -54,36 +60,60 @@ export default class App extends React.Component{
     });
   }
 
-  nextPassage(nextPassage,action){
-    let passageId = nextPassage._id; 
-    console.log(action)
-    //if()
-    gameLogic(action,this.state)
-  //   switch(action.class){
-  //     case 'FIGHT':
-  //         console.log("HIT");
-  //         battleLogic(state);
-  //         break;
-  //     case 'FLEE':
-  //         //fleeLogic(state);
-  //         break;
-  //     case 'TAKE':
-  //         //if statement for random chance
-  //         break;
-  //     default:
-  //         break;
+  // componentDidUpdate(){
+  //   console.log('Current Enemy:',this.state.enemy);
   // }
+
+  nextPassage(nextPassage, action){
+    let passageId = nextPassage._id; 
+    console.log(nextPassage);
+    
+    if(nextPassage.isFight){
+      let index;
+      if (nextPassage.nonPlayerCharacters.length > 1){
+        // grab random if there are more than one enemies
+        index = Math.floor(nextPassage.nonPlayerCharacters.length * Math.random());
+      }else{ 
+        // or grab only element
+        index = 0;
+      }   
+      let currentEnemy = nextPassage.nonPlayerCharacters[index];   
+      this.setState({ enemy: currentEnemy });
+    }
+
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
+      console.log('Hit Leaf', 'fetch begins');
+      this.setState({loadingText: true});
       fetch(`/api/passages/${passageId}`)
       .then(res=>res.json())
       .then((passage)=>{
-          this.setState({
-          passage: {...passage} 
+        this.setState({
+          passage: {...passage},
+          loadingText: false 
         });
-      });  
+      }); 
+      console.log(this.state); 
     } else{
       this.setState({passage: nextPassage});
-    }      
+      console.log(this.state);
+    } 
+  }
+
+  fight(action, props){    
+    gameLogic(action, props);
+    this.setState({});
+
+    if (!this.state.passage.isFight){
+      console.log("Fight Over");
+      console.log("App State: ", this.state);
+      if(props.player.HP !== 0){
+        this.nextPassage(props.passage.nextPassages[0].path);
+      }else{
+        this.nextPassage(props.passage.nextPassages[1].path);
+      }
+    }
+    console.log("After action: ", this.state);
+    this.setState({});
   }
 
   takeItem(newItem){
@@ -100,11 +130,13 @@ export default class App extends React.Component{
             gameStarted={(initialState) => this.startGame(initialState)} />
           ) : (
           <GameContainer 
-            player={this.state.playerCharacter} 
+            player={this.state.playerCharacter}
+            enemy= {this.state.enemy} 
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
             takeItem= {(newItem)=> this.takeItem(newItem)}
-            isFighting= {this.state.isFighting}/>
+            fight= {(action, props)=> this.fight(action, props)}
+            loadingText= {this.state.loadingText}/>
           )
         }          
       </div>      

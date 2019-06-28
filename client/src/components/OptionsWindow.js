@@ -32,12 +32,12 @@ export default class OptionsWindow extends React.Component{
         return(
             <div style={{...styles.wrapper, display: this.props.modalOpen ? 'block' : 'none' }} >
                 <h1>Options</h1>
-                <audio controls autoPlay>
+                <audio controls >
                     <source 
                     src='audio/473996__esistnichtsoernst__space-arp-f-chords.wav' type="audio/wav">      
                     </source>
                 </audio>
-                <button onClick={()=>this.props.onClose()}>Cancel</button>
+                <button onClick={()=>this.props.onClose()}>Return</button>
             </div>
         )
     }

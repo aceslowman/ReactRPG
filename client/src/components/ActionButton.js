@@ -16,10 +16,18 @@ export default class ActionButton extends React.Component{
     }
 
     onClick(){
-        console.log('Click!');
+        //console.log('Click!');
         let num = this.props.index;
-        console.log(this.props.passage)
+        //console.log(this.props.passage)
         let nextPassage = this.props.passage.nextPassages[num].path;
+        
+        if(this.props.passage.isFight){
+            let action = this.props.passage.actions[num];
+            let props = this.props;
+            this.props.fight(action, props);
+            return;
+        }
+        
         if(this.props.passage.availableItems.length > 0){
             let hasItem = false;
             let newItem = this.props.passage.availableItems[0];        
@@ -30,7 +38,7 @@ export default class ActionButton extends React.Component{
                 this.props.takeItem(newItem);
             }
         }
-        console.log(num);
+        //console.log(num);
         //console.log(nextPassage);
         this.props.nextPassage(nextPassage,this.props.passage.actions[num] );
     }
