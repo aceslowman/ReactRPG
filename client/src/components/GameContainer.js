@@ -59,7 +59,7 @@ export default class GameContainer extends React.Component{
                 <PromptTextBox 
                     passage= {this.props.passage}
                     loadingText= {this.props.loadingText} />
-                {this.props.passage && <ActionButtonBar // check prop HERE, only render ActionButtonBar when it's ready.
+                {(this.props.passage && !this.props.loadingText) && <ActionButtonBar // check prop HERE, only render ActionButtonBar when it's ready.
                     player = {this.props.player}
                     enemy= {this.props.enemy}
                     passage= {this.props.passage}
