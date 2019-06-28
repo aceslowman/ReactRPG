@@ -24,9 +24,11 @@ export default function battleLogic(state){
         } else {
             if (enemyAttack(enemy, player)) {
                 console.log( " you have been slap down by)"+ enemy.name +".");
+                state.passage.isFight=false;
                 return;
             } else {
                 console.log( "damage has been inflicted");
+                state.passage.isFight=true;
                 return;
             }
         }
@@ -38,9 +40,11 @@ export default function battleLogic(state){
         } else {
             if (playerAttack(player, enemy)) {
                 console.log( "you defeated"+ enemy.name +"!!")//make a passage for this
+                state.passage.isFight= false;
                 return;
             } else {
-                console.log( "damage has been inflicted")//make passage for this 
+                console.log( "damage has been inflicted")//make passage for this
+                state.passage.isFight=true;
                 return;
             }     
         }       
