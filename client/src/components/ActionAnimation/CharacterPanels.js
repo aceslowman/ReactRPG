@@ -7,9 +7,9 @@ const styles ={
     wrapper:{
         display:'block',
         backgroundColor:'rgba(76, 175, 150, 0.3)',
-        height:'100%',
+        height:'80%',
         width:'100%',
-        marginTop: "5%" 
+        marginTop: "1%" 
 
     },
     slider:{

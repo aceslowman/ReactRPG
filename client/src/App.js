@@ -15,20 +15,8 @@ export default class App extends React.Component{
     super();
     this.state = {
       renderStartMenu: true,
-<<<<<<< HEAD
-      isFighting: false,
-      // enemies: {
-      //   drake: {
-      //     name: "Drake",
-      //     AP: 15,
-      //     HP: 10,
-      //     friendly: false,
-      //   }
-      // }
-=======
       enemy: '',
-      loadingText: false
->>>>>>> 8f46517ea36eb71396e47445ca5e83431b9050f0
+      loadingText: false,
     };
   }
   

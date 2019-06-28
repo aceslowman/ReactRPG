@@ -1,5 +1,6 @@
 import React from 'react';
 import CharacterPanel from './ActionAnimation/CharacterPanels'; 
+import DragonFight from '../images/dragon_fight.jpg';
 
 //blank box in game container atm
 const styles = {
@@ -25,9 +26,13 @@ const styles = {
         justifyContent: 'center'
     },
     actionImage:{
-        height: '125%',
+        height: '150%',
         width: '100%',
-        backgroundColor: 'rgba(255, 0, 255, 0.3)'
+        backgroundColor: 'rgba(255, 0, 255, 0.3)',
+        backgroundImage: '',
+        backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
     }
     
 }
@@ -37,7 +42,8 @@ export default class AnimationBox extends React.Component{
         super(props);
         this.state = {
             Animation:'',
-            position: -360
+            position: -360,
+            visible: false
         };
     }
 
@@ -47,6 +53,27 @@ export default class AnimationBox extends React.Component{
         }else {
           this.setState({position: -360})
         }
+    }
+
+    componentDidUpdate(prevProps){
+        //console.log('AnimationBox', this.props.passage);
+        console.log("AnimationBox PrevProps", prevProps);
+        if(prevProps.passage && this.props.passage.isFight !== prevProps.passage.isFight ){
+            this.move();
+            styles.actionImage.backgroundImage = `url(${DragonFight})`;
+            //styles.actionImage.backgroundSize = 'cover';
+            this.setState({visible: true});
+        }
+        if(this.state.visible && !this.props.passage.isFight){
+            this.move();
+            styles.actionImage.backgroundImage = ``;
+            //styles.actionImage.backgroundSize = 'cover'
+
+            this.setState({visible: false});
+        }
+        
+
+
     }
 
     render(){
