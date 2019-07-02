@@ -31,7 +31,7 @@ const PassageSchema = new mongoose.Schema({
         autopopulate: true
     }],
     nextPassages: [NextPassageSchema],
-    nextLocations: [NextLocationsSchema],
+    location: String,
     nonPlayerCharacters:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'NonPlayerCharacter',
@@ -40,3 +40,6 @@ const PassageSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Passage', PassageSchema);
+
+
+//nextLocations: [NextLocationsSchema],

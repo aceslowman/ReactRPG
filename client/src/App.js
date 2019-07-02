@@ -85,6 +85,7 @@ export default class App extends React.Component{
       this.setState({passage: nextPassage});
       console.log(this.state);
     } 
+    this.setState({});
   }
 
   fight(action, props){    

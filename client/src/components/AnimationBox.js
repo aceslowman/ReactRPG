@@ -71,17 +71,12 @@ export default class AnimationBox extends React.Component{
 
             this.setState({visible: false});
         }
-        
-
-
     }
 
     render(){
         return(
             <div style= {{...styles.animationBoxStyle}}>
-                <div style= {{...styles.actionImage}}>
-                    <button onClick ={()=>this.move()}>CLICK ME</button>
-                </div>
+                <div style= {{...styles.actionImage}}></div>
                 <div style={{...styles.Wrapper}}>
                     
                     <CharacterPanel  

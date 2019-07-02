@@ -226,7 +226,8 @@ apiRouter.post('/passages', (req,res)=>{
         text: req.body.text,
         actions: req.body.actions,
         nextPassages: req.body.nextPassages,
-        nextLocations: req.body.nextLocations
+        location: req.body.location
+        //nextLocations: req.body.nextLocations
     });
 
     newPassage.save((err)=>{
