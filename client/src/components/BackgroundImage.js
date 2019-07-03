@@ -16,6 +16,7 @@ export default class BackgroundImage extends React.Component{
         super(props);
         this.state = {
             currentImage: HomeInsideBG,
+            prevImage: HomeInsideBG,
             newImage: false
         };
     }
@@ -30,48 +31,56 @@ export default class BackgroundImage extends React.Component{
                 case 'HOME':
                     this.setState({
                         currentImage: HomeInsideBG,
+                        prevImage: this.state.currentImage,
                         newImage: true
                     });
                     break;
                 case 'YARD':
                     this.setState({
                         currentImage: HomeOutsideBG,
+                        prevImage: this.state.currentImage,
                         newImage: true
                     });
                     break;
                 case 'HOMEROAD':
                     this.setState({
                         currentImage: HomeRoadBG,
+                        prevImage: this.state.currentImage,
                         newImage: true
                     });
                     break;
                 case 'CROSSROADS':
                     this.setState({
                         currentImage: CrossroadBG,
+                        prevImage: this.state.currentImage,
                         newImage: true
                     });
                     break;
                 case 'FORRESTROAD':
                     this.setState({
                         currentImage: ForrestRoadBG,
+                        prevImage: this.state.currentImage,
                         newImage: true
                     });
                     break;
                 case 'TOWN':
                     this.setState({
                         currentImage: TownBG,
+                        prevImage: this.state.currentImage,
                         newImage: true
                     });
                     break;
                 case 'TOWNROAD':
                     this.setState({
                         currentImage: TownRoadBG,
+                        prevImage: this.state.currentImage,
                         newImage: true
                     });
                     break;
                 case 'NEST':
                     this.setState({
                         currentImage: NestBG,
+                        prevImage: this.state.currentImage,
                         newImage: true
                     });
                     break;
@@ -88,6 +97,7 @@ export default class BackgroundImage extends React.Component{
 
     render(){
         return(   
+            <>
             <CSSTransition
                 in= {this.state.newImage}
                 appear= 'true'
@@ -104,6 +114,16 @@ export default class BackgroundImage extends React.Component{
                     </img>          
                 </React.Fragment>  
             </CSSTransition> 
+            <React.Fragment>
+            <img 
+                className='prevImageStyle' 
+                src= {this.state.prevImage} 
+                alt= 'Previous Background'
+            >  
+            </img>          
+            </React.Fragment>
+            </>
+
         )
     }
 }

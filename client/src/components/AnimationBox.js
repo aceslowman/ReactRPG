@@ -9,7 +9,7 @@ const styles = {
         borderRadius: '20px',
         height: '60%',
         width: '90%',
-        background: 'rgba(0, 0, 0, 0.3)',
+        background: 'rgba(0, 0, 0, 0)',
         display: 'flex',
         justifyContent: "center",
         overflow: 'hidden',
@@ -18,7 +18,7 @@ const styles = {
     },
     Wrapper:{
         textAlign: 'center',
-        backgroundColor: 'rgba(0, 255, 255, 0.3)',
+        backgroundColor: 'rgba(0, 255, 255, 0)',
         width:'100%',
         height:'100%',
         display: 'flex',
@@ -28,7 +28,7 @@ const styles = {
     actionImage:{
         height: '150%',
         width: '100%',
-        backgroundColor: 'rgba(255, 0, 255, 0.3)',
+        backgroundColor: 'rgba(255, 0, 255, 0)',
         backgroundImage: '',
         backgroundSize: 'contain',
         backgroundPosition: 'center',
@@ -42,16 +42,16 @@ export default class AnimationBox extends React.Component{
         super(props);
         this.state = {
             Animation:'',
-            position: -360,
+            position: -400,
             visible: false
         };
     }
 
     move(){
         if(this.state.position < 0){
-          this.setState({position: "3rem"})
+          this.setState({position: "4rem"});
         }else {
-          this.setState({position: -360})
+          this.setState({position: -400});
         }
     }
 

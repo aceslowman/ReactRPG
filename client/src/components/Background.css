@@ -3,18 +3,14 @@
     width: 100%;
     height: auto
 }
-.background-appear {
-    opacity: 0.01;
-}
-  
-  /* ending ENTER animation */
-.background-appear-active {
-    opacity: 1;
-    transition: all 700ms ease-out;
+.prevImageStyle{
+  position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: -200
 }
 
-
-
+/* ending ENTER animation */
 .background-enter {
     opacity: 0.01;
 }
