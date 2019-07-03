@@ -5,27 +5,18 @@ import WorldMap from './WorldMap.js';
 import ActionButtonBar from './ActionButtonBar';
 import AnimationBox from './AnimationBox';
 import CharacterIcon from './CharacterIcon';
-
-import CrossroadBG from './../images/crossroad.jpg';
-import ForrestRoadBG from './../images/forestRoad.jpg';
-import HomeInsideBG from './../images/homeInside.jpg';
-import HomeOutsideBG from './../images/forestShack.jpg';
-import NestBG from './../images/drakeNest.jpg';
-import HomeRoadBG from './../images/roadHome.jpg';
-import TownBG from './../images/town.jpg';
-import TownRoadBG from './../images/roadToTown.jpg';
-
+import BackgroundImage from './BackgroundImage';
 
 
 const styles = {
     gameContainerStyle: {
-                backgroundImage: `url(${HomeInsideBG})`,
-            backgroundPosition: 'center',
+        backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         height: '100%',
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        width: '100%'
     },   
     infoDivStyle:  {
         padding: '15px',
@@ -41,97 +32,51 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         width: '64%'
-    }   
+    }
 };
 
 export default class GameContainer extends React.Component{
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            
+        };
     }
     componentDidMount(){
         console.log(this.props); 
     }
-    componentDidUpdate(prevProps){
-        if(prevProps.passage&& (this.props.passage.location !== prevProps.passage.location)){
-            
-            let location = this.props.passage.location;
-            
-            switch (location) {
-                case 'HOME':
-                    styles.gameContainerStyle.backgroundImage = `url(${HomeInsideBG})`;
-                    break;
-                case 'YARD':
-                    styles.gameContainerStyle.backgroundImage = `url(${HomeOutsideBG})`;
-                    break;
-                case 'HOMEROAD':
-                    styles.gameContainerStyle.backgroundImage = `url(${HomeRoadBG})`;
-                    break;
-                case 'CROSSROADS':
-                    styles.gameContainerStyle.backgroundImage = `url(${CrossroadBG})`;
-                    break;
-                case 'FORRESTROAD':
-                    styles.gameContainerStyle.backgroundImage = `url(${ForrestRoadBG})`;
-                    break;
-                case 'TOWN':
-                    styles.gameContainerStyle.backgroundImage = `url(${TownBG})`;
-                    break;
-                case 'TOWNROAD':
-                    styles.gameContainerStyle.backgroundImage = `url(${TownRoadBG})`;
-                    break;
-                case 'NEST':
-                    styles.gameContainerStyle.backgroundImage = `url(${NestBG})`;
-                    break;
-
-                default: 
-
-                    break;
-            }
-            this.setState({});
-            console.log(this.props)
-        }
 
 
 
-    }
-
-    
-
-    
-
-
-
-
-    render(){
-        
-        
-        
-        
-        
+    render(){        
         return(
-        <div style= {{...styles.gameContainerStyle}}>
-            <div style= {{...styles.infoDivStyle}}>
-                <WorldMap/>
-                <CharacterIcon image= {this.props.player.image}/>
-                <PlayerStatBox player={this.props.player}/>
+            <div style= {{...styles.gameContainerStyle}}>
+                <div style={{position:'absolute', zIndex:-100, height: '100%', width: '100%', overflow: 'hidden'}}>
+                   <BackgroundImage passage = {this.props.passage}/>
+                </div>
+            
+                <div style= {{...styles.infoDivStyle}}>
+                    <WorldMap/>
+                    <CharacterIcon image= {this.props.player.image}/>
+                    <PlayerStatBox player={this.props.player}/>
+                </div>
+                <div style= {{...styles.actionDivStyle}}>
+                    <AnimationBox
+                        player = {this.props.player}
+                        enemy= {this.props.enemy}
+                        passage= {this.props.passage}/>
+                    <PromptTextBox 
+                        passage= {this.props.passage}
+                        loadingText= {this.props.loadingText} />
+                    {(this.props.passage && !this.props.loadingText) && <ActionButtonBar // check prop HERE, only render ActionButtonBar when it's ready.
+                        player = {this.props.player}
+                        enemy= {this.props.enemy}
+                        passage= {this.props.passage}
+                        takeItem= {(newItem)=> this.props.takeItem(newItem)} 
+                        nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
+                        fight= {(action, props)=> this.props.fight(action, props)}/>}
+                </div>
             </div>
-            <div style= {{...styles.actionDivStyle}}>
-                <AnimationBox
-                    player = {this.props.player}
-                    enemy= {this.props.enemy}
-                    passage= {this.props.passage}/>
-                <PromptTextBox 
-                    passage= {this.props.passage}
-                    loadingText= {this.props.loadingText} />
-                {(this.props.passage && !this.props.loadingText) && <ActionButtonBar // check prop HERE, only render ActionButtonBar when it's ready.
-                    player = {this.props.player}
-                    enemy= {this.props.enemy}
-                    passage= {this.props.passage}
-                    takeItem= {(newItem)=> this.props.takeItem(newItem)} 
-                    nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
-                    fight= {(action, props)=> this.props.fight(action, props)}/>}
-            </div>
-        </div>
         )
     }
 }
