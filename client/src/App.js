@@ -25,7 +25,7 @@ export default class App extends React.Component{
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
     //passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to drake battle 
-    passageId = '5d0e56477314d23a931bb3d4'; // go striaght to crossroads
+    //passageId = '5d0e56477314d23a931bb3d4'; // go striaght to crossroads
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
     .then((player)=>{
