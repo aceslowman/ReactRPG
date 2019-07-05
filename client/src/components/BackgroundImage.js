@@ -117,7 +117,7 @@ export default class BackgroundImage extends React.Component{
                 <React.Fragment>
                     <CSSTransition
                         in= {this.state.newImage}
-                        appear= 'true'
+                        appear= {true}
                         classNames= 'background'
                         timeout= {700} 
                         onEntered= {() => this.setNewImage(false)}> 

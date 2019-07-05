@@ -10,7 +10,19 @@
     z-index: -200
 }
 
-/* ending ENTER animation */
+.background-appear {
+  opacity: 0.01;
+}
+
+/* ending Appear animation */
+.background-appear-active {
+  opacity: 1;
+  transition: all 700ms ease-out;
+}
+
+
+
+/* starting ENTER animation */
 .background-enter {
     opacity: 0.01;
 }
