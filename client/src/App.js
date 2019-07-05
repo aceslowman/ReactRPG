@@ -25,7 +25,7 @@ export default class App extends React.Component{
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
     //passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to drake battle 
-    
+    passageId = '5d0e56477314d23a931bb3d4'; // go striaght to crossroads
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
     .then((player)=>{
@@ -93,22 +93,30 @@ export default class App extends React.Component{
     this.setState({});
 
     if (!this.state.passage.isFight){
-      console.log("Fight Over");
-      console.log("App State: ", this.state);
-      if(props.player.HP !== 0){
+      //console.log("Fight Over");
+      //console.log("App State: ", this.state);
+      if(props.player.HP !== 0 && action.class !== 'FLEE'){
         this.nextPassage(props.passage.nextPassages[0].path);
-      }else{
+      }else if(action.class === 'FLEE'){
         this.nextPassage(props.passage.nextPassages[1].path);
+      }else{
+        this.nextPassage(props.passage.nextPassages[2].path);
       }
     }
-    console.log("After action: ", this.state);
+    //console.log("After action: ", this.state);
     this.setState({});
   }
 
-  takeItem(newItem){
-    let newItems = this.state.playerCharacter.items;
-    newItems.push(newItem);
-    this.setState({items: newItems});
+  takeItem(newItem, props){
+    if(newItem.name === 'Gold'){
+        let spoils = Math.round(Math.random()*5);
+        let player = props.player;
+        player.gold += spoils;
+    }else{
+      let newItems = this.state.playerCharacter.items;
+      newItems.push(newItem);
+      this.setState({items: newItems});
+    }
   }
 
   render(){
@@ -123,7 +131,7 @@ export default class App extends React.Component{
             enemy= {this.state.enemy} 
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
-            takeItem= {(newItem)=> this.takeItem(newItem)}
+            takeItem= {(newItem, props)=> this.takeItem(newItem, props)}
             fight= {(action, props)=> this.fight(action, props)}
             loadingText= {this.state.loadingText}/>
           )

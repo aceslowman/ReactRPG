@@ -8,6 +8,8 @@ import HomeInsideBG from './../images/homeInside.jpg';
 import HomeOutsideBG from './../images/forestShack.jpg';
 import NestBG from './../images/drakeNest.jpg';
 import HomeRoadBG from './../images/roadHome.jpg';
+import SmithBG from './../images/smithy.jpg'; 
+import TavernBG from './../images/tavern.jpg';
 import TownBG from './../images/town.jpg';
 import TownRoadBG from './../images/roadToTown.jpg';
 
@@ -61,6 +63,20 @@ export default class BackgroundImage extends React.Component{
                         currentImage: ForrestRoadBG,
                         prevImage: this.state.currentImage,
                         newImage: true
+                        });
+                    break;
+                case 'TAVERN':
+                    this.setState({
+                        currentImage: TavernBG,
+                        prevImage: this.state.currentImage,
+                        newImage: true
+                        });
+                    break;
+                case 'SMITH':
+                    this.setState({
+                        currentImage: SmithBG,
+                        prevImage: this.state.currentImage,
+                        newImage: true
                     });
                     break;
                 case 'TOWN':
@@ -98,30 +114,25 @@ export default class BackgroundImage extends React.Component{
     render(){
         return(   
             <>
-            <CSSTransition
-                in= {this.state.newImage}
-                appear= 'true'
-                classNames= 'background'
-                timeout= {700} 
-                onEntered= {() => this.setNewImage(false)} 
-               > 
-              <React.Fragment>
+                <React.Fragment>
+                    <CSSTransition
+                        in= {this.state.newImage}
+                        appear= 'true'
+                        classNames= 'background'
+                        timeout= {700} 
+                        onEntered= {() => this.setNewImage(false)}> 
+                        <img 
+                            className='imageStyle' 
+                            src= {this.state.currentImage} 
+                            alt= 'Current Background'>  
+                        </img>          
+                    </CSSTransition> 
                     <img 
-                        className='imageStyle' 
-                        src= {this.state.currentImage} 
-                        alt= 'Current Background'
-                        >  
+                        className='prevImageStyle' 
+                        src= {this.state.prevImage} 
+                        alt= 'Previous Background'>  
                     </img>          
-                </React.Fragment>  
-            </CSSTransition> 
-            <React.Fragment>
-            <img 
-                className='prevImageStyle' 
-                src= {this.state.prevImage} 
-                alt= 'Previous Background'
-            >  
-            </img>          
-            </React.Fragment>
+                </React.Fragment>
             </>
 
         )

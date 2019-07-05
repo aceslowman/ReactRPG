@@ -34,8 +34,9 @@ export default class ActionButton extends React.Component{
             this.props.player.items.forEach((item)=>{
                 if (item._id === newItem._id){ hasItem = true;}
             });
-            if (!hasItem && this.props.text === "Take"){
-                this.props.takeItem(newItem);
+            if (!hasItem && this.props.class === "TAKE"){
+                let props = this.props;
+                this.props.takeItem(newItem, props);
             }
         }
         //console.log(num);

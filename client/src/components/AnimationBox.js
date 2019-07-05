@@ -32,7 +32,8 @@ const styles = {
         backgroundImage: '',
         backgroundSize: 'contain',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        transition: 'all 0.5 ease-out'
     }
     
 }
@@ -42,7 +43,7 @@ export default class AnimationBox extends React.Component{
         super(props);
         this.state = {
             Animation:'',
-            position: -400,
+            position: -410,
             visible: false
         };
     }
@@ -51,18 +52,20 @@ export default class AnimationBox extends React.Component{
         if(this.state.position < 0){
           this.setState({position: "4rem"});
         }else {
-          this.setState({position: -400});
+          this.setState({position: -410});
         }
     }
 
     componentDidUpdate(prevProps){
         //console.log('AnimationBox', this.props.passage);
-        console.log("AnimationBox PrevProps", prevProps);
+        //console.log("AnimationBox PrevProps", prevProps);
         if(prevProps.passage && this.props.passage.isFight !== prevProps.passage.isFight ){
-            this.move();
-            styles.actionImage.backgroundImage = `url(${DragonFight})`;
-            //styles.actionImage.backgroundSize = 'cover';
-            this.setState({visible: true});
+            setTimeout(() =>{
+                this.move();
+                styles.actionImage.backgroundImage = `url(${DragonFight})`;
+                //styles.actionImage.backgroundSize = 'cover';
+                this.setState({visible: true});
+            } , 1000);
         }
         if(this.state.visible && !this.props.passage.isFight){
             this.move();

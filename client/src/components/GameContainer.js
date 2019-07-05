@@ -43,10 +43,8 @@ export default class GameContainer extends React.Component{
         };
     }
     componentDidMount(){
-        console.log(this.props); 
+        //console.log(this.props); 
     }
-
-
 
     render(){        
         return(
@@ -72,7 +70,7 @@ export default class GameContainer extends React.Component{
                         player = {this.props.player}
                         enemy= {this.props.enemy}
                         passage= {this.props.passage}
-                        takeItem= {(newItem)=> this.props.takeItem(newItem)} 
+                        takeItem= {(newItem, props)=> this.props.takeItem(newItem, props)} 
                         nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
                         fight= {(action, props)=> this.props.fight(action, props)}/>}
                 </div>
