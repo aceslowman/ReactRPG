@@ -5,7 +5,7 @@ const NextPassageSchema = new mongoose.Schema({
     path: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Passage',
-        autopopulate: {maxDepth: 2},
+        autopopulate: {maxDepth: 3},
     }
 });
 

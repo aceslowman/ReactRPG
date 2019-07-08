@@ -54,7 +54,7 @@ export default class App extends React.Component{
 
   nextPassage(nextPassage, action){
     let passageId = nextPassage._id; 
-    console.log(nextPassage);
+    console.log('NextPassage:', nextPassage);
     
     if(nextPassage.isFight){
       let index;
@@ -69,6 +69,30 @@ export default class App extends React.Component{
       this.setState({ enemy: currentEnemy });
     }
 
+
+    this.state.passage.nextPassages.forEach((i)=> {
+      let fightComing= false;
+      i.path.nextPassages.forEach((j)=>{
+        if( j.path.isFight){
+          fightComing= true;
+          console.log('fight coming');
+        }
+      });
+      if(fightComing){
+        fetch(`/api/passages/${passageId}`)
+      .then(res=>res.json())
+      .then((passage)=>{
+        this.setState({
+          passage: {...passage},
+          loadingText: false 
+        });
+      }); 
+      }
+    });
+    
+    
+    
+    
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
       console.log('Hit Leaf', 'fetch begins');
       this.setState({loadingText: true});
@@ -83,7 +107,7 @@ export default class App extends React.Component{
       console.log(this.state); 
     } else{
       this.setState({passage: nextPassage});
-      console.log(this.state);
+      console.log('Regular NxtPass');
     } 
     this.setState({});
   }
