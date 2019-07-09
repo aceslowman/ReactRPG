@@ -80,18 +80,15 @@ export default class App extends React.Component{
       });
       if(fightComing){
         fetch(`/api/passages/${passageId}`)
-      .then(res=>res.json())
-      .then((passage)=>{
-        this.setState({
-          passage: {...passage},
-          loadingText: false 
-        });
-      }); 
+        .then(res=>res.json())
+        .then((passage)=>{
+          this.setState({
+            passage: {...passage},
+            loadingText: false 
+          });
+        }); 
       }
     });
-    
-    
-    
     
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
       console.log('Hit Leaf', 'fetch begins');

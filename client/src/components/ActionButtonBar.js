@@ -14,7 +14,7 @@ const actionButtonBarStyle = {
     flexWrap: 'wrap',
     float: 'right',
     justifyContent: 'space-evenly',
-    marginTop: '10px',
+    marginTop: '15px',
     padding: '10px',
     alignContent: 'center'
 };

@@ -19,7 +19,7 @@ const styles = {
         width: '100%'
     },   
     infoDivStyle:  {
-        padding: '15px',
+        padding: '5px 15px 15px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
