@@ -23,10 +23,8 @@ export default class ActionButton extends React.Component{
         
         if(this.props.passage.isFight){
             let action = this.props.passage.actions[num];
-            //??? very suspicious... state != props
-            // call it something like 'payload', but it's a red flag that you aren't using the App.js state instead
-            let state = this.props; 
-            this.props.fight(action, state);
+            let props = this.props;
+            this.props.fight(action, props);
             return;
         }
         

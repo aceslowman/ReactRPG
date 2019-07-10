@@ -52,14 +52,20 @@ export default class GameContainer extends React.Component{
                 <PlayerStatBox player={this.props.player}/>
             </div>
             <div style= {actionDivStyle}>
-                <AnimationBox player={this.props.player} enemy={this.props.enemy}/>
-                <PromptTextBox passage= {this.props.passage} />
-                {this.props.passage && <ActionButtonBar // check prop HERE, only render ActionButtonBar when it's ready.
+                <AnimationBox
                     player = {this.props.player}
+                    enemy= {this.props.enemy}
+                    passage= {this.props.passage}/>
+                <PromptTextBox 
+                    passage= {this.props.passage}
+                    loadingText= {this.props.loadingText} />
+                {(this.props.passage && !this.props.loadingText) && <ActionButtonBar // check prop HERE, only render ActionButtonBar when it's ready.
+                    player = {this.props.player}
+                    enemy= {this.props.enemy}
                     passage= {this.props.passage}
                     takeItem= {(newItem)=> this.props.takeItem(newItem)} 
                     nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
-                    fight= {(action, state)=> this.props.fight(action, state)}/>}
+                    fight= {(action, props)=> this.props.fight(action, props)}/>}
             </div>
         </div>
         )

@@ -1,17 +1,16 @@
 import battleLogic from './BattleLogic';
 // import FleeLogic from './FleeLogic';
 
-export default function gameLogic(action, state){
+export default function gameLogic(action, props){
     
-    console.log(action);
-    console.log(state);
+    console.log(props);
     switch(action.class){
         case 'FIGHT':
             console.log("HIT");
-            battleLogic(state);
+            battleLogic(props);
             break;
         case 'FLEE':
-            //fleeLogic(state);
+            //fleeLogic(props);
             break;
         case 'TAKE':
             //if statement for random chance
@@ -19,7 +18,5 @@ export default function gameLogic(action, state){
         default:
             break;
     } 
-    
-    console.log("After action: ", state);
-    return state;  
+    return props;  
 }

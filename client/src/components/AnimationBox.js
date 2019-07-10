@@ -1,5 +1,7 @@
 import React from 'react';
 import CharacterPanel from './ActionAnimation/CharacterPanels'; 
+import DragonFight from '../images/dragon_fight.jpg';
+
 
 //blank box in game container atm
 const styles = {
@@ -11,7 +13,7 @@ const styles = {
         background: 'rgba(0, 0, 0, 0.3)',
         display: 'flex',
         justifyContent: "center",
-        overflow: 'hidden',
+        //overflow: 'hidden',
         flexDirection: 'column'   
     },
     Wrapper:{
@@ -25,9 +27,13 @@ const styles = {
         position:'relative',
     },
     actionImage:{
-        height: '125%',
+        height: '150%',
         width: '100%',
-        backgroundColor: 'rgba(255, 0, 255, 0.3)'
+        backgroundColor: 'rgba(255, 0, 255, 0.3)',
+        backgroundImage: '',
+        backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
     }
     
 }
@@ -36,7 +42,7 @@ export default class AnimationBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            Animation:'',
+            animation:'',
             position: '101%',
             active: false
         };
@@ -44,10 +50,35 @@ export default class AnimationBox extends React.Component{
 
     move = () => {
         if(this.state.active){
-            this.setState({position: '101%', active: false})
+            this.setState({animation:'AnimationSlideOut', active: false})
+            //this.setState({position: '101%', active: false})
         }else{
-            this.setState({position: '0px', active: true})
+            this.setState({animation:'AnimationSlideIn', active: true})
+            //this.setState({position: '0px', active: true})
         }
+    }
+
+
+
+    componentDidUpdate(prevProps){
+        //console.log('AnimationBox', this.props.passage);
+        console.log("AnimationBox PrevProps", prevProps);
+        if(prevProps.passage && this.props.passage.isFight !== prevProps.passage.isFight ){
+            this.move();
+            styles.actionImage.backgroundImage = `url(${DragonFight})`;
+            //styles.actionImage.backgroundSize = 'cover';
+            this.setState({visible: true});
+        }
+        if(this.state.visible && !this.props.passage.isFight){
+            this.move();
+            styles.actionImage.backgroundImage = ``;
+            //styles.actionImage.backgroundSize = 'cover'
+
+            this.setState({visible: false});
+        }
+        
+
+
     }
 
     render(){
@@ -57,22 +88,39 @@ export default class AnimationBox extends React.Component{
                 <div style={{ ...styles.animationBoxStyle }}>
                     <div style={{ ...styles.Wrapper }}>
                         <CharacterPanel
+                            animationClass={this.state.animation}
                             left={true}
                             position={this.state.position}
                             move={() => this.move()}
-                            // character={{ name: "JIL", MAXHP: 100, HP: 100, AP: 30 }} 
                             character={this.props.player}
                         />
                         <CharacterPanel
+                            animationClass={this.state.animation}
                             left={false}
                             position={this.state.position}
-                            move={() => this.move()}
-                            // character={{ name: "Drake", MAXHP: 100, HP: 50, AP: 25 }} 
+                            move={() => this.move()} 
                             character={this.props.enemy}
                         />
                     </div>
                 </div>
+                {/* <div style={{...styles.Wrapper}}>
+                    
+                    <CharacterPanel  
+                    left={true}
+                    position = {this.state.position}
+                    move = {()=>this.move()} 
+                    character = {this.props.player}/>
+                    <CharacterPanel
+                    left={false}
+                    position = {this.state.position}
+                    move = {()=>this.move()}
+                    character= {this.props.enemy} />
+                </div> */}
+                
+
             </React.Fragment>
         )
     }
 }
+
+
