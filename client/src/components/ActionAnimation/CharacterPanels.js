@@ -40,10 +40,10 @@ export default class Animation extends React.Component{
     }
   
   render(){
-    let pos = this.props.left ? {display:'flex', right: this.props.position } : {display:'flex', left: this.props.position};
+    let pos = this.props.left ? {right: this.props.position } : {left: this.props.position};
 
     return(
-      <div className = 'AnimationWrapper' style={{position: 'relative'}}>
+      <div className = 'AnimationWrapper'>
         <div className = {this.props.animationClass + (this.props.left ? 'Left' : 'Right') + ' AnimationSlider'} style={pos}>
           <div>{this.props.character.name}</div>
           <HealthBar progress={(this.props.character.HP/this.props.character.MAXHP)*100} character={this.props.character}/>

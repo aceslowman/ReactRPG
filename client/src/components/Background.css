@@ -1,0 +1,44 @@
+.imageStyle {
+    position: absolute;
+    width: 100%;
+    height: auto
+}
+.prevImageStyle{
+  position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: -200
+}
+
+.background-appear {
+  opacity: 0.01;
+}
+
+/* ending Appear animation */
+.background-appear-active {
+  opacity: 1;
+  transition: all 700ms ease-out;
+}
+
+
+
+/* starting ENTER animation */
+.background-enter {
+    opacity: 0.01;
+}
+  
+  /* ending ENTER animation */
+.background-enter-active {
+    opacity: 1;
+    transition: all 700ms ease-out;
+}
+  
+  /* starting EXIT animation */
+.background-exit {
+    opacity: 1;
+} 
+  /* ending EXIT animation */
+.background-exit-active {
+   opacity: 1;
+   transition: all 500ms ease-in-out;
+}

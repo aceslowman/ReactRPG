@@ -14,7 +14,7 @@ const actionButtonBarStyle = {
     flexWrap: 'wrap',
     float: 'right',
     justifyContent: 'space-evenly',
-    marginTop: '10px',
+    marginTop: '15px',
     padding: '10px',
     alignContent: 'center'
 };
@@ -33,9 +33,10 @@ export default class ActionButtonBar extends React.Component{
                      <ActionButton {...this.props} 
                             player = {this.props.player}
                             enemy= {this.props.enemy}
-                            text= {action.text} 
+                            text= {action.text}
+                            class= {action.class} 
                             index= {index}
-                            takeItem= {(newItem)=> this.props.takeItem(newItem)} 
+                            takeItem= {(newItem, props)=> this.props.takeItem(newItem, props)} 
                             nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
                             fight= {(action, props)=> this.props.fight(action, props)}
                             key = {action.text}/> 

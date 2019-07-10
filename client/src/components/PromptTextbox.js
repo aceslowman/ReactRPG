@@ -6,14 +6,14 @@ const styles = {
     promptBoxStyle: {
         color: 'green',
         backgroundColor: 'black',
-        fontSize: '1.7rem',
+        fontSize: '1.6em',
         fontFamily: 'monospace',
         border: '5px solid #05a19c',
         //borderRadius: '3px',
         // borderImage: 'repeating-linear-gradient( 45deg, #9764c7, #b824a4) 10',
         resize: 'none',
         width: '90%',
-        height: '10rem',
+        height: '12rem',
         marginTop: '25px',
         overflowY: 'scroll',
         outline: '2px solid black'

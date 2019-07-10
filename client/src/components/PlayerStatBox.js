@@ -6,9 +6,11 @@ const style = {
         backgroundColor: '#05a19c',
         border: '3px solid black',
         fontFamily: 'monospace',
-        width: '60%',
+        width: '70%',
         display: 'flex',
-        flexDirection: 'column',    
+        flexDirection: 'column', 
+        overflowY: 'auto',
+        height: '50%'
     },
     innerStatBox: {
         display: 'flex',
@@ -16,16 +18,16 @@ const style = {
         flexWrap: 'wrap',
         backgroundColor: 'teal',
         justifyContent: 'flex-start',
-        height: '100%',
-        margin: "1% 1% 0",
+        height: '50%',
+        margin: "1% 1% 0"
     },
     statStyle: {
         padding: 10,
         boxSizing: 'border-box',
         width: '50%',
         fontWeight: '550',
-        fontSize: '1.4rem',
-        backgroundImage: 'radial-gradient( #f7ff56, #f8b739)'
+        fontSize: '1.6em',
+        backgroundImage: 'radial-gradient( #f7ff56, #f8b739)',
     },
     itemStyle: {
         padding: 10,
@@ -35,11 +37,12 @@ const style = {
         fontSize: '1.2rem',
         backgroundImage: 'radial-gradient( #94fc13, #009975)',
         margin: '1%'
-    },
+},
     nameStyle: {
         margin: "1% 1% 0",
         backgroundImage: 'radial-gradient( #ffa1c5, #f30cd4)',
-        fontSize: '2rem',
+        fontSize: '1.6rem',
+        fontWeight: '700',
         textAlign: 'center'
     }
 };

@@ -10,7 +10,7 @@ const styles = {
         borderRadius: '20px',
         height: '60%',
         width: '90%',
-        background: 'rgba(0, 0, 0, 0.3)',
+        background: 'rgba(0, 0, 0, 0)',
         display: 'flex',
         justifyContent: "center",
         //overflow: 'hidden',
@@ -18,7 +18,7 @@ const styles = {
     },
     Wrapper:{
         textAlign: 'center',
-        backgroundColor: 'rgba(0, 255, 255, 0.3)',
+        backgroundColor: 'rgba(0, 255, 255, 0)',
         width:'100%',
         height:'100%',
         display: 'flex',
@@ -29,11 +29,12 @@ const styles = {
     actionImage:{
         height: '150%',
         width: '100%',
-        backgroundColor: 'rgba(255, 0, 255, 0.3)',
+        backgroundColor: 'rgba(255, 0, 255, 0)',
         backgroundImage: '',
         backgroundSize: 'contain',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        transition: 'all 0.5 ease-out'
     }
     
 }
@@ -62,12 +63,14 @@ export default class AnimationBox extends React.Component{
 
     componentDidUpdate(prevProps){
         //console.log('AnimationBox', this.props.passage);
-        console.log("AnimationBox PrevProps", prevProps);
+        //console.log("AnimationBox PrevProps", prevProps);
         if(prevProps.passage && this.props.passage.isFight !== prevProps.passage.isFight ){
-            this.move();
-            styles.actionImage.backgroundImage = `url(${DragonFight})`;
-            //styles.actionImage.backgroundSize = 'cover';
-            this.setState({visible: true});
+            setTimeout(() =>{
+                this.move();
+                styles.actionImage.backgroundImage = `url(${DragonFight})`;
+                //styles.actionImage.backgroundSize = 'cover';
+                this.setState({visible: true});
+            } , 1000);
         }
         if(this.state.visible && !this.props.passage.isFight){
             this.move();
@@ -76,9 +79,6 @@ export default class AnimationBox extends React.Component{
 
             this.setState({visible: false});
         }
-        
-
-
     }
 
     render(){
@@ -103,21 +103,6 @@ export default class AnimationBox extends React.Component{
                         />
                     </div>
                 </div>
-                {/* <div style={{...styles.Wrapper}}>
-                    
-                    <CharacterPanel  
-                    left={true}
-                    position = {this.state.position}
-                    move = {()=>this.move()} 
-                    character = {this.props.player}/>
-                    <CharacterPanel
-                    left={false}
-                    position = {this.state.position}
-                    move = {()=>this.move()}
-                    character= {this.props.enemy} />
-                </div> */}
-                
-
             </React.Fragment>
         )
     }

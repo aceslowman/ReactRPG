@@ -25,7 +25,7 @@ export default class App extends React.Component{
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
     //passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to drake battle 
-    
+    //passageId = '5d0e56477314d23a931bb3d4'; // go striaght to crossroads
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
     .then((player)=>{
@@ -54,7 +54,7 @@ export default class App extends React.Component{
 
   nextPassage(nextPassage, action){
     let passageId = nextPassage._id; 
-    console.log(nextPassage);
+    console.log('NextPassage:', nextPassage);
     
     if(nextPassage.isFight){
       let index;
@@ -69,26 +69,27 @@ export default class App extends React.Component{
       this.setState({ enemy: currentEnemy });
     }
 
-    /*
-      if the passage contains an enemy, load it into the App state!
-      You need it on hand so that the enemy info can be passed into 
-      specific child components.
-    */
-    console.log(nextPassage);
-    if(nextPassage.nonPlayerCharacters.length > 0){
-      // now grab enemy and pass to state.
-      let index;
-      if (nextPassage.nonPlayerCharacters.length > 1){
-        // grab random if there are more than one enemies
-        index = Math.floor(nextPassage.nonPlayerCharacters.length * Math.random());
-      }else{ 
-        // or grab only element
-        index = 0;
+
+    this.state.passage.nextPassages.forEach((i)=> {
+      let fightComing= false;
+      i.path.nextPassages.forEach((j)=>{
+        if( j.path.isFight){
+          fightComing= true;
+          console.log('fight coming');
+        }
+      });
+      if(fightComing){
+        fetch(`/api/passages/${passageId}`)
+        .then(res=>res.json())
+        .then((passage)=>{
+          this.setState({
+            passage: {...passage},
+            loadingText: false 
+          });
+        }); 
       }
-
-      this.setState({ enemy: nextPassage.nonPlayerCharacters[index] });
-    }
-
+    });
+    
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
       console.log('Hit Leaf', 'fetch begins');
       this.setState({loadingText: true});
@@ -103,8 +104,9 @@ export default class App extends React.Component{
       console.log(this.state); 
     } else{
       this.setState({passage: nextPassage});
-      console.log(this.state);
+      console.log('Regular NxtPass');
     } 
+    this.setState({});
   }
 
   fight(action, props){    
@@ -112,22 +114,30 @@ export default class App extends React.Component{
     this.setState({});
 
     if (!this.state.passage.isFight){
-      console.log("Fight Over");
-      console.log("App State: ", this.state);
-      if(props.player.HP !== 0){
+      //console.log("Fight Over");
+      //console.log("App State: ", this.state);
+      if(props.player.HP !== 0 && action.class !== 'FLEE'){
         this.nextPassage(props.passage.nextPassages[0].path);
-      }else{
+      }else if(action.class === 'FLEE'){
         this.nextPassage(props.passage.nextPassages[1].path);
+      }else{
+        this.nextPassage(props.passage.nextPassages[2].path);
       }
     }
-    console.log("After action: ", this.state);
+    //console.log("After action: ", this.state);
     this.setState({});
   }
 
-  takeItem(newItem){
-    let newItems = this.state.player.items;
-    newItems.push(newItem);
-    this.setState({items: newItems});
+  takeItem(newItem, props){
+    if(newItem.name === 'Gold'){
+        let spoils = Math.round(Math.random()*5);
+        let player = props.player;
+        player.gold += spoils;
+    }else{
+      let newItems = this.state.playerCharacter.items;
+      newItems.push(newItem);
+      this.setState({items: newItems});
+    }
   }
 
   render(){
@@ -142,7 +152,7 @@ export default class App extends React.Component{
             enemy= {this.state.enemy} 
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
-            takeItem= {(newItem)=> this.takeItem(newItem)}
+            takeItem= {(newItem, props)=> this.takeItem(newItem, props)}
             fight= {(action, props)=> this.fight(action, props)}
             loadingText= {this.state.loadingText}/>
           )
