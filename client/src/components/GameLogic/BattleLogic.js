@@ -8,7 +8,14 @@ export default function battleLogic(props){
     let enemy = props.enemy;
     
     let playerFirst = Math.random() > 0.5 ? true : false;
-    console.log(playerFirst);
+    
+    console.group('battle logic');
+    console.log('state', props);
+    console.log('enemy', enemy);
+    console.log('player', player);
+    console.log('playerFirst', playerFirst);
+    console.groupEnd();
+
     if (playerFirst){
         if (playerAttack(player, enemy)) {
             console.log( "you defeated"+ enemy.name +"!!");
@@ -21,6 +28,7 @@ export default function battleLogic(props){
                 return;
             } else {
                 console.log( "damage has been inflicted");
+                props.passage.isFight=true;
                 return;
             }
         }
@@ -35,7 +43,8 @@ export default function battleLogic(props){
                 props.passage.isFight = false;
                 return;
             } else {
-                console.log( "damage has been inflicted")//make passage for this 
+                console.log( "damage has been inflicted")//make passage for this
+                props.passage.isFight=true;
                 return;
             }     
         }       

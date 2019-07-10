@@ -27,3 +27,72 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.AnimationWrapper{
+  display: block;
+  background-color: rgba(76,175, 150, 0);
+  height: 100%;
+  width: 100%;
+  margin-top: 5%;
+}
+
+.AnimationSlider{
+  position:relative;
+  /*transition:all 5s ease-in-out*/
+  background-color: green;
+  box-shadow:2px;
+  padding:25px;
+  width:150px;
+  opacity:1.5;
+  /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
+}
+.AnimationSlideInLeft{
+  animation: slideInLeft 5s ease-in 1s normal both;
+}
+
+.AnimationSlideOutLeft{
+  animation: slideOutLeft 5s ease-out normal both;
+}
+
+.AnimationSlideInRight{
+  animation: slideInRight 5s ease-in 1s normal both; 
+}
+
+.AnimationSlideOutRight{
+  animation: slideOutRight 5s ease-out normal both;
+}
+
+@keyframes slideInLeft{
+  0%{transform: translateX(0%)}
+  50%{transform: translateX(195%)}
+  52%   { transform: scale(1,1)      translateX(195%);}
+  57%  { transform: scale(.9,1.1)   translateX(195%);}
+  65%  { transform: scale(1.1,.9)   translateX(100%);}
+  75%  { transform: scale(.95,1.05) translateX(195%);}
+  78%  { transform: scale(1,1)      translateX(160%);}
+  82%  { transform: scale(1,1)      translateX(195%);}
+  100% { transform: scale(1,1)      translateX(195%);}
+}
+
+@keyframes slideInRight{
+  0%{transform: translateX(0%)}
+  50%{transform: translateX(-195%)}
+  52%   { transform: scale(1,1)      translateX(-195%);}
+  57%  { transform: scale(.9,1.1)   translateX(-195%);}
+  65%  { transform: scale(1.1,.9)   translateX(-100%);}
+  75%  { transform: scale(.95,1.05) translateX(-195%);}
+  78%  { transform: scale(1,1)      translateX(-160%);}
+  82%  { transform: scale(1,1)      translateX(-195%);}
+  100% { transform: scale(1,1)      translateX(-195%);}
+}
+
+@keyframes slideOutLeft{
+  0%{transform: translateX(195%)}
+  100%{transform: translateX(0%)}
+}
+
+@keyframes slideOutRight{
+  0%{transform: translateX(-195%)}
+  100%{transform: translateX(0%)}
+}
+

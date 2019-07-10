@@ -1,0 +1,19 @@
+.Animationwrapper{
+    display: block;
+    background-color: rgba(76,175, 150, 0.0);
+    height: 100%;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.AnimationSlider{
+    position:relative;
+    transition:all 5s ease-in-out;
+    background-color: green;
+    box-shadow: 2px;
+    padding:25px;
+    width:150px;
+    opacity: 1.5;
+    animation: bounce 4s ease-in-out 2s 5 normal fill-mode;
+}
+

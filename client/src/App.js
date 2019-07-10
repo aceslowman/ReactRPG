@@ -30,7 +30,7 @@ export default class App extends React.Component{
     .then(res=>res.json())
     .then((player)=>{
         this.setState({ 
-        playerCharacter: {
+        player: {
           ...player,
           image: initialState.image,
           name: initialState.name,
@@ -134,7 +134,7 @@ export default class App extends React.Component{
         let player = props.player;
         player.gold += spoils;
     }else{
-      let newItems = this.state.playerCharacter.items;
+      let newItems = props.player.items;
       newItems.push(newItem);
       this.setState({items: newItems});
     }
@@ -148,7 +148,7 @@ export default class App extends React.Component{
             gameStarted={(initialState) => this.startGame(initialState)} />
           ) : (
           <GameContainer 
-            player={this.state.playerCharacter}
+            player={this.state.player}
             enemy= {this.state.enemy} 
             passage={this.state.passage} 
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
