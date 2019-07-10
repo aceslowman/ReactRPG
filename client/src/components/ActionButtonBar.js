@@ -2,20 +2,19 @@ import React from 'react';
 import ActionButton from './ActionButton'
 
 const actionButtonBarStyle = {
-    //borderRadius : '4px',
     border: '2px solid #05a19c',
     outline: '2px solid black',
     backgroundImage: 'linear-gradient( to bottom right, #5d13e7, #b206b0)',
     borderStyle: '1% solid #05a19c',
     fontFamily: 'monospace',
-    height: '30px',
+    height: '5vh',
     width: '90%',
     display: 'flex',
     flexWrap: 'wrap',
     float: 'right',
     justifyContent: 'space-evenly',
     marginTop: '15px',
-    padding: '10px',
+    padding: '1vh 0 1vh',
     alignContent: 'center'
 };
 

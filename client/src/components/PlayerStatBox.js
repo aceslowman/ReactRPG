@@ -10,7 +10,7 @@ const style = {
         display: 'flex',
         flexDirection: 'column', 
         overflowY: 'auto',
-        height: '50%'
+        height: '45%'
     },
     innerStatBox: {
         display: 'flex',
@@ -26,7 +26,7 @@ const style = {
         boxSizing: 'border-box',
         width: '50%',
         fontWeight: '550',
-        fontSize: '1.6em',
+        fontSize: '1.6vw',
         backgroundImage: 'radial-gradient( #f7ff56, #f8b739)',
     },
     itemStyle: {
@@ -34,20 +34,19 @@ const style = {
         boxSizing: 'border-box',
         width: '50%',
         fontWeight: '550',
-        fontSize: '1.2rem',
+        fontSize: '1.3vw',
         backgroundImage: 'radial-gradient( #94fc13, #009975)',
-        margin: '1%'
+        margin: '1%',
+        height: '100%'
 },
     nameStyle: {
         margin: "1% 1% 0",
         backgroundImage: 'radial-gradient( #ffa1c5, #f30cd4)',
-        fontSize: '1.6rem',
+        fontSize: '2vw',
         fontWeight: '700',
         textAlign: 'center'
     }
 };
-
-
     
 export default class PlayerStatBox extends React.Component{
     constructor(props){
