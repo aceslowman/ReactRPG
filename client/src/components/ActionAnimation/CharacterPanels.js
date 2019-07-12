@@ -45,7 +45,7 @@ export default class Animation extends React.Component{
     return(
       <div className = 'AnimationWrapper' style={{position: 'relative'}}>
         <div className = {this.props.animationClass + (this.props.left ? 'Left' : 'Right') + ' AnimationSlider'} style={pos}>
-          <div>{this.props.character.name}</div>
+          <div>{this.props.character.name}</div> {"\n"}
           <HealthBar progress={(this.props.character.HP/this.props.character.MAXHP)*100} character={this.props.character}/>
           {/* <AttackPower character={this.props.character}/> */}
           <div>AP: {this.props.character.AP}</div>

@@ -9,7 +9,7 @@ const style = {
         width: '70%',
         display: 'flex',
         flexDirection: 'column', 
-        overflowY: 'auto',
+        overflowY: 'hidden',
         height: '45%'
     },
     innerStatBox: {
@@ -32,12 +32,16 @@ const style = {
     itemStyle: {
         padding: 10,
         boxSizing: 'border-box',
-        width: '50%',
+        //width: '50%',
         fontWeight: '550',
         fontSize: '1.3vw',
         backgroundImage: 'radial-gradient( #94fc13, #009975)',
-        margin: '1%',
-        height: '100%'
+        //margin: '1%',
+        height: '100%',
+        overflowY: 'auto',
+        display: 'flex',
+        justifyContent: 'flex-start'
+
 },
     nameStyle: {
         margin: "1% 1% 0",
@@ -76,7 +80,7 @@ export default class PlayerStatBox extends React.Component{
                             Gold: {this.props.player.gold}
                         </div>
                         <div style={{...style.itemStyle, width: '100%'}}>  
-                            Items: 
+                            <p style= {{'fontSize': '1.4vw'}}>Items:</p> 
                             <ul>
                                 {listedItems}
                             </ul>

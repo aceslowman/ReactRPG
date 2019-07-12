@@ -32,7 +32,8 @@ const styles = {
         backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        transition: 'all 0.5 ease-out'
+        transition: 'all 0.5 ease-out',
+        borderRadius: '3px'
     } 
 };
 
@@ -70,9 +71,11 @@ export default class AnimationBox extends React.Component{
     }
 
     render(){
+        
+        
         return(
             <div style= {{...styles.animationBoxStyle}}>
-                <button onClick={() => this.move()}>CLICK ME</button> {/*REMOVE BEFORE DEMO !!!*/}
+                <button onClick={() => this.move()}>CLICK ME</button> 
                 <div style= {{...styles.actionImage}}></div>
                 <React.Fragment>
                     <div style={{ ...styles.Wrapper }}>

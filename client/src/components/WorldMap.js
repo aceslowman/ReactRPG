@@ -1,10 +1,10 @@
 import React from "react";
-import image from '../images/worldMap1.png';
+import image from '../images/worldmap2.png';
 
 const mapStyle = {
     borderRadius: "5px",
     height: '25vh',
-    width: '80%',
+    width: '36vh',
     backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
