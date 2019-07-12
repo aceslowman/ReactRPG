@@ -10,7 +10,7 @@ const styles = {
         borderRadius: '20px',
         height: '60%',
         width: '90%',
-        background: 'rgba(0, 0, 0, 0)',
+        backgroundColor: 'rgba(0, 0, 0, 0)',
         display: 'flex',
         justifyContent: "center",
         //overflow: 'hidden',
@@ -44,7 +44,7 @@ export default class AnimationBox extends React.Component{
         super(props);
         this.state = {
             animation:'',
-            position: '101%',
+            position: 101,
             active: false
         };
     }
@@ -83,29 +83,35 @@ export default class AnimationBox extends React.Component{
 
     render(){
         return(
-            <React.Fragment>
-                <button onClick={() => this.move()}>CLICK ME</button>
-                <div style={{ ...styles.animationBoxStyle }}>
-                    <div style={{ ...styles.Wrapper }}>
-                        <CharacterPanel
-                            animationClass={this.state.animation}
-                            left={true}
-                            position={this.state.position}
-                            move={() => this.move()}
-                            character={this.props.player}
-                        />
-                        <CharacterPanel
-                            animationClass={this.state.animation}
-                            left={false}
-                            position={this.state.position}
-                            move={() => this.move()} 
-                            character={this.props.enemy}
-                        />
-                    </div>
-                </div>
-            </React.Fragment>
+            <div style= {{...styles.animationBoxStyle}}>
+                <button onClick={() => this.move()}>CLICK ME</button> 
+                <div style= {{...styles.actionImage}}></div>
+                {/* <div style={{...styles.Wrapper}}> */}
+                <React.Fragment>
+                    {/* <button onClick={() => this.move()}>CLICK ME</button> */}
+                    {/* <div style={{ ...styles.animationBoxStyle }}> */}
+                        <div style={{ ...styles.Wrapper }}>
+                            <CharacterPanel
+                                animationClass={this.state.animation}
+                                left={true}
+                                position={this.state.position}
+                                move={() => this.move()}
+                                character={this.props.player}
+                            />
+                            <CharacterPanel
+                                animationClass={this.state.animation}
+                                left={false}
+                                position={this.state.position}
+                                move={() => this.move()} 
+                                character={this.props.enemy}
+                            />
+                        
+                        </div>
+                    {/* </div> */}
+                </React.Fragment>
+            {/* </div> */}
+            </div>    
         )
     }
 }
-
 

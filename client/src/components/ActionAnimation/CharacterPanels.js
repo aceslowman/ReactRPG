@@ -40,7 +40,7 @@ export default class Animation extends React.Component{
     }
   
   render(){
-    let pos = this.props.left ? {right: this.props.position } : {left: this.props.position};
+    let pos = this.props.left ? {right: `${this.props.position - 58}%` } : {left: `${this.props.position}%`};
 
     return(
       <div className = 'AnimationWrapper'>

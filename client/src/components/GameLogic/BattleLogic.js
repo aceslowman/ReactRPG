@@ -23,7 +23,7 @@ export default function battleLogic(props){
             return;       
         } else {
             if (enemyAttack(enemy, player)) {
-                console.log( " you have been slap down by)"+ enemy.name +".");
+                console.log( " you have been defeated by)"+ enemy.name +".");
                 props.passage.isFight = false;
                 return;
             } else {
@@ -34,12 +34,12 @@ export default function battleLogic(props){
         }
     } else {
         if (enemyAttack(enemy, player)) {
-            console.log( " you have been slap down by)"+ enemy.name +".")//make passage for this #1 return index with array of battle passage
+            console.log( " you have been Defeated by)"+ enemy.name +".")//make passage for this #1 return index with array of battle passage
             props.passage.isFight = false;
             return ;
         } else {
             if (playerAttack(player, enemy)) {
-                console.log( "you defeated"+ enemy.name +"!!")//make a passage for this
+                console.log( "you defeated"+ enemy.name +"!!")
                 props.passage.isFight = false;
                 return;
             } else {

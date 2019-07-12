@@ -30,8 +30,7 @@ code {
 
 .AnimationWrapper{
   display: block;
-  position:'relative';
-  background-color: rgba(76,175, 150, 0.3);
+  background-color: rgba(76,175, 150, 0);
   height: 100%;
   width: 100%;
   margin-top: 5%;
@@ -42,6 +41,7 @@ code {
   background-color: green;
   box-shadow:2px;
   padding:25px;
+  min-height: 150px;
   width:150px;
   opacity:1.5;
   /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
@@ -64,35 +64,35 @@ code {
 
 @keyframes slideInLeft{
   0%{transform: translateX(0%)}
-  50%{transform: translateX(195%)}
-  52%   { transform: scale(1,1)      translateX(195%);}
-  57%  { transform: scale(.9,1.1)   translateX(195%);}
-  65%  { transform: scale(1.1,.9)   translateX(100%);}
-  75%  { transform: scale(.95,1.05) translateX(195%);}
-  78%  { transform: scale(1,1)      translateX(160%);}
-  82%  { transform: scale(1,1)      translateX(195%);}
-  100% { transform: scale(1,1)      translateX(195%);}
+  50%{transform: translateX(237.5%)}
+  52%   { transform: scale(1,1)      translateX(237.5%);}
+  57%  { transform: scale(.9,1.1)   translateX(237.5%);}
+  65%  { transform: scale(1.1,.9)   translateX(195%);}
+  75%  { transform: scale(.95,1.05) translateX(237.5%);}
+  78%  { transform: scale(1,1)      translateX(200%);}
+  82%  { transform: scale(1,1)      translateX(237.5%);}
+  100% { transform: scale(1,1)      translateX(237.5%);}
 }
 
 @keyframes slideInRight{
   0%{transform: translateX(0%)}
-  50%{transform: translateX(-195%)}
-  52%   { transform: scale(1,1)      translateX(-195%);}
-  57%  { transform: scale(.9,1.1)   translateX(-195%);}
-  65%  { transform: scale(1.1,.9)   translateX(-100%);}
-  75%  { transform: scale(.95,1.05) translateX(-195%);}
-  78%  { transform: scale(1,1)      translateX(-160%);}
-  82%  { transform: scale(1,1)      translateX(-195%);}
-  100% { transform: scale(1,1)      translateX(-195%);}
+  50%{transform: translateX(-237.5%)}
+  52%   { transform: scale(1,1)      translateX(-237.5%);}
+  57%  { transform: scale(.9,1.1)   translateX(-237.5%);}
+  65%  { transform: scale(1.1,.9)   translateX(-195%);}
+  75%  { transform: scale(.95,1.05) translateX(-237.5%);}
+  78%  { transform: scale(1,1)      translateX(-200%);}
+  82%  { transform: scale(1,1)      translateX(-237.5%);}
+  100% { transform: scale(1,1)      translateX(-237.5%);}
 }
 
 @keyframes slideOutLeft{
-  0%{transform: translateX(195%)}
+  0%{transform: translateX(237.5%)}
   100%{transform: translateX(0%)}
 }
 
 @keyframes slideOutRight{
-  0%{transform: translateX(-195%)}
+  0%{transform: translateX(-237.5%)}
   100%{transform: translateX(0%)}
 }
 

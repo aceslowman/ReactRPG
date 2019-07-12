@@ -109,7 +109,7 @@ export default class StartMenu extends React.Component{
                     </div>
                 </div>
                 <CharacterCreation {...this.props} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()} />
-                <OptionsWindow modalOpen={this.state.openOptionsWindow} onClose={()=>this.closeOptionsWindow()} />
+                <OptionsWindow updateAudio={(type,val)=>this.props.updateAudio(type,val)} modalOpen={this.state.openOptionsWindow} onClose={()=>this.closeOptionsWindow()} />
             </div>
         )
     }
