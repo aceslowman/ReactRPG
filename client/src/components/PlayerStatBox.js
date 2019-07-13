@@ -9,8 +9,8 @@ const style = {
         width: '70%',
         display: 'flex',
         flexDirection: 'column', 
-        overflowY: 'auto',
-        height: '50%'
+        overflowY: 'hidden',
+        height: '45%'
     },
     innerStatBox: {
         display: 'flex',
@@ -26,28 +26,31 @@ const style = {
         boxSizing: 'border-box',
         width: '50%',
         fontWeight: '550',
-        fontSize: '1.6em',
+        fontSize: '1.6vw',
         backgroundImage: 'radial-gradient( #f7ff56, #f8b739)',
     },
     itemStyle: {
         padding: 10,
         boxSizing: 'border-box',
-        width: '50%',
+        //width: '50%',
         fontWeight: '550',
-        fontSize: '1.2rem',
+        fontSize: '1.3vw',
         backgroundImage: 'radial-gradient( #94fc13, #009975)',
-        margin: '1%'
+        //margin: '1%',
+        height: '100%',
+        overflowY: 'auto',
+        display: 'flex',
+        justifyContent: 'flex-start'
+
 },
     nameStyle: {
         margin: "1% 1% 0",
         backgroundImage: 'radial-gradient( #ffa1c5, #f30cd4)',
-        fontSize: '1.6rem',
+        fontSize: '2vw',
         fontWeight: '700',
         textAlign: 'center'
     }
 };
-
-
     
 export default class PlayerStatBox extends React.Component{
     constructor(props){
@@ -77,7 +80,7 @@ export default class PlayerStatBox extends React.Component{
                             Gold: {this.props.player.gold}
                         </div>
                         <div style={{...style.itemStyle, width: '100%'}}>  
-                            Items: 
+                            <p style= {{'fontSize': '1.4vw'}}>Items:</p> 
                             <ul>
                                 {listedItems}
                             </ul>

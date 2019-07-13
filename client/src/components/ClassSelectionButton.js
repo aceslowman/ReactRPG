@@ -6,7 +6,7 @@ const style = {
         backgroundImage: 'linear-gradient( to bottom right, #f79c1d, #ffe837)',
         border: '3px solid black',
         padding:'10px 0 0',
-        fontSize: '1.2rem',
+        fontSize: '1.3vw',
         fontFamily: 'monospace',
         fontWeight: '550'
     },

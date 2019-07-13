@@ -1,7 +1,7 @@
 import React from 'react';
 
 const actionButtonStyle= {
-    fontSize: "18px",
+    fontSize: "1.5vw",
     borderRadius: "5px",
     width: '25%',
     height: '100%',
@@ -16,9 +16,7 @@ export default class ActionButton extends React.Component{
     }
 
     onClick(){
-        //console.log('Click!');
         let num = this.props.index;
-        //console.log(this.props.passage)
         let nextPassage = this.props.passage.nextPassages[num].path;
         
         if(this.props.passage.isFight){
@@ -61,8 +59,6 @@ export default class ActionButton extends React.Component{
                 this.props.takeItem(newItem, props);
             }
         }
-        //console.log(num);
-        //console.log(nextPassage);
         this.props.nextPassage(nextPassage,this.props.passage.actions[num] );
     }
     

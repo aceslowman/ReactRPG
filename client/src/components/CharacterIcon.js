@@ -2,14 +2,13 @@ import React from 'react';
 
 const characterIconStyle = {
     borderRadius: "5%",
-    height: '7rem',
-    width: '7rem',
-    //backgroundImage: `url(${image})`,
-    backgroundSize: '100% 100%',
+    height: '7vw',
+    width: '7vw',
+    backgroundSize: '100%',
     backgroundPosition: 'center',
     backgroundColor: 'rgba(5, 161, 156, 0.5)',
     border: '2px solid #000000',
-    marginBottom: '2rem'
+    marginBottom: '2vh'
 };
 
 export default class CharacterIcon extends React.Component{

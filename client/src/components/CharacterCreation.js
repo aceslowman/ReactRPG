@@ -9,7 +9,7 @@ import ClassSelectionButton from './ClassSelectionButton';
 
 const styles = {
     button: {
-        fontSize: '1.5rem',
+        fontSize: '1.5vw',
         backgroundColor: '#22eaca',
         fontFamily: 'monospace',
         margin: '0 10px 0',
@@ -23,14 +23,14 @@ const styles = {
         backgroundImage: 'linear-gradient( to bottom right, #f79c1d, #ffe837)'
     },
     playerImage:{
-        width:'100px',
-        height:'100px',
-        padding:'0 50px 0'
+        width:'8vw',
+        height:'8vw',
+        padding:'0 2vw 0'
     },
     imageContainer: {
         textAlign: 'center',
         fontFamily: 'monospace',
-        fontSize: '1.5rem',
+        fontSize: '1.9vw',
         fontWeight: 'bold',
     },    
     boxPosition:{
@@ -44,7 +44,7 @@ const styles = {
         padding:'15px',
     },
     text: {
-        fontSize: '3rem',
+        fontSize: '2.1vw',
         fontFamily: 'monospace',
         fontWeight: '550',
         margin: '20px, 0, 0'
@@ -53,11 +53,11 @@ const styles = {
         border: '5px solid #22eaca',
         padding: '15px',
         background: 'rgba(255,255,255,0.5)',
-        fontSize: '1rem',
+        fontSize: '1.5vw',
         margin: '10px auto 2px'
     },
     welcome: {
-        fontSize: '3rem',
+        fontSize: '2.3vw',
         fontFamily: 'monospace',
         fontWeight: 'bold',
         margin: '10px',
@@ -75,7 +75,7 @@ export default class CharacterCreation extends React.Component{
             selected: ''
         };
     }
-
+    
     componentDidMount() {
         document.addEventListener('mousedown', (e)=>this.handleClickOut(e));
     }
@@ -124,11 +124,14 @@ export default class CharacterCreation extends React.Component{
     }
 
     render(){
+        
+        let title= this.props.title
+        
         return (
             <div ref={(n) => {this.wrapperRef = n}} style={{...styles.wrapper, display: this.props.modalOpen ? 'block' : 'none' }}>
                 <div style={{...styles.boxPosition, ...styles.welcome}}>  
-                    Welcome To <br/> 
-                    {this.props.title}
+                   <p style= {{...styles.welcome}}> Welcome to {title} </p> 
+                   
                 </div>
                 <div style={{...styles.boxPosition}} >                  
                    <input style= {{...styles.input}} onChange= {(e)=> this.setName(e)} type="text" placeholder="Enter Your Name"/>

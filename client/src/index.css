@@ -33,17 +33,24 @@ code {
   background-color: rgba(76,175, 150, 0);
   height: 100%;
   width: 100%;
-  margin-top: 5%;
+  margin-top: 7%;
 }
 
 .AnimationSlider{
   position:relative;
   background-color: green;
+  background-Image: radial-gradient( #ffd901, #ec5d0a);
   box-shadow:2px;
-  padding:25px;
-  min-height: 150px;
-  width:150px;
+  padding: 1vh 1.5vw 1.5vw;
+  width:10vw;
   opacity:1.5;
+  font-size: 1.3vw;
+  font-family: monospace;
+  font-weight: 550;
+  display: flex;
+  flex-direction: column;
+  border: 0.2vw solid #03a16d;
+  border-radius: 3px;
   /*animation: name duration timing-function delay iteration-count direction fill-mode;*/
 }
 .AnimationSlideInLeft{

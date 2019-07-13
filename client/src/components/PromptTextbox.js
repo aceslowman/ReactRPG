@@ -1,19 +1,16 @@
 import  React from "react";
 import MDSpinner from "react-md-spinner";
-//import PropTypes from 'prop-types';
 
 const styles = {   
     promptBoxStyle: {
         color: 'green',
         backgroundColor: 'black',
-        fontSize: '1.6em',
+        fontSize: '1.6vw',
         fontFamily: 'monospace',
         border: '5px solid #05a19c',
-        //borderRadius: '3px',
-        // borderImage: 'repeating-linear-gradient( 45deg, #9764c7, #b824a4) 10',
         resize: 'none',
         width: '90%',
-        height: '12rem',
+        height: '24vh',
         marginTop: '25px',
         overflowY: 'scroll',
         outline: '2px solid black'
@@ -28,14 +25,6 @@ export default class PromptTextBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {};
-    }
-
-    componentDidMount(){
-        //console.log(this.props);
-    }
-
-    componentDidUpdate(){
-       // console.log(this.props);
     }
 
     render(){
