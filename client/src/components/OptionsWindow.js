@@ -35,6 +35,9 @@ export default class OptionsWindow extends React.Component{
                 <select onChange={(e)=>this.props.updateAudio('audiofile',e.target.value)} >
                     <option value='audio/473749__klankbeeld__estate-manteling-short-02-nl-190527-0008.wav'>forrest</option>
                     <option value='audio/473996__esistnichtsoernst__space-arp-f-chords.wav'>startMenu</option>
+                    <option value='audio/250856__joshuaempyre__epic-orchestra-loop.wav'>Battle</option>
+                    <option value='456058__inchadney__fireplace.wav'>fireplace</option>
+                
                 </select>
                 <button onClick={()=>this.props.onClose()}>Return</button>
             </div>

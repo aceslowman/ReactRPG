@@ -62,13 +62,15 @@ export default class GameContainer extends React.Component{
                     <AnimationBox
                         player = {this.props.player}
                         enemy= {this.props.enemy}
-                        passage= {this.props.passage}/>
+                        passage= {this.props.passage}
+                        fightTurn= {this.props.fightTurn}/>
                     <PromptTextBox 
                         passage= {this.props.passage}
                         loadingText= {this.props.loadingText} />
                     {(this.props.passage && !this.props.loadingText) && <ActionButtonBar // check prop HERE, only render ActionButtonBar when it's ready.
                         player = {this.props.player}
                         enemy= {this.props.enemy}
+                        clickSound={(v)=>this.props.clickSound(v)}
                         passage= {this.props.passage}
                         takeItem= {(newItem, props)=> this.props.takeItem(newItem, props)} 
                         nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}

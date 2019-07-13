@@ -1,6 +1,8 @@
 import React from 'react';
 import StartMenu from './components/StartMenu';
 import Audio from './components/Audio';
+import ActionAudio from './components/ActionAudio';
+import BattleAudio from './components/BattleAudio';
 import GameContainer from './components/GameContainer';
 import gameLogic from './components/GameLogic/GameLogic';
 
@@ -23,6 +25,12 @@ export default class App extends React.Component{
       playing: true,
       audiofile:'',
       looping: true,
+      passage: {
+        location: 'STARTMENU',
+        isFight: false
+      },
+      clickSound: '',
+      fightTurn: true
       
     };
   }
@@ -32,7 +40,7 @@ export default class App extends React.Component{
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
     //passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to drake battle 
-    //passageId = '5d0e56477314d23a931bb3d4'; // go striaght to crossroads
+    passageId = '5d0e56477314d23a931bb3d4'; // go striaght to crossroads
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
     .then((player)=>{
@@ -132,7 +140,14 @@ export default class App extends React.Component{
       }
     }
     //console.log("After action: ", this.state);
-    this.setState({});
+    if(this.state.fightTurn){
+      this.setState({fightTurn: false})
+    }else{
+      this.setState({fightTurn: true});
+    }
+    
+    
+    
   }
 
   takeItem(newItem, props){
@@ -143,8 +158,14 @@ export default class App extends React.Component{
     }else{
       let newItems = props.player.items;
       newItems.push(newItem);
-      this.setState({items: newItems});
+      this.setState({items: newItems });
     }
+    
+  }
+  clickSound(type){
+    this.setState({
+      clickSound: type
+    })
   }
 
 updateAudio(type,val){
@@ -169,15 +190,46 @@ updateAudio(type,val){
             nextPassage= {(nextPassage,action)=> this.nextPassage(nextPassage,action)} 
             takeItem= {(newItem, props)=> this.takeItem(newItem, props)}
             fight= {(action, props)=> this.fight(action, props)}
-            loadingText= {this.state.loadingText}/>
+            clickSound={(v)=>this.clickSound(v)}
+            loadingText= {this.state.loadingText}
+            fightTurn= {this.state.fightTurn}/>
           )
         }     
-        <Audio 
+         <Audio
+          gameStarted={!this.state.renderStartMenu}
           volume={this.state.volume}
           looping={this.state.looping}
           playing={this.state.playing}
-          audiofile= {this.state.audiofile} />     
+          audiofile= {this.state.audiofile}
+          passage= {this.state.passage} />
+         
+        {this.state.passage ? <BattleAudio 
+          volume={this.state.volume}
+          looping={this.state.looping}
+          playing={this.state.playing}
+          audiofile= {this.state.audiofile}
+          passage= {this.state.passage} 
+          enemy= {this.state.enemy}/>
+        : null}  
+        {this.state.passage ? <ActionAudio 
+          volume={this.state.volume}
+          looping={this.state.looping}
+          playing={this.state.playing}
+          audiofile= {this.state.audiofile}
+          passage= {this.state.passage} 
+          enemy= {this.state.enemy}
+          clickSound= {this.state.clickSound}
+          fightTurn= {this.state.fightTurn}
+          />
+        : null} 
+
+
+
+
+
+
       </div>      
     );
   }
+
 }
