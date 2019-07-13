@@ -28,7 +28,8 @@ export default class Animation extends React.Component{
 
         this.state={
           animationStarted: false,
-          position: props.position
+          position: props.position,
+          attacked:false
         };
     }
 

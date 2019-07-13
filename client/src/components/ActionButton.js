@@ -22,6 +22,7 @@ export default class ActionButton extends React.Component{
         if(this.props.passage.isFight){
             let action = this.props.passage.actions[num];
             let props = this.props;
+            this.props.clickSound('FIGHT')
             this.props.fight(action, props);
             return;
         }
@@ -43,6 +44,7 @@ export default class ActionButton extends React.Component{
             this.props.player.items.forEach((item) => {
                 if(item.name === questItem){hasQuestItem = true;}
             });
+            
             if(hasQuestItem){
                 nextPassage = this.props.passage.nextPassages[num+3].path;
             }            
@@ -57,7 +59,19 @@ export default class ActionButton extends React.Component{
             if (!hasItem && this.props.class === "TAKE"){
                 let props = this.props;
                 this.props.takeItem(newItem, props);
+            
+                 // OnClick sounds for interactions at specific locations
+                if (this.props.passage.location === 'YARD'){
+                    this.props.clickSound('TAKE');
+                }
+                if (this.props.passage.location === 'SMITH'){
+                    this.props.clickSound('GETQUEST');
+                }
+                if (this.props.passage.location === 'TOWNROAD' || this.props.passage.location === "NEST" ){
+                    this.props.clickSound('LOOT')
+                }
             }
+            
         }
         this.props.nextPassage(nextPassage,this.props.passage.actions[num] );
     }

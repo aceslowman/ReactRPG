@@ -55,6 +55,12 @@ export default class AnimationBox extends React.Component{
         }
     }
 
+    attack = () => {
+        let c = 'AttackAnimation' + (this.props.fightTurn ? '1' : ''); 
+        console.log(c);
+        this.setState({animation: c });
+    }
+
     componentDidUpdate(prevProps){
         if(prevProps.passage && this.props.passage.isFight !== prevProps.passage.isFight ){
             setTimeout(() =>{
@@ -68,6 +74,11 @@ export default class AnimationBox extends React.Component{
             styles.actionImage.backgroundImage = ``;
             this.setState({visible: false});
         }
+        if(this.state.visible && this.props.fightTurn !== prevProps.fightTurn){
+            console.log('AnimationBox: ', 'trigger jiggle');
+            this.attack();
+
+        }
     }
 
     render(){
@@ -75,7 +86,7 @@ export default class AnimationBox extends React.Component{
         
         return(
             <div style= {{...styles.animationBoxStyle}}>
-                <button onClick={() => this.move()}>CLICK ME</button> 
+                <button onClick={() => this.attack()}>CLICK ME</button> 
                 <div style= {{...styles.actionImage}}></div>
                 <React.Fragment>
                     <div style={{ ...styles.Wrapper }}>
@@ -84,6 +95,7 @@ export default class AnimationBox extends React.Component{
                             left={true}
                             position={this.state.position}
                             move={() => this.move()}
+                            attack= {() => this.attack()}
                             character={this.props.player}
                         />
                         <CharacterPanel
@@ -91,6 +103,7 @@ export default class AnimationBox extends React.Component{
                             left={false}
                             position={this.state.position}
                             move={() => this.move()} 
+                            attack={() => this.attack()}
                             character={this.props.enemy}
                         />
                     </div>
@@ -100,10 +113,3 @@ export default class AnimationBox extends React.Component{
         )
     }
 }
-
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 32a5a5df3e84140615c472b9f7363865c6828a2e

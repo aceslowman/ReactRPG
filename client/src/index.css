@@ -103,3 +103,58 @@ code {
   100%{transform: translateX(0%)}
 }
 
+.AttackAnimationLeft{
+  animation:  attackLeft 5s ease-in-out 1ms normal both;
+}
+.AttackAnimation1Left{
+  animation:  attack1Left 5s ease-in 1ms normal both;
+}
+
+.AttackAnimationRight{
+  animation: attackRight 5s cubic-bezier(0.280, 0.840, 0.420, 1) 1ms normal both;
+}
+.AttackAnimation1Right{
+  animation:  attack1Right 5s cubic-bezier(0.280, 0.840, 0.420, 1) 1ms normal both;
+}
+
+/*.TakeDamageAnimation{
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+}*/
+
+@keyframes attackLeft {
+  0%   { transform: scale(1,1)      translateX(237.5%);}
+  10%  { transform: scale(.9,1.1)   translateX(237.5%);}
+  30%  { transform: scale(1.1,.9)   translateX(195%);}
+  50%  { transform: scale(.95,1) translateX(237.5%);}
+  57%  { transform: scale(1,1)      translateX(200%);}
+  64%  { transform: scale(1,1)      translateX(237.5%);}
+  100% { transform: scale(1,1)      translateX(237.5%);}
+}
+@keyframes attackRight {
+  0%   { transform: scale(1,1)      translateX(-237.5%);}
+  10%  { transform: scale(.9,1.1)   translateX(-237.5%);}
+  30%  { transform: scale(1.1,.9)   translateX(-195%);}
+  50%  { transform: scale(.95,1) translateX(-237.5%);}
+  57%  { transform: scale(1,1)      translateX(-200%);}
+  64%  { transform: scale(1,1)      translateX(-237.5%);}
+  100% { transform: scale(1,1)      translateX(-237.5%);}
+}
+
+@keyframes attack1Left {
+  0%   { transform: scale(1,1)      translateX(237.5%);}
+  10%  { transform: scale(.9,1.1)   translateX(237.5%);}
+  30%  { transform: scale(1.1,.9)   translateX(195%);}
+  50%  { transform: scale(.95,1) translateX(237.5%);}
+  57%  { transform: scale(1,1)      translateX(200%);}
+  64%  { transform: scale(1,1)      translateX(237.5%);}
+  100% { transform: scale(1,1)      translateX(237.5%);}
+}
+@keyframes attack1Right {
+  0%   { transform: scale(1,1)      translateX(-237.5%);}
+  10%  { transform: scale(.9,1.1)   translateX(-237.5%);}
+  30%  { transform: scale(1.1,.9)   translateX(-195%);}
+  50%  { transform: scale(.95,1) translateX(-237.5%);}
+  57%  { transform: scale(1,1)      translateX(-200%);}
+  64%  { transform: scale(1,1)      translateX(-237.5%);}
+  100% { transform: scale(1,1)      translateX(-237.5%);}
+}
