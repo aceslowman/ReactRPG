@@ -99,8 +99,8 @@ export default class StartMenu extends React.Component{
                         <button style= {{...styles.buttonStyle}} onClick={()=>this.continueGame()}>Continue or Load</button>
                     </div> */}
                 </div>
-                <CharacterCreation {...this.props} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()} title= {this.state.title} />
-                <OptionsWindow modalOpen={this.state.openOptionsWindow} onClose={()=>this.closeOptionsWindow()} />
+                <CharacterCreation {...this.props} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()} />
+                <OptionsWindow updateAudio={(type,val)=>this.props.updateAudio(type,val)} modalOpen={this.state.openOptionsWindow} onClose={()=>this.closeOptionsWindow()} />
             </div>
         )
     }

@@ -11,7 +11,7 @@ const styles = {
         backgroundColor: 'rgba(0, 0, 0, 0)',
         display: 'flex',
         justifyContent: "center",
-        overflow: 'hidden',
+        //overflow: 'hidden',
         flexDirection: 'column'   
     },
     Wrapper:{
@@ -42,7 +42,7 @@ export default class AnimationBox extends React.Component{
         super(props);
         this.state = {
             animation:'',
-            position: '101%',
+            position: 101,
             active: false
         };
     }
@@ -101,6 +101,9 @@ export default class AnimationBox extends React.Component{
     }
 }
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 32a5a5df3e84140615c472b9f7363865c6828a2e

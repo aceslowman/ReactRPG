@@ -1,7 +1,9 @@
 import React from 'react';
 import StartMenu from './components/StartMenu';
+import Audio from './components/Audio';
 import GameContainer from './components/GameContainer';
 import gameLogic from './components/GameLogic/GameLogic';
+
 
 const styles = {
   app: {
@@ -17,6 +19,11 @@ export default class App extends React.Component{
       renderStartMenu: true,
       enemy: '',
       loadingText: false,
+      volume:1,
+      playing: true,
+      audiofile:'',
+      looping: true,
+      
     };
   }
   
@@ -140,12 +147,20 @@ export default class App extends React.Component{
     }
   }
 
+updateAudio(type,val){
+  console.log([type, val]);
+  this.setState({
+    [type]: val
+  })
+}
+
   render(){
     return (   
       <div className="App" style={styles.app}>          
         {this.state.renderStartMenu ? (
           <StartMenu 
-            gameStarted={(initialState) => this.startGame(initialState)} />
+            gameStarted={(initialState) => this.startGame(initialState)}
+            updateAudio={(type,val)=>this.updateAudio(type,val)} />
           ) : (
           <GameContainer 
             player={this.state.player}
@@ -156,7 +171,12 @@ export default class App extends React.Component{
             fight= {(action, props)=> this.fight(action, props)}
             loadingText= {this.state.loadingText}/>
           )
-        }          
+        }     
+        <Audio 
+          volume={this.state.volume}
+          looping={this.state.looping}
+          playing={this.state.playing}
+          audiofile= {this.state.audiofile} />     
       </div>      
     );
   }
