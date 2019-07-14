@@ -2,16 +2,16 @@ import React from 'react';
 import {CSSTransition} from 'react-transition-group';
 import './Background.css';
 
-import CrossroadBG from './../images/crossroad.jpg';
-import ForrestRoadBG from './../images/forestRoad.jpg';
-import HomeInsideBG from './../images/homeInside.jpg';
-import HomeOutsideBG from './../images/forestShack.jpg';
-import NestBG from './../images/drakeNest.jpg';
-import HomeRoadBG from './../images/roadHome.jpg';
-import SmithBG from './../images/smithy.jpg'; 
-import TavernBG from './../images/tavern.jpg';
-import TownBG from './../images/town.jpg';
-import TownRoadBG from './../images/roadToTown.jpg';
+import CrossroadBG from './../images/crossroad.png';
+import ForrestRoadBG from './../images/forestRoad.png';
+import HomeInsideBG from './../images/cabinInside.png';
+import HomeOutsideBG from './../images/forestShack.png';
+import NestBG from './../images/drakeNest.png';
+import HomeRoadBG from './../images/roadHome.png';
+import SmithBG from './../images/smithy.png'; 
+import TavernBG from './../images/tavern.png';
+import TownBG from './../images/town.png';
+import TownRoadBG from './../images/roadToTown.png';
 
 export default class BackgroundImage extends React.Component{
     constructor(props){

@@ -7,7 +7,7 @@ const styles = {
         backgroundColor: 'black',
         fontSize: '1.6vw',
         fontFamily: 'monospace',
-        border: '5px solid #05a19c',
+        border: '5px solid #69779b',
         resize: 'none',
         width: '90%',
         height: '24vh',

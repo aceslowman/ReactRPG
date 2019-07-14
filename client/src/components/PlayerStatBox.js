@@ -3,7 +3,8 @@ import React from "react";
 const style = {
     statBoxStyle: {
         borderRadius : '5px',
-        backgroundColor: '#05a19c',
+        backgroundColor: '#69779b',
+        backgroundImage: 'linear-gradient( to bottom right, #BBBBBB, #283148)',
         border: '3px solid black',
         fontFamily: 'monospace',
         width: '70%',
@@ -27,7 +28,7 @@ const style = {
         width: '50%',
         fontWeight: '550',
         fontSize: '1.6vw',
-        backgroundImage: 'radial-gradient( #f7ff56, #f8b739)',
+        backgroundImage: 'radial-gradient( #fdef96, #f7b71d)',
     },
     itemStyle: {
         padding: 10,
@@ -35,7 +36,7 @@ const style = {
         //width: '50%',
         fontWeight: '550',
         fontSize: '1.3vw',
-        backgroundImage: 'radial-gradient( #94fc13, #009975)',
+        backgroundImage: 'radial-gradient( #009975, #004a2f)',
         //margin: '1%',
         height: '100%',
         overflowY: 'auto',
@@ -45,7 +46,7 @@ const style = {
 },
     nameStyle: {
         margin: "1% 1% 0",
-        backgroundImage: 'radial-gradient( #ffa1c5, #f30cd4)',
+        backgroundImage: 'radial-gradient( #5588a3, #145374)',
         fontSize: '2vw',
         fontWeight: '700',
         textAlign: 'center'

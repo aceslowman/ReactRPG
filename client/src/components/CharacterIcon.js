@@ -6,7 +6,7 @@ const characterIconStyle = {
     width: '7vw',
     backgroundSize: '100%',
     backgroundPosition: 'center',
-    backgroundColor: 'rgba(5, 161, 156, 0.5)',
+    backgroundColor: 'rgba(5, 161, 156, 1)',
     border: '2px solid #000000',
     marginBottom: '2vh'
 };

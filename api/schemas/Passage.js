@@ -40,6 +40,3 @@ const PassageSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Passage', PassageSchema);
-
-
-//nextLocations: [NextLocationsSchema],
