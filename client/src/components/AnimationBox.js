@@ -1,9 +1,9 @@
 import React from 'react';
 import CharacterPanel from './ActionAnimation/CharacterPanels'; 
-import DragonFight from '../images/dragon_fight.jpg';
-import GoblinFight from '../images/goblin.jpg';
-import TrollFight from '../images/troll.jpg';
-import BanditFight from '../images/bandits.jpg';
+import DragonFight from '../images/dragon_fight.png';
+import GoblinFight from '../images/goblin.png';
+import TrollFight from '../images/troll.png';
+import BanditFight from '../images/bandits.png';
 
 
 const styles = {
@@ -20,7 +20,7 @@ const styles = {
     },
     Wrapper:{
         textAlign: 'center',
-        backgroundColor: 'rgba(0, 255, 255, 0)',
+        backgroundColor: 'rgba(255, 0, 0, 0)',
         width:'100%',
         height:'100%',
         display: 'flex',
@@ -31,9 +31,10 @@ const styles = {
     actionImage:{
         height: '150%',
         width: '100%',
-        backgroundColor: 'rgba(255, 0, 255, 0)',
+        backgroundColor: 'rgba(233, 47, 100, 0)',
         backgroundImage: '',
         backgroundSize: '100% 100%',
+        backgroundBlendMode: 'multiply',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         transition: 'all 0.5 ease-out',
@@ -70,6 +71,7 @@ export default class AnimationBox extends React.Component{
             setTimeout(() =>{
                 this.move();
                 let enemyName = this.props.enemy.name;
+                styles.actionImage.backgroundColor = 'rgba(233, 47, 100, .3)';
                 switch(enemyName){
                     case 'Drake' :
                             styles.actionImage.backgroundImage = `url(${DragonFight})`;
@@ -95,6 +97,7 @@ export default class AnimationBox extends React.Component{
         if(this.state.visible && !this.props.passage.isFight){
             this.move();
             styles.actionImage.backgroundImage = ``;
+            styles.actionImage.backgroundColor = 'rgba(233, 47, 100, 0)';
             this.setState({visible: false});
         }
         if(this.state.visible && this.props.fightTurn !== prevProps.fightTurn){
