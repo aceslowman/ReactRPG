@@ -72,25 +72,25 @@ code {
 @keyframes slideInLeft{
   0%{transform: translateX(0%)}
   50%{transform: translateX(237.5%)}
-  52%   { transform: scale(1,1)      translateX(237.5%);}
-  57%  { transform: scale(.9,1.1)   translateX(237.5%);}
+  52%   { transform: scale(1,1)      translateX(212.5%);}
+  57%  { transform: scale(.9,1.1)   translateX(212.5%);}
   65%  { transform: scale(1.1,.9)   translateX(195%);}
-  75%  { transform: scale(.95,1.05) translateX(237.5%);}
+  75%  { transform: scale(.95,1.05) translateX(212.5%);}
   78%  { transform: scale(1,1)      translateX(200%);}
-  82%  { transform: scale(1,1)      translateX(237.5%);}
-  100% { transform: scale(1,1)      translateX(237.5%);}
+  82%  { transform: scale(1,1)      translateX(212.5%);}
+  100% { transform: scale(1,1)      translateX(212.5%);}
 }
 
 @keyframes slideInRight{
   0%{transform: translateX(0%)}
   50%{transform: translateX(-237.5%)}
-  52%   { transform: scale(1,1)      translateX(-237.5%);}
-  57%  { transform: scale(.9,1.1)   translateX(-237.5%);}
-  65%  { transform: scale(1.1,.9)   translateX(-195%);}
-  75%  { transform: scale(.95,1.05) translateX(-237.5%);}
-  78%  { transform: scale(1,1)      translateX(-200%);}
-  82%  { transform: scale(1,1)      translateX(-237.5%);}
-  100% { transform: scale(1,1)      translateX(-237.5%);}
+  52%{ transform: scale(1,1)      translateX(-212.5%);}
+  57%{ transform: scale(.9,1.1)   translateX(-212.5%);}
+  65%{ transform: scale(1.1,.9)   translateX(-195%);}
+  75%{ transform: scale(.95,1.05) translateX(-212.5%);}
+  78%{ transform: scale(1,1)      translateX(-200%);}
+  82%{ transform: scale(1,1)      translateX(-212.5%);}
+  100%{ transform: scale(1,1)      translateX(-212.5%);}
 }
 
 @keyframes slideOutLeft{
@@ -122,22 +122,22 @@ code {
 }*/
 
 @keyframes attackLeft {
-  0%   { transform: scale(1,1)      translateX(237.5%);}
-  10%  { transform: scale(.9,1.1)   translateX(237.5%);}
+  0%   { transform: scale(1,1)      translateX(212.5%);}
+  10%  { transform: scale(.9,1)   translateX(212.5%);}
   30%  { transform: scale(1.1,.9)   translateX(195%);}
-  50%  { transform: scale(.95,1) translateX(237.5%);}
+  50%  { transform: scale(.95,1) translateX(212.5%);}
   57%  { transform: scale(1,1)      translateX(200%);}
-  64%  { transform: scale(1,1)      translateX(237.5%);}
-  100% { transform: scale(1,1)      translateX(237.5%);}
+  64%  { transform: scale(1,1)      translateX(212.5%);}
+  100% { transform: scale(1,1)      translateX(212.5%);}
 }
 @keyframes attackRight {
-  0%   { transform: scale(1,1)      translateX(-237.5%);}
-  10%  { transform: scale(.9,1.1)   translateX(-237.5%);}
+  0%   { transform: scale(1,1)      translateX(-212.5%);}
+  10%  { transform: scale(.9,1)   translateX(-237.5%);}
   30%  { transform: scale(1.1,.9)   translateX(-195%);}
-  50%  { transform: scale(.95,1) translateX(-237.5%);}
+  50%  { transform: scale(.95,1) translateX(-212.5%);}
   57%  { transform: scale(1,1)      translateX(-200%);}
-  64%  { transform: scale(1,1)      translateX(-237.5%);}
-  100% { transform: scale(1,1)      translateX(-237.5%);}
+  64%  { transform: scale(1,1)      translateX(-212.5%);}
+  100% { transform: scale(1,1)      translateX(-212.5%);}
 }
 
 @keyframes attack1Left {

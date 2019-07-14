@@ -1,18 +1,18 @@
 import React from 'react';
 
-const takeSound = 'pickup.wav';
-const lootSound = 'dwoboyle__coins-01.wav';
-const fightSound = '319590__hybrid-v__shield-bash-impact.wav';
-const getQuest ='270404__littlerobotsoundfactory__jingle-achievement-00.wav';
+const goblinSound = '253526__nanakisan__evil-laugh-10.wav';
+const trollSound = '49127__aesqe__monster-growl-01.wav';
+const banditSound = '439287__dreamstobecomeEDITED__battle-laugh.wav';
+const drakeSound = 'dragon-roar.wav';
 
 
-export default class ActionAudio extends React.Component{
+export default class BattleAudio extends React.Component{
     constructor(props){
         super(props);
         this.audio='';
 
         this.state = {
-            audiofile:'',
+            audiofile:''
         };
     }
 
@@ -22,37 +22,34 @@ export default class ActionAudio extends React.Component{
         this.audio.play();
     } 
 
-    selectAudioFile(action){
+    selectAudioFile(enemy){
         
-        switch (action) {
-            case 'TAKE':
+        switch (enemy) {
+            case 'Bandit':
                 this.setState({
-                  audiofile: takeSound  
+                  audiofile: banditSound  
                 });
                 console.log('Audio', 'HIT!!');
                 this.play();
                 break;
-            case 'LOOT':
+            case 'Drake':
                 this.setState({
-                    audiofile: lootSound
+                    audiofile: drakeSound
                 });
                 this.play();
                 break;
-                
-            case 'GETQUEST':
+            case 'Troll':
                 this.setState({
-                    audiofile: getQuest
-                });
-                this.play();
-                break;         
-                
-            case 'FIGHT':
-                this.setState({
-                    audiofile: fightSound
+                    audiofile: trollSound
                 });
                 this.play();
                 break;
-           
+            case 'Goblin':
+                this.setState({
+                    audiofile: goblinSound
+                });
+                this.play();
+                break;
                
             default: 
                 this.setState({
@@ -64,10 +61,13 @@ export default class ActionAudio extends React.Component{
 
 
     componentDidUpdate(prevProps){
-          if(prevProps.clickSound !== this.props.clickSound || prevProps.fightTurn !== this.props.fightTurn){
-            let sound = this.props.clickSound;    
-            this.selectAudioFile(sound);
-        }    
+        if(prevProps.passage && (this.props.passage.isFight && (this.props.passage.isFight !== prevProps.passage.isFight))){   
+            let enemy = this.props.enemy.name;
+            this.selectAudioFile(enemy);   
+        }   
+        if(prevProps.volume && (prevProps.volume !== this.props.volume)){
+            this.audio.volume = this.props.volume;
+        }
     }
 
     render(){

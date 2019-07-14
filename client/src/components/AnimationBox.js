@@ -11,7 +11,7 @@ const styles = {
         backgroundColor: 'rgba(0, 0, 0, 0)',
         display: 'flex',
         justifyContent: "center",
-        //overflow: 'hidden',
+        overflow: 'hidden',
         flexDirection: 'column'   
     },
     Wrapper:{
