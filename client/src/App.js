@@ -5,12 +5,17 @@ import ActionAudio from './components/Audio/ActionAudio';
 import BattleAudio from './components/Audio/BattleAudio';
 import GameContainer from './components/GameContainer';
 import gameLogic from './components/GameLogic/GameLogic';
+import OptionsWindow from './components/OptionsWindow';
 
 
 const styles = {
   app: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    display:'flex',
+    justifyContent:'center',
+    alignContent:'center',
+    alignItems:'center'
   }
 };
 
@@ -30,8 +35,8 @@ export default class App extends React.Component{
         isFight: false
       },
       clickSound: '',
-      fightTurn: true
-      
+      fightTurn: true,
+      openOptionsWindow:false
     };
   }
   
@@ -168,22 +173,36 @@ export default class App extends React.Component{
     })
   }
 
-updateAudio(type,val){
-  console.log([type, val]);
-  this.setState({
-    [type]: val
-  })
+  updateAudio(type, param, val){
+  console.log([type,val]);
+    this.setState({
+    [type+param]: val
+    })
+  }
+
+  toggleOptions() {
+    console.log("show options", this.state)
+    this.setState({openOptionsWindow:!this.state.openOptionsWindow});
 }
 
   render(){
     return (   
-      <div className="App" style={styles.app}>          
+      <div className="App" style={styles.app}>
+        <OptionsWindow 
+          updateAudio={(type, param ,val)=>this.updateAudio(type,param,val)} 
+          modalOpen={this.state.openOptionsWindow}
+          toggleOptions={()=>this.toggleOptions()}
+        />       
         {this.state.renderStartMenu ? (
-          <StartMenu 
+          <StartMenu
+            toggleOptions={()=>this.toggleOptions()}
             gameStarted={(initialState) => this.startGame(initialState)}
-            updateAudio={(type,val)=>this.updateAudio(type,val)} />
+            updateAudio={(type, param ,val)=>this.updateAudio(type, param , val)} />
+            //updateBattleAudio={(type,val)=>this.updateBattleAudio(type,val)} />
+            //updateActionAudio={(type,val)=>this.updateActionAudio(type,val)} />
           ) : (
-          <GameContainer 
+          <GameContainer
+            toggleOptions={()=>this.toggleOptions()}
             player={this.state.player}
             enemy= {this.state.enemy} 
             passage={this.state.passage} 
@@ -194,17 +213,18 @@ updateAudio(type,val){
             loadingText= {this.state.loadingText}
             fightTurn= {this.state.fightTurn}/>
           )
-        }     
+        }
+
          <Audio
           gameStarted={!this.state.renderStartMenu}
-          volume={this.state.volume}
+          volume={this.state.bgvolume}
           looping={this.state.looping}
           playing={this.state.playing}
           audiofile= {this.state.audiofile}
           passage= {this.state.passage} />
          
         {this.state.passage ? <BattleAudio 
-          volume={this.state.volume}
+          volume={this.state.battlevolume}
           looping={this.state.looping}
           playing={this.state.playing}
           audiofile= {this.state.audiofile}
@@ -212,7 +232,7 @@ updateAudio(type,val){
           enemy= {this.state.enemy}/>
         : null}  
         {this.state.passage ? <ActionAudio 
-          volume={this.state.volume}
+          volume={this.state.actionvolume}
           looping={this.state.looping}
           playing={this.state.playing}
           audiofile= {this.state.audiofile}

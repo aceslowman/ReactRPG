@@ -32,6 +32,11 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         width: '64%'
+    },
+    button:{
+        position:'absolute',
+        top:'0px',
+        left:'0px'
     }
 };
 
@@ -49,6 +54,9 @@ export default class GameContainer extends React.Component{
     render(){        
         return(
             <div style= {{...styles.gameContainerStyle}}>
+                <div style={styles.button}>
+                    <button onClick={()=>this.props.toggleOptions()}>Options</button>
+                </div>
                 <div style={{position:'absolute', zIndex:-100, height: '100%', width: '100%', overflow: 'hidden'}}>
                    <BackgroundImage passage = {this.props.passage}/>
                 </div>

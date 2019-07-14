@@ -66,21 +66,18 @@ export default class BattleAudio extends React.Component{
             this.selectAudioFile(enemy);   
         }   
         if(prevProps.volume && (prevProps.volume !== this.props.volume)){
+            console.log(this.props.volume);
             this.audio.volume = this.props.volume;
         }
     }
 
     render(){
         return(
-            <div style={{display: this.props.modalOpen ? 'block' : 'none' }} >
-
                 <audio ref={(ref)=>{this.audio = ref} } autoPlay  loop={false} >
                     <source 
                     src={`audio/${this.state.audiofile}`} type="audio/wav">      
                     </source>
                 </audio>
-                <button onClick={()=>this.props.onClose()}>Return</button>
-            </div>
         )
     }
 

@@ -66,20 +66,20 @@ export default class ActionAudio extends React.Component{
           if(prevProps.clickSound !== this.props.clickSound || prevProps.fightTurn !== this.props.fightTurn){
             let sound = this.props.clickSound;    
             this.selectAudioFile(sound);
-        }    
+        }
+        if(prevProps.volume && (prevProps.volume !== this.props.volume)){
+            console.log(this.props.volume);
+            this.audio.volume = this.props.volume;
+        }
     }
 
     render(){
         return(
-            <div style={{display: this.props.modalOpen ? 'block' : 'none' }} >
-
                 <audio ref={(ref)=>{this.audio = ref} } autoPlay  loop={false} >
                     <source 
                     src={`audio/${this.state.audiofile}`} type="audio/wav">      
                     </source>
                 </audio>
-                <button onClick={()=>this.props.onClose()}>Return</button>
-            </div>
         )
     }
 

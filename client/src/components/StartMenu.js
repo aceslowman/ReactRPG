@@ -50,7 +50,6 @@ export default class StartMenu extends React.Component{
 
         this.state = {
             openCharacterCreate: false,
-            openOptionsWindow: false
         };
     }
 
@@ -71,18 +70,7 @@ export default class StartMenu extends React.Component{
         });
     }
 
-    showOptions() {
-        console.log("show options", this.state)
-        this.setState({
-            openOptionsWindow: true 
-        });
-    }
 
-    closeOptionsWindow(){
-        this.setState({
-            openOptionsWindow: false
-        });
-    }
 
     render(){
         return (
@@ -93,14 +81,14 @@ export default class StartMenu extends React.Component{
                         <button style= {{...styles.buttonStyle}} onClick={()=>this.startCharacterCreation()}>New Game</button>
                     </div>
                     <div style={{...styles.buttonPositions}} >
-                        <button style= {{...styles.buttonStyle}} onClick={()=>this.showOptions()}>Options</button> 
+                        <button style= {{...styles.buttonStyle}} onClick={()=>this.props.toggleOptions()}>Options</button> 
                     </div>
                     {/* <div style={{...styles.buttonPositions}} >
                         <button style= {{...styles.buttonStyle}} onClick={()=>this.continueGame()}>Continue or Load</button>
                     </div> */}
                 </div>
                 <CharacterCreation {...this.props} modalOpen={this.state.openCharacterCreate} onClose={()=>this.cancelCharacterCreation()} />
-                <OptionsWindow updateAudio={(type,val)=>this.props.updateAudio(type,val)} modalOpen={this.state.openOptionsWindow} onClose={()=>this.closeOptionsWindow()} />
+               
             </div>
         )
     }
