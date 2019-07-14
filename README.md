@@ -1,5 +1,5 @@
 # ReactRPG
-A simple text based Interactive Fiction/RPG created by the 2019 Spring Part-time Montana Code School Cohort. Inspired by our love of OG games such as Kings Quest IV, we wanted to create something that also tied in a Role Playing aspect such that the player has a choice of character classes each with their own stats and the ability to name their character, collect items/gold and gain experience points. 
+A simple text based Interactive Fiction/RPG created by the 2019 Spring Part-time Montana Code School Cohort. Inspired by our love of OG games such as Kings Quest IV, we wanted to create something that also tied in a Role Playing aspect such that the player has a choice of character classes each with their own stats, the ability to name their character, collect items/gold and gain experience points. 
 
 ## Components 
 
@@ -22,39 +22,69 @@ Battle passage force the player to either defeat their enemy or attempt to flee 
 ## Models
 
 ```
-const PlayerCharacter = {
+const PlayerCharacterSchema = new mongoose.Schema({
     name: String,
-    AP: Int,
-    HP: Int,
-    XP: Int,    
-    level: Int,
-    items: [Item],
-}
+    type: String,
+    AP: Number,
+    HP: Number,
+    XP: Number,
+    items: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Item',
+        autopopulate: true
+    }],
+    gold: Number
+});
 ```
 ```
-const NPC = {
-    name: String,
-    AP: Int,
-    HP: Int,
-    level: Int,
-    items: [Item],
-    friendly: boolean
-}
+const PassageSchema = new mongoose.Schema({
+    text: String,
+    actions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Action',
+        autopopulate: true
+    }],
+    availableItems: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref : 'Item',
+        autopopulate: true
+    }],
+    nextPassages: [NextPassageSchema],
+    location: String,
+    nonPlayerCharacters:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'NonPlayerCharacter',
+        autopopulate: true
+    }]
 ```
 ```
-const Location = {
-    name: String,
-    type: String
-};
+const LocationSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, 'Where exactly? What is the name?']
+    },
+    environment: {
+       type: String,
+       required: [true, 'What sort of setting is this?']
+    },
+   backgroundImageUrl: String,
+   nonPlayerCharacters: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'NonPlayerCharacter',
+        autopopulate: true,
+    }]
+});
 ```
 ```
-const Item = {
-    name: String,
-    modifier: {
-        type: 'HP',
-        value: Integer
-    }
-}
+const ItemSchema = new mongoose.Schema({
+    name:{
+        type: String,
+        required: [true, 'Please check submission, Item name is required' ]
+    },
+    value: Number,
+    modifier: Number,
+    stat: String   
+});
 ```
 
 ## Wireframe of GUI
