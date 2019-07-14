@@ -1,6 +1,8 @@
 # ReactRPG
 A simple text based Interactive Fiction/RPG created by the 2019 Spring Part-time Montana Code School Cohort. Inspired by our love of OG games such as Kings Quest IV, we wanted to create something that also tied in a Role Playing aspect such that the player has a choice of character classes each with their own stats, the ability to name their character, collect items/gold and gain experience points. 
 
+The game is built on a Node.js platform using React.js for the front end and Express.js with MongoDB for the backend. 
+
 ## Components 
 
 ### Scene
@@ -24,7 +26,8 @@ Battle passages force the player to either defeat their enemy or attempt to flee
 
 We are managing our data with MongoDB hosted at MongoDB Atlas, we are an Express.js server within our API as well as the mongoose package to simplify our code. Many of our documents within the database have references to other documents to make  the data more granular and reuseable. 
 
-The main progression through the game is based on a decision tree that gets created when the game loads a `Passage`, each passage contains an array `NextPassages` which refrences the `Passage`s it is possible to traverse to based on the `Action` that the player chooses. The recommended mongoose-autopopulate package being used to create the tree when the game loads or when the player gets close to a leaf node. Limiting the depth of the tree makes in-game reloading quick and straight forward.    
+The main progression through the game is based on a decision tree that gets created when the game loads a `Passage`, each passage contains an array `NextPassages` which refrences the `Passage`s it is possible to traverse to based on the `Action` that the player chooses. The recommended mongoose-autopopulate package being used to create the tree when the game loads or when the player gets close to a leaf node. Limiting the depth of the tree makes in-game reloading quick and straight forward.
+
 
 ### Models
 
