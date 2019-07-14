@@ -73,7 +73,6 @@ export default class ActionAudio extends React.Component{
             this.selectAudioFile(sound);
         }
         if(prevProps.volume && (prevProps.volume !== this.props.volume)){
-            console.log(this.props.volume);
             this.audio.volume = this.props.volume;
         }
     }

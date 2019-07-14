@@ -39,7 +39,6 @@ export default class Audio extends React.Component{
                 this.setState({
                   audiofile: homeSound  
                 });
-                console.log('Audio', 'HIT!!');
                 this.play();
                 break;
             case 'YARD':
