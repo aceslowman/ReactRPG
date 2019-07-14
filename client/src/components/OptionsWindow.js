@@ -1,16 +1,44 @@
 import React from 'react';
+import BackgroundImage from './BackgroundImage';
 
 const styles ={
     wrapper:{
+        zIndex:'1000',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection:'column',
+        padding:'15px',
         backgroundColor:'green',
         position: 'absolute',
-        top: '0',
-        left: '0',
-        width:"100%",
-        height:"100%",
-        display:'block'
+        borderRadius:'10px',
+        width:"350px",
+        height:"450px",
+        boxShadow:'5px 7px',
+        fontFamily:'monospace',
+        backgroundImage:'linear-gradient(to bottom right, #009975 , #94fc13)'
+        
+    },
+    Sliders:{
+        display:'flex',
+        justifyContent:'center',
+        flexDirection:'column'
+    },
+    button:{
+        height:'35px',
+        width:'150px',
+        borderRadius:'15px',
+        marginTop:'35px',
+        margin:'20px',
+        fontSize:'larger',
+    },
+    H1:{
+        fontStyle:'oblique',
+        width:'200px',
+        paddingLeft:'78px',
+        borderRadius:'20px',
+        backgroundImage:'linear-gradient( #5bd1d7 , #348498 ) '
     }
-
 };
 
 export default class OptionsWindow extends React.Component{
@@ -27,28 +55,31 @@ export default class OptionsWindow extends React.Component{
 
     render(){
         return(
-            <React.Fragment>
-            <div style={{...styles.wrapper, display: this.props.modalOpen ? 'block' : 'none' }} >
-            <button onClick={()=>this.props.onClose()}>Return</button>
-                <h1>Options</h1>
-                <input type="range" min="0" max="1" step= {0.01} value= {this.state.volume} 
-                    onChange={(e)=>this.props.updateAudio('volume',e.target.value)}
+            <div style={{...styles.wrapper, display: this.props.modalOpen ? 'flex' : 'none' }} >
+                <h1 style={{...styles.H1}}>Options</h1>
+
+                <h2>Encounter</h2>
+                <input style={{...styles.Sliders}}
+                    type="range" min="0" max="1" step= {0.01} value= {this.state.volume} 
+                    onChange={(e)=>this.props.updateAudio('battle','volume',e.target.value)}
                 />
-                <select onChange={(e)=>this.props.updateAudio('audiofile',e.target.value)} >
-                    <option value='audio/473749__klankbeeld__estate-manteling-short-02-nl-190527-0008.wav'>forrest</option>
-                    <option value='audio/473996__esistnichtsoernst__space-arp-f-chords.wav'>startMenu</option>
-                    <option value='audio/250856__joshuaempyre__epic-orchestra-loop.wav'>Battle</option>
-                    <option value='456058__inchadney__fireplace.wav'>fireplace</option>
+                <h2>SFX</h2>
+               <input style={{...styles.Sliders}}
+                    type="range" min="0" max="1" step= {0.01} value= {this.state.volume} 
+                    onChange={(e)=>this.props.updateAudio('action','volume',e.target.value)}
+                />
+
+                <h2>Music</h2>
+                <input style={{...styles.Sliders}}
+                    type="range" min="0" max="1" step= {0.01} value= {this.state.volume} 
+                    onChange={(e)=>this.props.updateAudio('bg','volume',e.target.value)}
+                />
+                <button style={{...styles.button}} onClick={()=>this.props.toggleOptions()}><strong>Return</strong></button>
                 
-                </select>
-                <div>
-            <input type="range" min="0" max="1" step= {0.01} value= {this.state.volume} 
-                    onChange={(e)=>this.props.updateAudio('volume',e.target.value)}
-                />
-            </div>
+                
             </div>
 
-            </React.Fragment>
+           
         )
     }
 
