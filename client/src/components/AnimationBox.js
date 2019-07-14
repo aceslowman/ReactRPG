@@ -34,7 +34,7 @@ const styles = {
         backgroundColor: 'rgba(233, 47, 100, 0)',
         backgroundImage: '',
         backgroundSize: '100% 100%',
-        backgroundBlendMode: 'multiply',
+        backgroundBlendMode: 'lighten',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         transition: 'all 0.5 ease-out',
