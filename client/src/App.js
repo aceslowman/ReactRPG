@@ -132,27 +132,31 @@ export default class App extends React.Component{
   fight(action, props){    
     gameLogic(action, props);
     this.setState({});
-
+    this.switchTurn(action); 
     if (!this.state.passage.isFight){
-      //console.log("Fight Over");
-      //console.log("App State: ", this.state);
       if(props.player.HP !== 0 && action.class !== 'FLEE'){
         this.nextPassage(props.passage.nextPassages[0].path);
-      }else if(action.class === 'FLEE'){
+      }else if(props.player.HP === 0 && action.class === 'FLEE'){
+        this.nextPassage(props.passage.nextPassages[2].path);
+      }
+      else if(action.class === 'FLEE'){
         this.nextPassage(props.passage.nextPassages[1].path);
-      }else{
+      }
+      else{
         this.nextPassage(props.passage.nextPassages[2].path);
       }
     }
-    //console.log("After action: ", this.state);
-    if(this.state.fightTurn){
-      this.setState({fightTurn: false})
-    }else{
-      this.setState({fightTurn: true});
+  }
+
+  switchTurn(action){ 
+    if(action.class === 'FIGHT'){
+      if(this.state.fightTurn){
+        this.setState({fightTurn: false});
+      }else{
+        this.setState({fightTurn: true});
+      }
     }
-    
-    
-    
+
   }
 
   takeItem(newItem, props){

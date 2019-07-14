@@ -1,6 +1,10 @@
 import React from 'react';
 import CharacterPanel from './ActionAnimation/CharacterPanels'; 
 import DragonFight from '../images/dragon_fight.jpg';
+import GoblinFight from '../images/goblin.jpg';
+import TrollFight from '../images/troll.jpg';
+import BanditFight from '../images/bandits.jpg';
+
 
 const styles = {
     animationBoxStyle: {
@@ -65,7 +69,26 @@ export default class AnimationBox extends React.Component{
         if(prevProps.passage && this.props.passage.isFight !== prevProps.passage.isFight ){
             setTimeout(() =>{
                 this.move();
-                styles.actionImage.backgroundImage = `url(${DragonFight})`;
+                let enemyName = this.props.enemy.name;
+                switch(enemyName){
+                    case 'Drake' :
+                            styles.actionImage.backgroundImage = `url(${DragonFight})`;
+                    break;
+
+                    case 'Bandit' :
+                            styles.actionImage.backgroundImage = `url(${BanditFight})`;
+                    break;
+
+                    case 'Troll' :
+                            styles.actionImage.backgroundImage = `url(${TrollFight})`;
+                    break;
+
+                    case 'Goblin' :
+                            styles.actionImage.backgroundImage = `url(${GoblinFight})`;
+                    break;
+                    default : 
+                    break;
+                }              
                 this.setState({visible: true});
             } , 1000);
         }
@@ -82,11 +105,10 @@ export default class AnimationBox extends React.Component{
     }
 
     render(){
-        
-        
+ 
         return(
             <div style= {{...styles.animationBoxStyle}}>
-                <button onClick={() => this.attack()}>CLICK ME</button> 
+                {/* <button onClick={() => this.attack()}>CLICK ME</button>  */}
                 <div style= {{...styles.actionImage}}></div>
                 <React.Fragment>
                     <div style={{ ...styles.Wrapper }}>

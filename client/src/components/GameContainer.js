@@ -82,7 +82,10 @@ export default class GameContainer extends React.Component{
                         passage= {this.props.passage}
                         takeItem= {(newItem, props)=> this.props.takeItem(newItem, props)} 
                         nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
-                        fight= {(action, props)=> this.props.fight(action, props)}/>}
+                        fight= {(action, props)=> this.props.fight(action, props)}
+                        fightTurn= {this.props.fightTurn}
+                        />}
+                        
                 </div>
             </div>
         )
