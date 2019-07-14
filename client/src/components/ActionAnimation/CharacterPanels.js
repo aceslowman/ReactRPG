@@ -1,26 +1,6 @@
 import React from 'react';
 import HealthBar from './HealthBar';
-//import AttackPower from './AttackPower';
 
-
-// const styles ={
-//     wrapper:{
-//         display:'block',
-//         backgroundColor:'rgba(76, 175, 150, 0.3)',
-//         height:'100%',
-//         width:'100%',
-//         marginTop: "5%" 
-//     },
-//     slider:{
-//       position:'relative',
-//       transition:'all 5s ease-in-out',
-//       backgroundColor:'green',
-//       boxShadow:'2px 2px',
-//       padding:'25px',
-//       width:'150px',
-//       opacity: '1.5'
-//     }
-// }
 
 export default class Animation extends React.Component{
     constructor(props){

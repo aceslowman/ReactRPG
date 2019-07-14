@@ -40,7 +40,8 @@ export default class ActionButtonBar extends React.Component{
                             clickSound={(v)=>this.props.clickSound(v)}
                             nextPassage= {(nextPassage, action)=>this.props.nextPassage(nextPassage,action)}
                             fight= {(action, props)=> this.props.fight(action, props)}
-                            key = {action.text}/> 
+                            key = {action.text}
+                            fightTurn= {this.props.fightTurn}/> 
                     ))
                 : null}
             </div>

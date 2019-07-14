@@ -5,9 +5,12 @@ export default function fleeLogic(props){
 
     if (escapeChance <= 5 ){
         props.passage.isFight = false;
+        console.log('FLEE : ' , props);
+        
     }else{
         props.passage.text = "You weren't fast enough to flee";
         battleLogic(props);
+        console.log('FLEE : ' , props);
     }
     return;
 }

@@ -52,7 +52,12 @@ export default class ActionAudio extends React.Component{
                 });
                 this.play();
                 break;
-           
+            case 'FLEE':
+                this.setState({
+                    audiofile: fightSound
+                });
+                this.play();
+                break;
                
             default: 
                 this.setState({
