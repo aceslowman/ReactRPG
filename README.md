@@ -9,17 +9,24 @@ The Scene component will represent the user in the current *location* and each s
 
 ### Prompt
 
-Text displayed to the user that describes the current scenario, whereever they are at in the story line. Each propmt is a passage of the story and has associated actions the player can choose between to traverse to one of several next passages.
+Text displayed to the user that describes the current scenario, whereever they are at in the story line. Each prompt is a passage of the story and has associated actions the player can choose between to traverse to one of several next passages.
 
 ### Action
 
-Text representing the options available are displayed to the user, and the user can select them.
+Buttons representing the available actions are displayed to the user, and the user can select them.
 
 ### Battle
 
-Battle passage force the player to either defeat their enemy or attempt to flee back to the previous location. There are multiple possible enemies chosen at random for some battle scences. Each battle will be unique as the `battleLogic` uses random chance to determine whether the player attacks first or the enemy and each attack will be a random percentage of their total attack power. 
+Battle passages force the player to either defeat their enemy or attempt to flee back to the previous location. There are enemies chosen at random for some battle scences. Each battle will be unique as the `battleLogic` uses random chance to determine whether the player attacks first or the enemy and each attack will be a random percentage of their total attack power. 
 
-## Models
+
+## Database
+
+We are managing our data with MongoDB hosted at MongoDB Atlas, we are an Express.js server within our API as well as the mongoose package to simplify our code. Many of our documents within the database have references to other documents to make  the data more granular and reuseable. 
+
+The main progression through the game is based on a decision tree that gets created when the game loads a `Passage`, each passage contains an array `NextPassages` which refrences the `Passage`s it is possible to traverse to based on the `Action` that the player chooses. The recommended mongoose-autopopulate package being used to create the tree when the game loads or when the player gets close to a leaf node. Limiting the depth of the tree makes in-game reloading quick and straight forward.    
+
+### Models
 
 ```
 const PlayerCharacterSchema = new mongoose.Schema({
