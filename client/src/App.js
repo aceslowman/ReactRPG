@@ -1,8 +1,8 @@
 import React from 'react';
 import StartMenu from './components/StartMenu';
-import Audio from './components/Audio';
-import ActionAudio from './components/ActionAudio';
-import BattleAudio from './components/BattleAudio';
+import Audio from './components/Audio/Audio';
+import ActionAudio from './components/Audio/ActionAudio';
+import BattleAudio from './components/Audio/BattleAudio';
 import GameContainer from './components/GameContainer';
 import gameLogic from './components/GameLogic/GameLogic';
 
@@ -226,12 +226,6 @@ updateAudio(type,val){
           fightTurn= {this.state.fightTurn}
           />
         : null} 
-
-
-
-
-
-
       </div>      
     );
   }

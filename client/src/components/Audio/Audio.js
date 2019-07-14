@@ -140,8 +140,11 @@ export default class Audio extends React.Component{
                 return
              }else{
                 this.selectAudioFile(location); 
-             }      
-        }   
+             }  
+        }
+        if(prevProps.volume && (prevProps.volume !== this.props.volume)){
+            this.audio.volume = this.props.volume;
+        }
     }
 
     render(){
