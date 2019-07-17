@@ -16,8 +16,7 @@ const styles ={
         height:"450px",
         boxShadow:'5px 7px',
         fontFamily:'monospace',
-        backgroundImage:'linear-gradient(to bottom right, #009975 , #94fc13)'
-        
+        backgroundImage:'linear-gradient(to bottom right, #009975 , #94fc13)'       
     },
     Sliders:{
         display:'flex',
@@ -30,12 +29,12 @@ const styles ={
         borderRadius:'15px',
         marginTop:'35px',
         margin:'20px',
-        fontSize:'larger',
+        fontSize:'larger'
     },
     H1:{
         fontStyle:'oblique',
-        width:'200px',
-        paddingLeft:'78px',
+        textAlign: 'center',
+        width:'75%',
         borderRadius:'20px',
         backgroundImage:'linear-gradient( #5bd1d7 , #348498 ) '
     }
@@ -56,7 +55,7 @@ export default class OptionsWindow extends React.Component{
     render(){
         return(
             <div style={{...styles.wrapper, display: this.props.modalOpen ? 'flex' : 'none' }} >
-                <h1 style={{...styles.H1}}>Options</h1>
+                <h1 style={{...styles.H1}}>Volume</h1>
 
                 <h2>Encounter</h2>
                 <input style={{...styles.Sliders}}

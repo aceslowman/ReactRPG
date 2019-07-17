@@ -41,11 +41,12 @@ export default class App extends React.Component{
   }
   
   startGame(initialState){
-    //console.log(initialState);
     let characterId = initialState._id;
     let passageId = '5d01c49f8f136e04960d1ac7';
     //passageId = '5d0e91d5a0ec272c2cceec34'; //go straight to drake battle 
     //passageId = '5d0e56477314d23a931bb3d4'; // go striaght to crossroads
+    
+    /* Fetch call to get initial character class information */
     fetch(`/api/playercharacters/${characterId}`)
     .then(res=>res.json())
     .then((player)=>{
@@ -59,6 +60,7 @@ export default class App extends React.Component{
       });
     });
 
+    /* Fetch call to get opening passage tree */
     fetch(`/api/passages/${passageId}`)
     .then(res=>res.json())
     .then((passage)=>{
@@ -85,7 +87,7 @@ export default class App extends React.Component{
       this.setState({ enemy: currentEnemy });
     }
 
-
+/* Fetch call to load pasages if battle sequence is possible 2 layers deep, fixes bug that causes error when enemy information in nextPassage has not been populated because it is a leaf node    */
     this.state.passage.nextPassages.forEach((i)=> {
       let fightComing= false;
       i.path.nextPassages.forEach((j)=>{
@@ -106,6 +108,7 @@ export default class App extends React.Component{
       }
     });
     
+    /* Fetch call to get next segment pf passage tree when leaf node is hit */
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
       console.log('Hit Leaf', 'fetch begins');
       this.setState({loadingText: true});
@@ -152,7 +155,6 @@ export default class App extends React.Component{
         this.setState({fightTurn: true});
       }
     }
-
   }
 
   takeItem(newItem, props){
@@ -198,8 +200,6 @@ export default class App extends React.Component{
             toggleOptions={()=>this.toggleOptions()}
             gameStarted={(initialState) => this.startGame(initialState)}
             updateAudio={(type, param ,val)=>this.updateAudio(type, param , val)} />
-            //updateBattleAudio={(type,val)=>this.updateBattleAudio(type,val)} />
-            //updateActionAudio={(type,val)=>this.updateActionAudio(type,val)} />
           ) : (
           <GameContainer
             toggleOptions={()=>this.toggleOptions()}
