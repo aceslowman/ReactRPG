@@ -35,8 +35,14 @@ const styles = {
     },
     button:{
         position:'absolute',
-        top:'0px',
-        left:'0px'
+        top:'1vh',
+        left:'0.6vw',
+        fontFamily: 'monospace',
+        borderRadius: '3px',
+        backgroundColor: '#555555',
+        color: 'white',
+        fontSize: '1.1vw',
+        padding: '0.5vh 0.2vw 0.5vh'
     }
 };
 
@@ -55,7 +61,7 @@ export default class GameContainer extends React.Component{
         return(
             <div style= {{...styles.gameContainerStyle}}>
                 <div style={styles.button}>
-                    <button onClick={()=>this.props.toggleOptions()}>Options</button>
+                    <button style={styles.button} onClick={()=>this.props.toggleOptions()}>Options</button>
                 </div>
                 <div style={{position:'absolute', zIndex:-100, height: '100%', width: '100%', overflow: 'hidden'}}>
                    <BackgroundImage passage = {this.props.passage}/>

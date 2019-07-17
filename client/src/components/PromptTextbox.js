@@ -13,7 +13,8 @@ const styles = {
         height: '24vh',
         marginTop: '25px',
         overflowY: 'scroll',
-        outline: '2px solid black'
+        outline: '2px solid black',
+        paddingLeft: '0.7vw'
     },
     spinnerStyle :{
         marginTop: '6%',
