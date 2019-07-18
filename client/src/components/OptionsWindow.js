@@ -50,13 +50,10 @@ export default class OptionsWindow extends React.Component{
         };
     }
 
-
-
     render(){
         return(
             <div style={{...styles.wrapper, display: this.props.modalOpen ? 'flex' : 'none' }} >
                 <h1 style={{...styles.H1}}>Volume</h1>
-
                 <h2>Encounter</h2>
                 <input style={{...styles.Sliders}}
                     type="range" min="0" max="1" step= {0.01} value= {this.state.volume} 
