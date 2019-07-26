@@ -7,6 +7,8 @@ import GameContainer from './components/GameContainer';
 import gameLogic from './components/GameLogic/GameLogic';
 import OptionsWindow from './components/OptionsWindow';
 
+// require('dotenv').config();
+
 
 const styles = {
   app: {
@@ -22,6 +24,9 @@ const styles = {
 export default class App extends React.Component{
   constructor(){
     super();
+
+    console.log(process.env.REACT_APP_API_BASEURL);
+    // console.log(require('dotenv').config())
     this.state = {
       renderStartMenu: true,
       enemy: '',
@@ -47,7 +52,7 @@ export default class App extends React.Component{
     //passageId = '5d0e56477314d23a931bb3d4'; // go striaght to crossroads
     
     /* Fetch call to get initial character class information */
-    fetch(`/api/playercharacters/${characterId}`)
+    fetch(`${process.env.REACT_APP_API_BASEURL}/api/playercharacters/${characterId}`)
     .then(res=>res.json())
     .then((player)=>{
         this.setState({ 
@@ -61,7 +66,7 @@ export default class App extends React.Component{
     });
 
     /* Fetch call to get opening passage tree */
-    fetch(`/api/passages/${passageId}`)
+    fetch(`${process.env.REACT_APP_API_BASEURL}/api/passages/${passageId}`)
     .then(res=>res.json())
     .then((passage)=>{
       this.setState({
@@ -97,7 +102,7 @@ export default class App extends React.Component{
         }
       });
       if(fightComing){
-        fetch(`/api/passages/${passageId}`)
+        fetch(`${process.env.REACT_APP_API_BASEURL}/api/passages/${passageId}`)
         .then(res=>res.json())
         .then((passage)=>{
           this.setState({
@@ -112,7 +117,7 @@ export default class App extends React.Component{
     if(typeof this.state.passage.nextPassages[0].path.actions[0] !== 'object' ){
       console.log('Hit Leaf', 'fetch begins');
       this.setState({loadingText: true});
-      fetch(`/api/passages/${passageId}`)
+      fetch(`${process.env.REACT_APP_API_BASEURL}/api/passages/${passageId}`)
       .then(res=>res.json())
       .then((passage)=>{
         this.setState({

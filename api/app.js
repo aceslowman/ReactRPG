@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors')
+
+app.use(cors());
 
 mongoose.plugin(require('mongoose-autopopulate'))
 
